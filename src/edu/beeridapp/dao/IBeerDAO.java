@@ -1,5 +1,12 @@
 package edu.beeridapp.dao;
 
-public interface IBeerDAO {
+import java.util.List;
 
+import edu.beeridapp.dto.Beer;
+import edu.beeridapp.dto.BeerSearch;
+
+
+
+public interface IBeerDAO {
+	public List<Beer> fetchBeer(BeerSearch beerSearch);
 }

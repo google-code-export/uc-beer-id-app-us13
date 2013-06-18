@@ -5,12 +5,22 @@ import java.io.Serializable;
 public class Beer implements Serializable{
 	int id;
 	String beer;
-	enum type{Light, Dark, Brown, Red, Wheat, Pilsner};
+	public enum beerType{Light, Dark, Brown, Red, Wheat, Pilsner};
+	public beerType type;
 	double percentAlcohol;
 	double calories;
 	public int getId() {
 		return id;
 	}
+	
+	public beerType getType() {
+		return type;
+	}
+
+	public void setType(beerType type) {
+		this.type = type;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
