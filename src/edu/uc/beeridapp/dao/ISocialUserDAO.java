@@ -1,4 +1,4 @@
-package edu.beeridapp.dao;
+package edu.uc.beeridapp.dao;
 
 public interface ISocialUserDAO {
 

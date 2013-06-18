@@ -1,8 +1,8 @@
-package edu.beeridapp.services;
+package edu.uc.beeridapp.services;
 
-import edu.beeridapp.dao.IUserDAO;
-import edu.beeridapp.dao.UserDAOStub;
-import edu.beeridapp.dto.User;
+import edu.uc.beeridapp.dao.IUserDAO;
+import edu.uc.beeridapp.dao.UserDAOStub;
+import edu.uc.beeridapp.dto.User;
 
 public class UserServiceStub implements IUserService {
 

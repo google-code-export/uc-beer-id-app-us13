@@ -1,9 +1,9 @@
-package edu.beeridapp.dao;
+package edu.uc.beeridapp.dao;
 
 import java.util.List;
 
-import edu.beeridapp.dto.Beer;
-import edu.beeridapp.dto.BeerSearch;
+import edu.uc.beeridapp.dto.Beer;
+import edu.uc.beeridapp.dto.BeerSearch;
 
 
 

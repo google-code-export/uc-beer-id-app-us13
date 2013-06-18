@@ -1,8 +1,8 @@
-package edu.beeridapp.dao;
+package edu.uc.beeridapp.dao;
 
 import java.util.HashMap;
 
-import edu.beeridapp.dto.User;
+import edu.uc.beeridapp.dto.User;
 
 public class UserDAOStub implements IUserDAO {
 

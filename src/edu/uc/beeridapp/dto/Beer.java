@@ -1,4 +1,4 @@
-package edu.beeridapp.dto;
+package edu.uc.beeridapp.dto;
 
 import java.io.Serializable;
 

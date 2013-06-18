@@ -1,6 +1,6 @@
-package edu.beeridapp.dao;
+package edu.uc.beeridapp.dao;
 
-import edu.beeridapp.dto.User;
+import edu.uc.beeridapp.dto.User;
 
 public interface IUserDAO {
 

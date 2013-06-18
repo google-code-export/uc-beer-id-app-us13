@@ -1,11 +1,11 @@
-package edu.beeridapp.dao;
+package edu.uc.beeridapp.dao;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.beeridapp.dto.Beer;
-import edu.beeridapp.dto.Beer.beerType;
-import edu.beeridapp.dto.BeerSearch;
+import edu.uc.beeridapp.dto.Beer;
+import edu.uc.beeridapp.dto.BeerSearch;
+import edu.uc.beeridapp.dto.Beer.beerType;
 
 public class BeerDAOStub implements IBeerDAO{
 
