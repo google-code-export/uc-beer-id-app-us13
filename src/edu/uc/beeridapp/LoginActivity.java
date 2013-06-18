@@ -1,5 +1,6 @@
-package edu.uc.beerid;
+package edu.uc.beeridapp;
 
+import edu.uc.beerid.R;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
