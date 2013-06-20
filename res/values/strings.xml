@@ -3,5 +3,11 @@
 
     <string name="app_name">Beer ID</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_login">BeerID</string>
+    <string name="email">Email</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 
 </resources>
