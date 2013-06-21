@@ -1,7 +1,11 @@
 package edu.uc.beeridapp.dto;
 
 import java.io.Serializable;
-
+/**
+ * describes general beer object
+ * @author Dyllon Dekok
+ *
+ */
 public class Beer implements Serializable{
 	int id;
 	String beer;

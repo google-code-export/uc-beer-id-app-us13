@@ -7,6 +7,13 @@ public class SocialUser extends User {
 	private String accessToken;
 	private String refreshToken;
 	
+	/**
+	 * Describes a general social user for the BeedID application to be able to sign in with social networking sites
+	 * @param email
+	 * @param name
+	 * @param dob
+	 * @param password
+	 */
 	public SocialUser(String email, String name, String dob, String password) {
 		super(email, name, dob, password);
 		// TODO Auto-generated constructor stub

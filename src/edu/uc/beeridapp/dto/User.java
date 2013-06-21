@@ -6,8 +6,15 @@ public class User {
 	private String name;
 	private String dob;
 	private String password;
-	
-	public User(String email, String name, String dob, String password) {
+	/**
+	 * Describes a general user of the BeerID Application
+	 * @param email
+	 * @param name
+	 * @param dob
+	 * @param password
+	 */
+	public User(String email, String name, String dob, String password)
+	{
 		super();
 		this.email = email;
 		this.name = name;

@@ -1,5 +1,11 @@
 package edu.uc.beeridapp.dto;
 
-public class BeerSearch extends Beer{
+/**
+ * Beer Search object for advanced search features
+ * @author ddekok
+ *
+ */
+public class BeerSearch extends Beer
+{
 
 }
