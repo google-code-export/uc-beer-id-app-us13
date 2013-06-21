@@ -1,6 +1,8 @@
 package edu.uc.beeridapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -49,13 +51,11 @@ public class LoginActivity extends Activity {
 	
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 	}
 	
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 	}
 
@@ -71,24 +71,29 @@ public class LoginActivity extends Activity {
 
 		// Attempt to login with user's credentials
 		try {
-			us.logon(emailText, passwordText);
-			Toast.makeText(LoginActivity.this, "Login Succeeded!", Toast.LENGTH_LONG).show();
-			
-			// Call an activity to direct to menu screen
-			
-			// Invoke the menu screen
-			
+			if(us.logon(emailText, passwordText)){
+				Toast.makeText(LoginActivity.this, "Login Succeeded!", Toast.LENGTH_LONG).show();
+				
+				// TODO Call an activity to direct to menu screen
+				
+				// TODO Invoke the menu screen
+				
+			} else {
+				// Notify user of invalid username/password combination
+				Toast.makeText(LoginActivity.this, "Invalid username/password!", Toast.LENGTH_LONG).show();
+			}
 		} catch (Exception e) {
-			// Notify user of invalid username/password combination
-			Toast.makeText(LoginActivity.this, "Invalid username/password!", Toast.LENGTH_LONG).show();
+			new AlertDialog.Builder(this).setTitle("Login Failure").setMessage("We're sorry, there was a problem attempting to log you in.").setNeutralButton("Close", null).show();
 		}
 
 	}
 	
-	private void register(){
-		// TODO Auto-generated method stub
-		
+	private void register(){		
 		// Call an activity to direct to the menu screen
+		Intent registerIntent = new Intent(this, RegisterActivity.class);
+		
+		// Invoke the register screen
+		startActivity(registerIntent);
 	}
 
 	class OnLoginListener implements OnClickListener {
