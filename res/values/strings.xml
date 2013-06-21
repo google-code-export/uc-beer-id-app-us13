@@ -9,5 +9,7 @@
     <string name="password_hint">Enter Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+    <string name="facebook_login">Login with Facebook</string>
+    <string name="app_id">282119135265409</string>
 
 </resources>

@@ -1,0 +1,3 @@
+
+syntax: regexp
+^gen/edu/uc/beeridapp/R\.java$
