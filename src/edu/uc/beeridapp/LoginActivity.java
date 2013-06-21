@@ -1,6 +1,7 @@
 package edu.uc.beeridapp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -70,13 +71,11 @@ public class LoginActivity extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 	}
-
+	
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 	}
 
@@ -87,68 +86,34 @@ public class LoginActivity extends Activity {
 		// Get the text that the user entered.
 		String emailText = edtEmail.getText().toString();
 		String passwordText = edtPassword.getText().toString();
-
+		
 		UserServiceStub us = new UserServiceStub();
 
 		// Attempt to login with user's credentials
 		try {
-			us.logon(emailText, passwordText);
-			Toast.makeText(LoginActivity.this, "Login Succeeded!",
-					Toast.LENGTH_LONG).show();
-
-			// Call an activity to direct to menu screen
-
-			// Invoke the menu screen
-
+			if(us.logon(emailText, passwordText)){
+				Toast.makeText(LoginActivity.this, "Login Succeeded!", Toast.LENGTH_LONG).show();
+				
+				// TODO Call an activity to direct to menu screen
+				
+				// TODO Invoke the menu screen
+				
+			} else {
+				// Notify user of invalid username/password combination
+				Toast.makeText(LoginActivity.this, "Invalid username/password!", Toast.LENGTH_LONG).show();
+			}
 		} catch (Exception e) {
-			// Notify user of invalid username/password combination
-			Toast.makeText(LoginActivity.this, "Invalid username/password!",
-					Toast.LENGTH_LONG).show();
+			new AlertDialog.Builder(this).setTitle("Login Failure").setMessage("We're sorry, there was a problem attempting to log you in.").setNeutralButton("Close", null).show();
 		}
 
 	}
-
-	private void register() {
-		// TODO Auto-generated method stub
-
+	
+	private void register(){		
 		// Call an activity to direct to the menu screen
-	}
-
-	/**
-	 * Performs basic FB login
-	 */
-	private void facebookLogin() {
-		//opens FB Session object
-		Session.openActiveSession(this, true, new Session.StatusCallback() {
-
-			
-			//calls FB SDK to retrieve current FB session status
-			@Override
-			public void call(Session session, SessionState state,
-					Exception exception) {
-
-				//checks to see if session is already active
-				if (session.isOpened()) {
-					
-					//grabs the logged in FB user's Graph data
-					Request.executeMeRequestAsync(session,
-							new Request.GraphUserCallback() {
-
-						@Override
-						public void onCompleted(GraphUser user,
-								Response response) {
-							
-							//shows message to user
-							Toast.makeText(LoginActivity.this,
-									"Welcome " + user.getName() + "!",
-									Toast.LENGTH_LONG).show();
-						}
-					});
-				}
-
-			}
-		});
-
+		Intent registerIntent = new Intent(this, RegisterActivity.class);
+		
+		// Invoke the register screen
+		startActivity(registerIntent);
 	}
 
 	class OnLoginListener implements OnClickListener {
@@ -158,7 +123,7 @@ public class LoginActivity extends Activity {
 			login();
 		}
 	}
-
+	
 	class OnRegisterListener implements OnClickListener {
 
 		@Override
@@ -167,14 +132,5 @@ public class LoginActivity extends Activity {
 		}
 	}
 
-	class OnFacebookLoginListener implements OnClickListener {
-
-		@Override
-		public void onClick(View v) {
-			facebookLogin();
-
-		}
-
-	}
-
 }
+
