@@ -108,6 +108,44 @@ public class LoginActivity extends Activity {
 
 	}
 	
+    /**
+     * Performs basic FB login
+     */
+    private void facebookLogin() {
+            //opens FB Session object
+            Session.openActiveSession(this, true, new Session.StatusCallback() {
+
+                   
+                    //calls FB SDK to retrieve current FB session status
+                    @Override
+                    public void call(Session session, SessionState state,
+                                    Exception exception) {
+
+                            //checks to see if session is already active
+                            if (session.isOpened()) {
+                                   
+                                    //grabs the logged in FB user's Graph data
+                                    Request.executeMeRequestAsync(session,
+                                                    new Request.GraphUserCallback() {
+
+                                            @Override
+                                            public void onCompleted(GraphUser user,
+                                                            Response response) {
+                                                   
+                                                    //shows message to user
+                                                    Toast.makeText(LoginActivity.this,
+                                                                    "Welcome " + user.getName() + "!",
+                                                                    Toast.LENGTH_LONG).show();
+                                            }
+                                    });
+                            }
+
+                    }
+            });
+
+    }
+
+	
 	private void register(){		
 		// Call an activity to direct to the menu screen
 		Intent registerIntent = new Intent(this, RegisterActivity.class);
@@ -131,6 +169,17 @@ public class LoginActivity extends Activity {
 			register();
 		}
 	}
+	
+    class OnFacebookLoginListener implements OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+                facebookLogin();
+
+        }
+
+}
+
 
 }
 
