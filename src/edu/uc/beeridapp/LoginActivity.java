@@ -1,0 +1,180 @@
+package edu.uc.beeridapp;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.GraphUser;
+
+import edu.uc.beeridapp.services.UserServiceStub;
+
+/**
+ * 
+ * @author Brian Pumphrey Login Screen Activity
+ */
+public class LoginActivity extends Activity {
+
+	private EditText edtEmail;
+	private EditText edtPassword;
+	private Button btnLogin;
+	private Button btnRegister;
+	private Button btnFacebookLogin;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_login);
+
+		// Get access to the UI components
+		edtEmail = (EditText) findViewById(R.id.edtEmail);
+		edtPassword = (EditText) findViewById(R.id.edtPassword);
+		btnLogin = (Button) findViewById(R.id.btnLogin);
+		btnRegister = (Button) findViewById(R.id.btnRegister);
+		btnFacebookLogin = (Button) findViewById(R.id.btnFacbookLogin);
+
+		// Create Listeners for Buttons
+		OnClickListener loginListener = new OnLoginListener();
+		OnClickListener registerListener = new OnRegisterListener();
+		OnClickListener facebookLoginListener = new OnFacebookLoginListener();
+
+		btnLogin.setOnClickListener(loginListener);
+		btnRegister.setOnClickListener(registerListener);
+		btnFacebookLogin.setOnClickListener(facebookLoginListener);
+	}
+
+	/**
+	 * Used by FB SDK to check session state of user
+	 */
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.login, menu);
+		return true;
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+
+	/**
+	 * Performs a login with provided credentials
+	 */
+	private void login() {
+		// Get the text that the user entered.
+		String emailText = edtEmail.getText().toString();
+		String passwordText = edtPassword.getText().toString();
+
+		UserServiceStub us = new UserServiceStub();
+
+		// Attempt to login with user's credentials
+		try {
+			us.logon(emailText, passwordText);
+			Toast.makeText(LoginActivity.this, "Login Succeeded!",
+					Toast.LENGTH_LONG).show();
+
+			// Call an activity to direct to menu screen
+
+			// Invoke the menu screen
+
+		} catch (Exception e) {
+			// Notify user of invalid username/password combination
+			Toast.makeText(LoginActivity.this, "Invalid username/password!",
+					Toast.LENGTH_LONG).show();
+		}
+
+	}
+
+	private void register() {
+		// TODO Auto-generated method stub
+
+		// Call an activity to direct to the menu screen
+	}
+
+	/**
+	 * Performs basic FB login
+	 */
+	private void facebookLogin() {
+		//opens FB Session object
+		Session.openActiveSession(this, true, new Session.StatusCallback() {
+
+			
+			//calls FB SDK to retrieve current FB session status
+			@Override
+			public void call(Session session, SessionState state,
+					Exception exception) {
+
+				//checks to see if session is already active
+				if (session.isOpened()) {
+					
+					//grabs the logged in FB user's Graph data
+					Request.executeMeRequestAsync(session,
+							new Request.GraphUserCallback() {
+
+						@Override
+						public void onCompleted(GraphUser user,
+								Response response) {
+							
+							//shows message to user
+							Toast.makeText(LoginActivity.this,
+									"Welcome " + user.getName() + "!",
+									Toast.LENGTH_LONG).show();
+						}
+					});
+				}
+
+			}
+		});
+
+	}
+
+	class OnLoginListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			login();
+		}
+	}
+
+	class OnRegisterListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			register();
+		}
+	}
+
+	class OnFacebookLoginListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			facebookLogin();
+
+		}
+
+	}
+
+}
