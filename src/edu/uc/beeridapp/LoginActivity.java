@@ -25,6 +25,13 @@ import edu.uc.beeridapp.services.UserServiceStub;
  */
 public class LoginActivity extends Activity {
 
+	private static final String WELCOME = "Welcome ";
+	private static final String CLOSE = "Close";
+	private static final String LOGIN_FAILURE_TITLE = "Login Failure";
+	private static final String LOGIN_FAILURE_NOTIFICATION = "We're sorry, there was a problem attempting to log you in.";
+	private static final String INVALID_USERNAME_PASSWORD = "Invalid username/password!";
+	private static final String LOGIN_SUCCEEDED = "Login Succeeded!";
+	
 	private EditText edtEmail;
 	private EditText edtPassword;
 	private Button btnLogin;
@@ -92,7 +99,7 @@ public class LoginActivity extends Activity {
 		// Attempt to login with user's credentials
 		try {
 			if(us.logon(emailText, passwordText)){
-				Toast.makeText(LoginActivity.this, "Login Succeeded!", Toast.LENGTH_LONG).show();
+				Toast.makeText(LoginActivity.this, LOGIN_SUCCEEDED, Toast.LENGTH_LONG).show();
 				
 				// TODO Call an activity to direct to menu screen
 				
@@ -100,10 +107,10 @@ public class LoginActivity extends Activity {
 				
 			} else {
 				// Notify user of invalid username/password combination
-				Toast.makeText(LoginActivity.this, "Invalid username/password!", Toast.LENGTH_LONG).show();
+				Toast.makeText(LoginActivity.this, INVALID_USERNAME_PASSWORD, Toast.LENGTH_LONG).show();
 			}
 		} catch (Exception e) {
-			new AlertDialog.Builder(this).setTitle("Login Failure").setMessage("We're sorry, there was a problem attempting to log you in.").setNeutralButton("Close", null).show();
+			new AlertDialog.Builder(this).setTitle(LOGIN_FAILURE_TITLE).setMessage(LOGIN_FAILURE_NOTIFICATION).setNeutralButton(CLOSE, null).show();
 		}
 
 	}
@@ -134,7 +141,7 @@ public class LoginActivity extends Activity {
                                                    
                                                     //shows message to user
                                                     Toast.makeText(LoginActivity.this,
-                                                                    "Welcome " + user.getName() + "!",
+                                                                    WELCOME + user.getName() + "!",
                                                                     Toast.LENGTH_LONG).show();
                                             }
                                     });
