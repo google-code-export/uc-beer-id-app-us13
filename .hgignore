@@ -3,3 +3,5 @@ syntax: regexp
 ^gen/edu/uc/beeridapp/R\.java$
 syntax: regexp
 ^bin$
+syntax: regexp
+^gen$
