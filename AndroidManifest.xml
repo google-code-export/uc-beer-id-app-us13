@@ -31,6 +31,10 @@
 
         <activity android:name="com.facebook.LoginActivity" >
         </activity>
+        <activity
+            android:name="edu.uc.beeridapp.SearchMenuActivity"
+            android:label="@string/title_activity_search_menu" >
+        </activity>
     </application>
 
 </manifest>
