@@ -11,7 +11,13 @@ import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 
-	private EditText edtFirst, edtLast, edtDOB, edtEmail, edtConfirmEmail, edtPassword, edtConfirmPassword;
+	private EditText edtFirst;
+	private EditText edtLast;
+	private EditText edtDOB;
+	private EditText edtEmail;
+	private EditText edtConfirmEmail;
+	private EditText edtPassword;
+	private EditText edtConfirmPassword;
 	private Button btnSubmit;
 	
 	@Override
@@ -55,6 +61,10 @@ public class RegisterActivity extends Activity {
 
 	class OnSubmitListener implements OnClickListener {
 
+		private static final String PASSWORD_MISMATCH = "Password Fields Do Not Match!";
+		private static final String EMAIL_MISMATCH = "Email Fields Do Not Match!";
+		private static final String FIELDS_REQUIRED_NOTIFICATION = "One Or More Fields Are Empty! \r\n All Information Is Required!";
+
 		@Override
 		public void onClick(View v) {
 			submit();
@@ -73,18 +83,18 @@ public class RegisterActivity extends Activity {
 			if (firstText.equals("") || lastText.equals("") || dobText.equals("")|| emailText.equals("") || confirmEmailText.equals("") || passwordText.equals("") || confirmPasswordText.equals(""))
 			{
 				// Notify User One or More Fields are Empty
-				Toast.makeText(RegisterActivity.this, "One Or More Fields Are Empty! \r\n All Information Is Required!", Toast.LENGTH_LONG).show();
+				Toast.makeText(RegisterActivity.this, FIELDS_REQUIRED_NOTIFICATION, Toast.LENGTH_LONG).show();
 				
 			}
 			else if (!emailText.equals(confirmEmailText))
 			{
 				// Notify User Emails Do Not Match
-				Toast.makeText(RegisterActivity.this, "Email Fields Do Not Match!", Toast.LENGTH_LONG).show();
+				Toast.makeText(RegisterActivity.this, EMAIL_MISMATCH, Toast.LENGTH_LONG).show();
 			}
 			else if (!passwordText.equals(confirmPasswordText))
 			{
 				//Notify User Passwords Do Not Match
-				Toast.makeText(RegisterActivity.this, "Password Fields Do Not Match!", Toast.LENGTH_LONG).show();
+				Toast.makeText(RegisterActivity.this, PASSWORD_MISMATCH, Toast.LENGTH_LONG).show();
 			}
 			else
 			{
