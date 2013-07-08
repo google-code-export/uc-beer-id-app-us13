@@ -8,7 +8,7 @@ import java.io.Serializable;
  */
 public class Beer implements Serializable{
 	int id;
-	String beer;
+	String beerName;
 	public enum beerType{Light, Dark, Brown, Red, Wheat, Pilsner};
 	public beerType type;
 	double percentAlcohol;
@@ -28,11 +28,11 @@ public class Beer implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBeer() {
-		return beer;
+	public String getBeerName() {
+		return beerName;
 	}
-	public void setBeer(String beer) {
-		this.beer = beer;
+	public void setBeer(String beerName) {
+		this.beerName = beerName;
 	}
 	public double getPercentAlcohol() {
 		return percentAlcohol;
@@ -48,7 +48,7 @@ public class Beer implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Beer [id=" + id + ", beer=" + beer + ", percentAlcohol="
+		return "Beer [id=" + id + ", beer=" + beerName + ", percentAlcohol="
 				+ percentAlcohol + ", calories=" + calories + "]";
 	}
 	
