@@ -101,9 +101,11 @@ public class LoginActivity extends Activity {
 			if(us.logon(emailText, passwordText)){
 				Toast.makeText(LoginActivity.this, LOGIN_SUCCEEDED, Toast.LENGTH_LONG).show();
 				
-				// TODO Call an activity to direct to menu screen
+				// Call an activity to direct to menu screen
+				Intent searchMenuIntent = new Intent(this, SearchMenuActivity.class);
 				
-				// TODO Invoke the menu screen
+				// Invoke the menu screen
+				startActivity(searchMenuIntent);
 				
 			} else {
 				// Notify user of invalid username/password combination
@@ -152,7 +154,9 @@ public class LoginActivity extends Activity {
 
     }
 
-	
+    /**
+     * Starts Activity to send user to Registration Menu
+     */
 	private void register(){		
 		// Call an activity to direct to the menu screen
 		Intent registerIntent = new Intent(this, RegisterActivity.class);
