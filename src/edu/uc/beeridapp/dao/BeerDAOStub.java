@@ -16,7 +16,7 @@ public class BeerDAOStub implements IBeerDAO{
 	{
 		List<Beer> allBeer = new ArrayList<Beer>();
 		//if the search is budlight, populate a bud light object and return it
-		if (beerSearch.getBeer().equalsIgnoreCase("bud light"))
+		if (beerSearch.getBeerName().equalsIgnoreCase("bud light"))
 		{
 			Beer budLight = new Beer();
 			budLight.setPercentAlcohol(4.2);
@@ -27,7 +27,7 @@ public class BeerDAOStub implements IBeerDAO{
 			allBeer.add(budLight);
 		}
 		//if the search is blue moon, populate a blue moon object and return it
-		if (beerSearch.getBeer().equalsIgnoreCase("blue moon"))
+		if (beerSearch.getBeerName().equalsIgnoreCase("blue moon"))
 		{
 			Beer blueMoon = new Beer();
 			blueMoon.setBeer("Blue Moon");
