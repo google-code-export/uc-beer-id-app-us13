@@ -23,5 +23,16 @@
     <string name="search_by_details">Search By Details</string>
     <string name="search_by_upc">Search By UPC</string>
     <string name="search_by_label">Search By Label</string>
+    <string name="title_activity_details_search">Search By Details</string>
+    <string name="brand_name">Brand Name</string>
+    <string name="beer_type_prompt">Select a type of beer</string>
+    <string-array name="beer_types_array">
+        <item >Light</item>
+        <item >Dark</item>
+        <item >Brown</item>
+        <item >Red</item>
+        <item >Pilsner</item>
+        <item >Wheat</item>
+    </string-array>
 
 </resources>
