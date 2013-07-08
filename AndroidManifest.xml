@@ -35,6 +35,10 @@
             android:name="edu.uc.beeridapp.SearchMenuActivity"
             android:label="@string/title_activity_search_menu" >
         </activity>
+        <activity
+            android:name="edu.uc.beeridapp.DetailsSearchActivity"
+            android:label="@string/title_activity_details_search" >
+        </activity>
     </application>
 
 </manifest>

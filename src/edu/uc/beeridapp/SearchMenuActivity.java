@@ -1,6 +1,7 @@
 package edu.uc.beeridapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -58,10 +59,10 @@ public class SearchMenuActivity extends Activity {
 	 */
 	private void searchByDetails(){		
 		// Call an activity to direct to the menu screen
-		//Intent searchByDetailsIntent = new Intent(this, RegisterActivity.class);
+		Intent searchByDetailsIntent = new Intent(this, DetailsSearchActivity.class);
 		
 		// Invoke the register screen
-		//startActivity(searchByDetailsIntent);
+		startActivity(searchByDetailsIntent);
 	}
 	
 	/**
@@ -69,7 +70,7 @@ public class SearchMenuActivity extends Activity {
 	 */
 	private void searchByUPC(){		
 		// Call an activity to direct to the menu screen
-		//Intent searchByUPCIntent = new Intent(this, RegisterActivity.class);
+		//Intent searchByUPCIntent = new Intent(this, UPCSearchActivity.class);
 		
 		// Invoke the register screen
 		//startActivity(searchByUPCIntent);
@@ -80,7 +81,7 @@ public class SearchMenuActivity extends Activity {
 	 */
 	private void searchByLabel(){		
 		// Call an activity to direct to the menu screen
-		//Intent searchByLabelIntent = new Intent(this, RegisterActivity.class);
+		//Intent searchByLabelIntent = new Intent(this, LabelSearchActivity.class);
 		
 		// Invoke the register screen
 		//startActivity(searchByLabelIntent);
