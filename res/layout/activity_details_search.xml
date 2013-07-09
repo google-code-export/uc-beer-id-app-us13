@@ -20,12 +20,57 @@
 
     <Spinner
         android:id="@+id/spnBeerType"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edtBeerName"
+        android:layout_alignLeft="@+id/spnAlcoholPercentage"
         android:layout_below="@+id/edtBeerName"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="16dp"
         android:prompt="@string/beer_type_prompt"
         tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+    <Spinner
+        android:id="@+id/spnAlcoholPercentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edtBeerName"
+        android:layout_below="@+id/spnBeerType"
+        android:layout_marginTop="16dp"
+        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+    <EditText
+        android:id="@+id/edtAlcoholPercentage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/spnAlcoholPercentage"
+        android:layout_centerVertical="true"
+        android:ems="10"
+        android:hint="@string/alcohol_percentage" />
+
+    <Button
+        android:id="@+id/btnDetailsSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edtCalories"
+        android:layout_alignParentBottom="true"
+        android:text="@string/submit" />
+
+    <Spinner
+        android:id="@+id/spnCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edtCalories"
+        android:layout_below="@+id/edtAlcoholPercentage"
+        android:layout_marginTop="16dp"
+        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+
+    <EditText
+        android:id="@+id/edtCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edtAlcoholPercentage"
+        android:layout_below="@+id/spnCalories"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:hint="@string/calories" />
 
 </RelativeLayout>
