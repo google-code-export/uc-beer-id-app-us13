@@ -15,14 +15,22 @@ public class DetailsSearchActivity extends Activity {
 		
 		// Create an ArrayAdapter using the string array and a default spinner layout
 		Spinner spnBeerType = (Spinner) findViewById(R.id.spnBeerType);
+		Spinner spnAlcoholPercentage = (Spinner) findViewById(R.id.spnAlcoholPercentage);
+		Spinner spnCalories = (Spinner) findViewById(R.id.spnCalories);
 		
-		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.beer_types_array, android.R.layout.simple_spinner_item);
+		ArrayAdapter<CharSequence> adapterBT = ArrayAdapter.createFromResource(this, R.array.beer_types_array, android.R.layout.simple_spinner_item);
+		ArrayAdapter<CharSequence> adapterAP = ArrayAdapter.createFromResource(this, R.array.comparison_array, android.R.layout.simple_spinner_item);
+		ArrayAdapter<CharSequence> adapterCal = ArrayAdapter.createFromResource(this, R.array.comparison_array, android.R.layout.simple_spinner_item);
 		
 		// Specify the layout to use when the list of choices appears
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapterBT.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapterAP.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		adapterCal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		
 		// Apply the adapter to the spinner
-		spnBeerType.setAdapter(adapter);
+		spnBeerType.setAdapter(adapterBT);
+		spnAlcoholPercentage.setAdapter(adapterAP);
+		spnCalories.setAdapter(adapterCal);
 	}
 
 	@Override

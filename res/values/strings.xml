@@ -27,6 +27,7 @@
     <string name="brand_name">Brand Name</string>
     <string name="beer_type_prompt">Select a type of beer</string>
     <string-array name="beer_types_array">
+        <item >Any Type</item>
         <item >Light</item>
         <item >Dark</item>
         <item >Brown</item>
@@ -34,5 +35,12 @@
         <item >Pilsner</item>
         <item >Wheat</item>
     </string-array>
+    <string name="alcohol_percentage">Alcohol Percentage</string>
+    <string-array name="comparison_array">
+        <item >Less Than</item>
+        <item >Greater Than</item>
+        <item >Any</item>
+    </string-array>
+        <string name="calories">Calories</string>
 
 </resources>
