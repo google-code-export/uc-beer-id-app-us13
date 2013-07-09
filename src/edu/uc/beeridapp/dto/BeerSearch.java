@@ -8,4 +8,9 @@ package edu.uc.beeridapp.dto;
 public class BeerSearch extends Beer
 {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
+
 }

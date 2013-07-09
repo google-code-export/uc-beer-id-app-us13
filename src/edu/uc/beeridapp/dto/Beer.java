@@ -7,6 +7,10 @@ import java.io.Serializable;
  *
  */
 public class Beer implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int id;
 	String beerName;
 	public enum beerType{Light, Dark, Brown, Red, Wheat, Pilsner};

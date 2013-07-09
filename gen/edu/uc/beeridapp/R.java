@@ -10,6 +10,7 @@ package edu.uc.beeridapp;
 public final class R {
     public static final class array {
         public static final int beer_types_array=0x7f060000;
+        public static final int comparison_array=0x7f060001;
     }
     public static final class attr {
     }
@@ -27,24 +28,29 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090011;
-        public static final int btnFacbookLogin=0x7f090006;
-        public static final int btnLogin=0x7f090004;
-        public static final int btnRegister=0x7f090005;
-        public static final int btnSearchByDetails=0x7f09000e;
-        public static final int btnSearchByLabel=0x7f090010;
-        public static final int btnSearchByUPC=0x7f09000f;
-        public static final int btnSubmit=0x7f09000d;
+        public static final int action_settings=0x7f090016;
+        public static final int btnDetailsSubmit=0x7f090004;
+        public static final int btnFacbookLogin=0x7f09000b;
+        public static final int btnLogin=0x7f090009;
+        public static final int btnRegister=0x7f09000a;
+        public static final int btnSearchByDetails=0x7f090013;
+        public static final int btnSearchByLabel=0x7f090015;
+        public static final int btnSearchByUPC=0x7f090014;
+        public static final int btnSubmit=0x7f090012;
+        public static final int edtAlcoholPercentage=0x7f090003;
         public static final int edtBeerName=0x7f090000;
-        public static final int edtConfirmEmail=0x7f09000b;
-        public static final int edtConfirmPassword=0x7f09000c;
-        public static final int edtDOB=0x7f09000a;
-        public static final int edtEmail=0x7f090002;
-        public static final int edtFirst=0x7f090008;
-        public static final int edtLast=0x7f090009;
-        public static final int edtPassword=0x7f090003;
-        public static final int scrollView1=0x7f090007;
+        public static final int edtCalories=0x7f090005;
+        public static final int edtConfirmEmail=0x7f090010;
+        public static final int edtConfirmPassword=0x7f090011;
+        public static final int edtDOB=0x7f09000f;
+        public static final int edtEmail=0x7f090007;
+        public static final int edtFirst=0x7f09000d;
+        public static final int edtLast=0x7f09000e;
+        public static final int edtPassword=0x7f090008;
+        public static final int scrollView1=0x7f09000c;
+        public static final int spnAlcoholPercentage=0x7f090002;
         public static final int spnBeerType=0x7f090001;
+        public static final int spnCalories=0x7f090006;
     }
     public static final class layout {
         public static final int activity_details_search=0x7f030000;
@@ -62,10 +68,12 @@ public final class R {
     public static final class string {
         public static final int DOB=0x7f05000b;
         public static final int action_settings=0x7f050001;
+        public static final int alcohol_percentage=0x7f050019;
         public static final int app_id=0x7f050011;
         public static final int app_name=0x7f050000;
         public static final int beer_type_prompt=0x7f050018;
         public static final int brand_name=0x7f050017;
+        public static final int calories=0x7f05001a;
         public static final int confirm_email_hint=0x7f05000c;
         public static final int confirm_password_hint=0x7f05000e;
         public static final int email=0x7f050003;
