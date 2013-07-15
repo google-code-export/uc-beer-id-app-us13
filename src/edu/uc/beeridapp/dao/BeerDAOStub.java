@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.uc.beeridapp.dto.Beer;
+import edu.uc.beeridapp.dto.Beer.beerColor;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.Beer.beerType;
 
@@ -23,7 +24,8 @@ public class BeerDAOStub implements IBeerDAO{
 			budLight.setBeer("Bud Light");
 			budLight.setCalories(110);
 			budLight.setId(1);
-			budLight.setType(beerType.Light);
+			budLight.setType(beerType.Lager);
+			budLight.setColor(beerColor.Pale);
 			allBeer.add(budLight);
 		}
 		//if the search is blue moon, populate a blue moon object and return it
@@ -31,7 +33,8 @@ public class BeerDAOStub implements IBeerDAO{
 		{
 			Beer blueMoon = new Beer();
 			blueMoon.setBeer("Blue Moon");
-			blueMoon.setType(beerType.Wheat);
+			blueMoon.setType(beerType.Ale);
+			blueMoon.setColor(beerColor.Pale);
 			blueMoon.setPercentAlcohol(5.4);
 			blueMoon.setCalories(164);
 		    blueMoon.setId(2);
