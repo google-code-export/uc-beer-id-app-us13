@@ -44,5 +44,6 @@
     <string name="greater_than">Greater Than</string>
     <string name="abv">ABV</string>
     <string name="any_abv">Any ABV</string>
+    <string name="title_activity_barcode_search">BarcodeSearchActivity</string>
 
 </resources>

@@ -9,7 +9,7 @@
         android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +30,6 @@
         <activity
             android:name="edu.uc.beeridapp.SearchMenuActivity"
             android:label="@string/title_activity_search_menu" >
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +39,10 @@
         <activity
             android:name="edu.uc.beeridapp.DetailsSearchActivity"
             android:label="@string/title_activity_details_search" >
+        </activity>
+        <activity
+            android:name="edu.uc.beeridapp.BarcodeSearchActivity"
+            android:label="@string/title_activity_barcode_search" >
         </activity>
     </application>
 
