@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,65 +12,177 @@
         android:id="@+id/edtBeerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="22dp"
-        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:ems="8"
         android:hint="@string/brand_name"
         android:inputType="text" />
 
-    <Spinner
-        android:id="@+id/spnBeerType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spnAlcoholPercentage"
-        android:layout_below="@+id/edtBeerName"
-        android:layout_marginTop="16dp"
-        android:prompt="@string/beer_type_prompt"
-        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+    <TableRow>
 
-    <Spinner
-        android:id="@+id/spnAlcoholPercentage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edtBeerName"
-        android:layout_below="@+id/spnBeerType"
-        android:layout_marginTop="16dp"
-        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
+        <RadioGroup
+            android:id="@+id/rdoBeerType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1" >
 
-    <EditText
-        android:id="@+id/edtAlcoholPercentage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spnAlcoholPercentage"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:hint="@string/alcohol_percentage" />
+            <RadioButton
+                android:id="@+id/rdoAnyType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any_type" />
+
+            <RadioButton
+                android:id="@+id/rdoAle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ale" />
+
+            <RadioButton
+                android:id="@+id/rdoLager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lager" />
+
+            <RadioButton
+                android:id="@+id/rdoLambic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lambic" />
+
+            <RadioButton
+                android:id="@+id/rdoHybrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/hybrid" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rdoBeerColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rdoAnyColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any_color" />
+
+            <RadioButton
+                android:id="@+id/rdoPale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pale" />
+
+            <RadioButton
+                android:id="@+id/rdoRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/red" />
+
+            <RadioButton
+                android:id="@+id/rdoBrown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brown" />
+
+            <RadioButton
+                android:id="@+id/rdoDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dark" />
+        </RadioGroup>
+    </TableRow>
+
+    <TableRow android:layout_weight="1" >
+
+        <RadioGroup
+            android:id="@+id/rdoCalories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rdoAnyCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any_calories" />
+
+            <RadioButton
+                android:id="@+id/rdoLTCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/less_than" />
+
+            <RadioButton
+                android:id="@+id/rdoGTCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greater_than" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rdoAlcoholByVolume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rdoAnyAbv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any_abv" />
+
+            <RadioButton
+                android:id="@+id/rdoLTAbv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/less_than" />
+
+            <RadioButton
+                android:id="@+id/rdoGTAbv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/greater_than" />
+        </RadioGroup>
+    </TableRow>
+
+    <TableRow>
+
+        <EditText
+            android:id="@+id/edtCalories"
+            android:layout_weight="1"
+            android:ems="8"
+            android:enabled="false"
+            android:hint="@string/calories"
+            android:inputType="number" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/edtAlcoholByVolume"
+            android:layout_weight="1"
+            android:ems="8"
+            android:enabled="true"
+            android:hint="@string/abv"
+            android:inputType="numberDecimal" >
+        </EditText>
+    </TableRow>
 
     <Button
         android:id="@+id/btnDetailsSubmit"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edtCalories"
-        android:layout_alignParentBottom="true"
         android:text="@string/submit" />
 
-    <Spinner
-        android:id="@+id/spnCalories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edtCalories"
-        android:layout_below="@+id/edtAlcoholPercentage"
-        android:layout_marginTop="16dp"
-        tools:listitem="@android:layout/simple_spinner_dropdown_item" />
-
-    <EditText
-        android:id="@+id/edtCalories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/edtAlcoholPercentage"
-        android:layout_below="@+id/spnCalories"
-        android:layout_marginTop="19dp"
-        android:ems="10"
-        android:hint="@string/calories" />
-
-</RelativeLayout>
+</TableLayout>

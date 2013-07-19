@@ -21,26 +21,28 @@
     <string name="app_id">282119135265409</string>
     <string name="title_activity_search_menu">Beer ID Search Menu</string>
     <string name="search_by_details">Search By Details</string>
-    <string name="search_by_upc">Search By UPC</string>
-    <string name="search_by_label">Search By Label</string>
+    <string name="search_by_barcode">Search By Barcode</string>
     <string name="title_activity_details_search">Search By Details</string>
     <string name="brand_name">Brand Name</string>
     <string name="beer_type_prompt">Select a type of beer</string>
-    <string-array name="beer_types_array">
-        <item >Any Type</item>
-        <item >Light</item>
-        <item >Dark</item>
-        <item >Brown</item>
-        <item >Red</item>
-        <item >Pilsner</item>
-        <item >Wheat</item>
-    </string-array>
+    <string name="beer_color_prompt">Select a color of beer</string>
+    <string name="any_type">Any Type</string>
+    <string name="ale">Ale</string>
+    <string name="lager">Lager</string>
+    <string name="lambic">Lambic</string>
+    <string name="hybrid">Hybrid</string>
     <string name="alcohol_percentage">Alcohol Percentage</string>
-    <string-array name="comparison_array">
-        <item >Less Than</item>
-        <item >Greater Than</item>
-        <item >Any</item>
-    </string-array>
-        <string name="calories">Calories</string>
+    <string name="calories">Calories</string>
+    <string name="admin_login">Admin Login</string>
+    <string name="any_color">Any Color</string>
+    <string name="pale">Pale</string>
+    <string name="red">Red</string>
+    <string name="brown">Brown</string>
+    <string name="dark">Dark</string>
+    <string name="any_calories">Any Calories</string>
+    <string name="less_than">Less Than</string>
+    <string name="greater_than">Greater Than</string>
+    <string name="abv">ABV</string>
+    <string name="any_abv">Any ABV</string>
 
 </resources>
