@@ -71,10 +71,10 @@ public class SearchMenuActivity extends Activity {
 	 */
 	private void searchByBarcode(){		
 		// Call an activity to direct to the menu screen
-		//Intent searchByBarcodeIntent = new Intent(this, BarcodeSearchActivity.class);
+		Intent searchByBarcodeIntent = new Intent(this, BarcodeSearchActivity.class);
 		
 		// Invoke the register screen
-		//startActivity(searchByBarcodeIntent);
+		startActivity(searchByBarcodeIntent);
 	}
 	
 	/**
