@@ -14,8 +14,8 @@ import android.widget.Button;
 public class SearchMenuActivity extends Activity {
 	
 	private Button btnSearchByDetails;
-	private Button btnSearchByUPC;
-	private Button btnSearchByLabel;
+	private Button btnSearchByBarcode;
+	private Button btnAdminLogin;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +24,18 @@ public class SearchMenuActivity extends Activity {
 		
 		//Get Access to UI Components
 		btnSearchByDetails = (Button) findViewById(R.id.btnSearchByDetails);
-		btnSearchByUPC = (Button) findViewById(R.id.btnSearchByUPC);
-		btnSearchByLabel = (Button) findViewById(R.id.btnSearchByLabel);
+		btnSearchByBarcode = (Button) findViewById(R.id.btnSearchByBarcode);
+		btnAdminLogin = (Button) findViewById(R.id.btnAdminLogin);
 		
 		// Create Listeners for Buttons
 		OnClickListener searchByDetailsListener = new OnSearchByDetailsListener();
-		OnClickListener searchByUPCListener = new OnSearchByUPCListener();
-		OnClickListener searchByLabelListener = new OnSearchByLabelListener();
+		OnClickListener searchByBarcodeListener = new OnSearchByBarcodeListener();
+		OnClickListener adminLoginListener = new OnAdminLoginListener();
 		
 		btnSearchByDetails.setOnClickListener(searchByDetailsListener);
-		btnSearchByUPC.setOnClickListener(searchByUPCListener);
-		btnSearchByLabel.setOnClickListener(searchByLabelListener);
+		btnSearchByBarcode.setOnClickListener(searchByBarcodeListener);
+		btnAdminLogin.setOnClickListener(adminLoginListener);
+
 	}
 
 	@Override
@@ -66,27 +67,27 @@ public class SearchMenuActivity extends Activity {
 	}
 	
 	/**
-	 * Starts Activity to Search by UPC Label on Beverage
+	 * Starts Activity to Search by Barcode Label on Beverage
 	 */
-	private void searchByUPC(){		
+	private void searchByBarcode(){		
 		// Call an activity to direct to the menu screen
-		//Intent searchByUPCIntent = new Intent(this, UPCSearchActivity.class);
+		//Intent searchByBarcodeIntent = new Intent(this, BarcodeSearchActivity.class);
 		
 		// Invoke the register screen
-		//startActivity(searchByUPCIntent);
+		//startActivity(searchByBarcodeIntent);
 	}
 	
 	/**
-	 * Starts Activity to Search by Brand Label on Beverage
+	 * Starts Activity to perform Admin Login
 	 */
-	private void searchByLabel(){		
+	private void adminLogin(){		
 		// Call an activity to direct to the menu screen
-		//Intent searchByLabelIntent = new Intent(this, LabelSearchActivity.class);
+		//Intent adminLoginIntent = new Intent(this, AdminLoginActivity.class);
 		
 		// Invoke the register screen
-		//startActivity(searchByLabelIntent);
+		//startActivity(adminLoginIntent);
 	}
-	
+		
 	class OnSearchByDetailsListener implements OnClickListener {
 
 		@Override
@@ -95,19 +96,20 @@ public class SearchMenuActivity extends Activity {
 		}
 	}
 
-	class OnSearchByUPCListener implements OnClickListener {
+	class OnSearchByBarcodeListener implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
-			searchByUPC();
+			searchByBarcode();
 		}
 	}
 	
-	class OnSearchByLabelListener implements OnClickListener {
+	class OnAdminLoginListener implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
-			searchByLabel();
+			adminLogin();
 		}
 	}
+	
 }

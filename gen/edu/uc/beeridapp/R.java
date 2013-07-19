@@ -8,10 +8,6 @@
 package edu.uc.beeridapp;
 
 public final class R {
-    public static final class array {
-        public static final int beer_types_array=0x7f060000;
-        public static final int comparison_array=0x7f060001;
-    }
     public static final class attr {
     }
     public static final class dimen {
@@ -28,29 +24,46 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f090016;
-        public static final int btnDetailsSubmit=0x7f090004;
-        public static final int btnFacbookLogin=0x7f09000b;
-        public static final int btnLogin=0x7f090009;
-        public static final int btnRegister=0x7f09000a;
-        public static final int btnSearchByDetails=0x7f090013;
-        public static final int btnSearchByLabel=0x7f090015;
-        public static final int btnSearchByUPC=0x7f090014;
-        public static final int btnSubmit=0x7f090012;
-        public static final int edtAlcoholPercentage=0x7f090003;
-        public static final int edtBeerName=0x7f090000;
-        public static final int edtCalories=0x7f090005;
-        public static final int edtConfirmEmail=0x7f090010;
-        public static final int edtConfirmPassword=0x7f090011;
-        public static final int edtDOB=0x7f09000f;
-        public static final int edtEmail=0x7f090007;
-        public static final int edtFirst=0x7f09000d;
-        public static final int edtLast=0x7f09000e;
-        public static final int edtPassword=0x7f090008;
-        public static final int scrollView1=0x7f09000c;
-        public static final int spnAlcoholPercentage=0x7f090002;
-        public static final int spnBeerType=0x7f090001;
-        public static final int spnCalories=0x7f090006;
+        public static final int action_settings=0x7f080027;
+        public static final int btnAdminLogin=0x7f080026;
+        public static final int btnDetailsSubmit=0x7f080017;
+        public static final int btnFacbookLogin=0x7f08001c;
+        public static final int btnLogin=0x7f08001a;
+        public static final int btnRegister=0x7f08001b;
+        public static final int btnSearchByBarcode=0x7f080025;
+        public static final int btnSearchByDetails=0x7f080024;
+        public static final int btnSubmit=0x7f080023;
+        public static final int edtAlcoholByVolume=0x7f080016;
+        public static final int edtBeerName=0x7f080000;
+        public static final int edtCalories=0x7f080015;
+        public static final int edtConfirmEmail=0x7f080021;
+        public static final int edtConfirmPassword=0x7f080022;
+        public static final int edtDOB=0x7f080020;
+        public static final int edtEmail=0x7f080018;
+        public static final int edtFirst=0x7f08001e;
+        public static final int edtLast=0x7f08001f;
+        public static final int edtPassword=0x7f080019;
+        public static final int rdoAlcoholByVolume=0x7f080011;
+        public static final int rdoAle=0x7f080003;
+        public static final int rdoAnyAbv=0x7f080012;
+        public static final int rdoAnyCalories=0x7f08000e;
+        public static final int rdoAnyColor=0x7f080008;
+        public static final int rdoAnyType=0x7f080002;
+        public static final int rdoBeerColor=0x7f080007;
+        public static final int rdoBeerType=0x7f080001;
+        public static final int rdoBrown=0x7f08000b;
+        public static final int rdoCalories=0x7f08000d;
+        public static final int rdoDark=0x7f08000c;
+        public static final int rdoGTAbv=0x7f080014;
+        public static final int rdoGTCalories=0x7f080010;
+        public static final int rdoHybrid=0x7f080006;
+        public static final int rdoLTAbv=0x7f080013;
+        public static final int rdoLTCalories=0x7f08000f;
+        public static final int rdoLager=0x7f080004;
+        public static final int rdoLambic=0x7f080005;
+        public static final int rdoPale=0x7f080009;
+        public static final int rdoRed=0x7f08000a;
+        public static final int scrollView1=0x7f08001d;
     }
     public static final class layout {
         public static final int activity_details_search=0x7f030000;
@@ -59,37 +72,53 @@ public final class R {
         public static final int activity_search_menu=0x7f030003;
     }
     public static final class menu {
-        public static final int details_search=0x7f080000;
-        public static final int login=0x7f080001;
-        public static final int main=0x7f080002;
-        public static final int register=0x7f080003;
-        public static final int search_menu=0x7f080004;
+        public static final int details_search=0x7f070000;
+        public static final int login=0x7f070001;
+        public static final int main=0x7f070002;
+        public static final int register=0x7f070003;
+        public static final int search_menu=0x7f070004;
     }
     public static final class string {
         public static final int DOB=0x7f05000b;
+        public static final int abv=0x7f050029;
         public static final int action_settings=0x7f050001;
-        public static final int alcohol_percentage=0x7f050019;
+        public static final int admin_login=0x7f050020;
+        public static final int alcohol_percentage=0x7f05001e;
+        public static final int ale=0x7f05001a;
+        public static final int any_abv=0x7f05002a;
+        public static final int any_calories=0x7f050026;
+        public static final int any_color=0x7f050021;
+        public static final int any_type=0x7f050019;
         public static final int app_id=0x7f050011;
         public static final int app_name=0x7f050000;
-        public static final int beer_type_prompt=0x7f050018;
-        public static final int brand_name=0x7f050017;
-        public static final int calories=0x7f05001a;
+        public static final int beer_color_prompt=0x7f050018;
+        public static final int beer_type_prompt=0x7f050017;
+        public static final int brand_name=0x7f050016;
+        public static final int brown=0x7f050024;
+        public static final int calories=0x7f05001f;
         public static final int confirm_email_hint=0x7f05000c;
         public static final int confirm_password_hint=0x7f05000e;
+        public static final int dark=0x7f050025;
         public static final int email=0x7f050003;
         public static final int email_hint=0x7f050004;
         public static final int facebook_login=0x7f050010;
         public static final int first_name=0x7f050009;
+        public static final int greater_than=0x7f050028;
+        public static final int hybrid=0x7f05001d;
+        public static final int lager=0x7f05001b;
+        public static final int lambic=0x7f05001c;
         public static final int last_name=0x7f05000a;
+        public static final int less_than=0x7f050027;
         public static final int login=0x7f050007;
+        public static final int pale=0x7f050022;
         public static final int password_hint=0x7f050005;
         public static final int password_hint2=0x7f05000d;
+        public static final int red=0x7f050023;
         public static final int register=0x7f050006;
+        public static final int search_by_barcode=0x7f050014;
         public static final int search_by_details=0x7f050013;
-        public static final int search_by_label=0x7f050015;
-        public static final int search_by_upc=0x7f050014;
         public static final int submit=0x7f05000f;
-        public static final int title_activity_details_search=0x7f050016;
+        public static final int title_activity_details_search=0x7f050015;
         public static final int title_activity_login=0x7f050002;
         public static final int title_activity_register=0x7f050008;
         public static final int title_activity_search_menu=0x7f050012;
@@ -118,11 +147,11 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
-        public static final int LoginFormContainer=0x7f070002;
+        public static final int AppTheme=0x7f060001;
+        public static final int LoginFormContainer=0x7f060002;
     }
 }

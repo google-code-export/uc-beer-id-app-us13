@@ -18,23 +18,22 @@
         android:text="@string/search_by_details" />
 
     <Button
-        android:id="@+id/btnSearchByUPC"
+        android:id="@+id/btnSearchByBarcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnSearchByDetails"
         android:layout_alignRight="@+id/btnSearchByDetails"
         android:layout_below="@+id/btnSearchByDetails"
         android:layout_marginTop="22dp"
-        android:text="@string/search_by_upc" />
+        android:text="@string/search_by_barcode" />
 
     <Button
-        android:id="@+id/btnSearchByLabel"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnAdminLogin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnSearchByUPC"
-        android:layout_alignRight="@+id/btnSearchByUPC"
-        android:layout_below="@+id/btnSearchByUPC"
-        android:layout_marginTop="22dp"
-        android:text="@string/search_by_label" />
+        android:layout_alignLeft="@+id/btnSearchByBarcode"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="39dp"
+        android:text="@string/admin_login" />
 
 </RelativeLayout>
