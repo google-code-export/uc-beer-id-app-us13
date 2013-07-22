@@ -46,5 +46,7 @@
     <string name="any_abv">Any ABV</string>
     <string name="title_activity_barcode_search">BarcodeSearchActivity</string>
     <string name="title_activity_beer_results">BeerResultsActivity</string>
+    <string name="errUnableToGetResults">Error: Unable To Get Results</string>
+    <string name="errNoResultsFound">No Results Found!</string>
 
 </resources>

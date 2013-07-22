@@ -104,17 +104,13 @@
         </RadioGroup>
     </TableRow>
 
-    <TableRow android:layout_weight="1" 
-              android:layout_marginTop="20dp">
-    </TableRow>
-
-    <TableRow>
+    <TableRow
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/edtCalories"
             android:layout_weight="1"
             android:ems="8"
-            android:enabled="false"
             android:hint="@string/calories"
             android:inputType="number" >
         </EditText>
@@ -123,7 +119,6 @@
             android:id="@+id/edtAlcoholByVolume"
             android:layout_weight="1"
             android:ems="8"
-            android:enabled="true"
             android:hint="@string/abv"
             android:inputType="numberDecimal" >
         </EditText>
