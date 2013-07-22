@@ -54,8 +54,7 @@ public class Beer implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Beer [id=" + id + ", beer=" + beerName + ", percentAlcohol="
-				+ percentAlcohol + ", calories=" + calories + "]";
+		return beerName + " - " + color + " " + type;
 	}
 
 	public beerColor getColor() {
