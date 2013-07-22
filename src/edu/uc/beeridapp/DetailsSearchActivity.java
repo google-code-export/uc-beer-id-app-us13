@@ -22,8 +22,6 @@ import edu.uc.beeridapp.dto.BeerSearch;
 public class DetailsSearchActivity extends Activity {
 
 	public static final String BEER_SEARCH = "BEER_SEARCH";
-	public static final String LESS_THAN = "LESS_THAN";
-	public static final String GREATER_THAN = "GREATER_THAN";
 
 	public beerType type;
 	public beerColor color;
@@ -80,16 +78,16 @@ public class DetailsSearchActivity extends Activity {
 			// TODO Auto-generated method stub
 
 			switch (checkedID){
-			case 1:
+			case R.id.rdoAle:
 				type = beerType.Ale;
 				break;
-			case 2:
+			case R.id.rdoLager:
 				type = beerType.Lager;
 				break;
-			case 3:
+			case R.id.rdoLambic:
 				type = beerType.Lambic;
 				break;
-			case 4:
+			case R.id.rdoHybrid:
 				type = beerType.Hybrid;
 				break;
 			default:
@@ -107,16 +105,16 @@ public class DetailsSearchActivity extends Activity {
 			// TODO Auto-generated method stub
 
 			switch (checkedID){
-			case 1:
+			case R.id.rdoPale:
 				color = beerColor.Pale;
 				break;
-			case 2:
+			case R.id.rdoRed:
 				color = beerColor.Red;
 				break;
-			case 3:
+			case R.id.rdoBrown:
 				color = beerColor.Brown;
 				break;
-			case 4:
+			case R.id.rdoDark:
 				color = beerColor.Dark;
 				break;
 			default:
