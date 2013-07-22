@@ -13,10 +13,10 @@ public class Beer implements Serializable{
 	private static final long serialVersionUID = 1L;
 	int id;
 	String beerName;
-	public enum beerType{Ale, Lager, Lambic, Hybrid};
-	public enum beerColor{Pale, Red, Brown, Dark};
+	public enum beerType{Any, Ale, Lager, Lambic, Hybrid};
+	public enum beerColor{Any, Pale, Red, Brown, Dark};
 	public beerType type;
-	private beerColor color;
+	public beerColor color;
 	double percentAlcohol;
 	double calories;
 	public int getId() {

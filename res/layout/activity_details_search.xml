@@ -15,14 +15,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/edtBeerName"
+    <AutoCompleteTextView
+        android:id="@+id/actBeerName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="8"
         android:hint="@string/brand_name"
         android:inputType="text" />
-<ExpandableListView></ExpandableListView>
+
     <TableRow
         android:layout_marginTop="20dp">
 
@@ -106,57 +106,6 @@
 
     <TableRow android:layout_weight="1" 
               android:layout_marginTop="20dp">
-
-        <RadioGroup
-            android:id="@+id/rdoCalories"
-            android:layout_height="wrap_content"
-
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/rdoAnyCalories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/any_calories" />
-
-            <RadioButton
-                android:id="@+id/rdoLTCalories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/less_than" />
-
-            <RadioButton
-                android:id="@+id/rdoGTCalories"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/greater_than" />
-        </RadioGroup>
-
-        <RadioGroup
-            android:id="@+id/rdoAlcoholByVolume"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/rdoAnyAbv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/any_abv" />
-
-            <RadioButton
-                android:id="@+id/rdoLTAbv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/less_than" />
-
-            <RadioButton
-                android:id="@+id/rdoGTAbv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/greater_than" />
-        </RadioGroup>
     </TableRow>
 
     <TableRow>

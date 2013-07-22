@@ -32,7 +32,7 @@
     <string name="lambic">Lambic</string>
     <string name="hybrid">Hybrid</string>
     <string name="alcohol_percentage">Alcohol Percentage</string>
-    <string name="calories">Calories</string>
+    <string name="calories">Max Calories</string>
     <string name="admin_login">Admin Login</string>
     <string name="any_color">Any Color</string>
     <string name="pale">Pale</string>
@@ -42,8 +42,9 @@
     <string name="any_calories">Any Calories</string>
     <string name="less_than">Less Than</string>
     <string name="greater_than">Greater Than</string>
-    <string name="abv">ABV</string>
+    <string name="abv">Max ABV</string>
     <string name="any_abv">Any ABV</string>
     <string name="title_activity_barcode_search">BarcodeSearchActivity</string>
+    <string name="title_activity_beer_results">BeerResultsActivity</string>
 
 </resources>

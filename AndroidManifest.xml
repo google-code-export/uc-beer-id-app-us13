@@ -44,6 +44,10 @@
             android:name="edu.uc.beeridapp.BarcodeSearchActivity"
             android:label="@string/title_activity_barcode_search" >
         </activity>
+        <activity
+            android:name="edu.uc.beeridapp.BeerResultsActivity"
+            android:label="@string/title_activity_beer_results" >
+        </activity>
     </application>
 
 </manifest>
