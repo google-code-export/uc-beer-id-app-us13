@@ -59,7 +59,6 @@ public class DetailsSearchActivity extends Activity {
 		RadioGroup.OnCheckedChangeListener rdoBeerTypeListener = new BeerTypeChangedListener();
 		RadioGroup.OnCheckedChangeListener rdoBeerColorListener = new BeerColorChangedListener();
 
-
 		rdoBeerType.setOnCheckedChangeListener(rdoBeerTypeListener);
 		rdoBeerColor.setOnCheckedChangeListener(rdoBeerColorListener);
 		btnDetailsSubmit.setOnClickListener(btnDetailsSubmitListener);
@@ -143,7 +142,7 @@ public class DetailsSearchActivity extends Activity {
 
 		// Get the text entered by user
 		String beerName = actBeerName.getText().toString();
-	
+
 		// Create and populate a beer search object
 		BeerSearch bs = new BeerSearch();
 
@@ -151,10 +150,10 @@ public class DetailsSearchActivity extends Activity {
 		{
 			bs.setBeer(beerName);
 		}
-		
+
 		bs.setType(type);
 		bs.setColor(color);
-		
+
 		// Determine amount of max calories specified by user and convert to integer
 		try {
 			int calories = Integer.parseInt(edtCalories.getText().toString());
@@ -164,7 +163,7 @@ public class DetailsSearchActivity extends Activity {
 			int calories = 0;
 			bs.setCalories(calories);
 		}
-		
+
 		// Determine amount of max alcohol by volume specified by user and convert to integer
 		try { 
 			int abv = Integer.parseInt(edtAlcoholByVolume.getText().toString());
@@ -174,13 +173,13 @@ public class DetailsSearchActivity extends Activity {
 			int abv = 0;
 			bs.setPercentAlcohol(abv);
 		}
-				
+
 		// call an activity that will search and show results.
 		Intent beerResultsIntent = new Intent(this, BeerResultsActivity.class);
 
 		// pass along our search criteria to the results screen.
 		beerResultsIntent.putExtra(BEER_SEARCH, bs);
-		
+
 		// invoke the results screen
 		startActivity(beerResultsIntent);
 
