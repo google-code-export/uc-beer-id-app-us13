@@ -48,6 +48,7 @@
     <string name="title_activity_beer_results">BeerResultsActivity</string>
     <string name="errUnableToGetResults">Error: Unable To Get Results</string>
     <string name="errNoResultsFound">No Results Found!</string>
+    <string name="barCodeResult">Barcode Number</string>
   <string name="app_picker_name">Applications</string>
   <string name="bookmark_picker_name">Bookmarks</string>
   <string name="button_add_calendar">Add to calendar</string>
