@@ -56,7 +56,12 @@
             android:name="edu.uc.beeridapp.BarcodeSearchActivity"
             android:label="@string/title_activity_barcode_search" >
         </activity>
-        <activity android:name="BeerResultsActivity"></activity>
+        <activity android:name="edu.uc.beeridapp.BeerResultsActivity" >
+        </activity>
+        <activity
+            android:name="edu.uc.beeridapp.BeerViewActivity"
+            android:label="@string/title_activity_beer_view" >
+        </activity>
     </application>
 
 </manifest>
