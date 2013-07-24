@@ -22,6 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnSearchByDetails"
+        android:onClick="searchByBarcode"
         android:layout_alignRight="@+id/btnSearchByDetails"
         android:layout_below="@+id/btnSearchByDetails"
         android:layout_marginTop="22dp"
@@ -35,5 +36,25 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="39dp"
         android:text="@string/admin_login" />
+
+    <TextView
+        android:id="@+id/scan_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearchByBarcode"
+        android:layout_below="@+id/btnSearchByBarcode"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="88dp"
+        android:text="Barcode Scanner" />
+
+    <TextView
+        android:id="@+id/scan_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/scan_format"
+        android:layout_alignBottom="@+id/scan_format"
+        android:layout_alignRight="@+id/btnAdminLogin"
+        android:layout_marginRight="52dp"
+        android:text="Barcode" />
 
 </RelativeLayout>
