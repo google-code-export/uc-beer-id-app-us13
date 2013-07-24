@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.uc.beeridapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        android:debuggable="true"
+        <activity
+            android:name="edu.uc.beeridapp.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
+
+        <activity android:name="com.facebook.LoginActivity" >
+        </activity>
+        <activity
+			android:name="com.google.zxing.client.android.CaptureActivity"
+			android:label="Scan Barcode"
+			android:configChanges="orientation|keyboardHidden"
+			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+			android:windowSoftInputMode="stateAlwaysHidden"
+			android:screenOrientation="sensorLandscape">
+		<intent-filter>
+		<action android:name="com.google.zxing.client.android.SCAN"/>
+		<category android:name="android.intent.category.DEFAULT"/>
+		</intent-filter></activity>
+        <activity
+            android:name="edu.uc.beeridapp.SearchMenuActivity"
+            android:label="@string/title_activity_search_menu" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="edu.uc.beeridapp.DetailsSearchActivity"
+            android:label="@string/title_activity_details_search" >
+        </activity>
+        <activity
+            android:name="edu.uc.beeridapp.BarcodeSearchActivity"
+            android:label="@string/title_activity_barcode_search" >
+        </activity>
+        <activity android:name="BeerResultsActivity"></activity>
+    </application>
+
+</manifest>
