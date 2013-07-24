@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-import edu.uc.beeridapp.dao.IntentIntegrator;
-import edu.uc.beeridapp.dao.IntentResult;
 
 /**
  * @author Brian Pumphrey Search Menu Activity
