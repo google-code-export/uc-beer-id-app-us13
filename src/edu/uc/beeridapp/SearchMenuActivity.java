@@ -74,25 +74,36 @@ public class SearchMenuActivity extends Activity {
 	 * Starts Activity to Search by Barcode Label on Beverage
 	 */
 	private void searchByBarcode(){		
-		
+		//Sets up the Intent of the barcode scanner that was imported in the application
 		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
+		
+		//Starts the Activity to receive the barcode number from the beverage
 		startActivityForResult(intent, 0);
 	}
 	
+	
+	/**
+	 * This method is called once the scanner finds valid barcode within the barcode scanner
+	 */
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) 
 	{		
+		//if the request code is 0 that means the scanner at least activated and came back with something
 	    if (requestCode == 0) 
 	    {
+	    	//if the result successfully read the barcode
 	        if (resultCode == RESULT_OK)
 	        {
+	        	//put the results in the string values
 	            String contents = intent.getStringExtra("SCAN_RESULT");
 	            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 	            
 	            contentTxt.setText(contents);
+	            //logs the successful scan in the debugger
 	            Log.i("xZing", "contents: "+contents+" format: "+format);
 	            // Handle successful scan
 	        } 
+	        //did not activity therefore the result was cancelled
 	        else if (resultCode == RESULT_CANCELED)
 	        {
 	            // Handle cancel
