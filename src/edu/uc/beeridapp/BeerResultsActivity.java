@@ -3,9 +3,12 @@ package edu.uc.beeridapp;
 import java.util.List;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 import edu.uc.beeridapp.dao.BeerDAOStub;
 import edu.uc.beeridapp.dao.IBeerDAO;
@@ -19,7 +22,9 @@ import edu.uc.beeridapp.dto.BeerSearch;
  */
 
 public class BeerResultsActivity extends ListActivity {
-
+	
+	public static final String SELECTED_BEER = "SELECTED_BEER";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,5 +72,22 @@ public class BeerResultsActivity extends ListActivity {
 		getMenuInflater().inflate(R.menu.beer_results, menu);
 		return true;
 	}
+	
+	/**
+	 * Find out which beer the user clicked, go to the details page.
+	 */
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// Find the beer that the user selected.
+		Beer selectedBeer = (Beer) getListView().getItemAtPosition(position);
 
+		// create an intent to navigate to the details screen.
+		Intent beerDetailsIntent = new Intent(this, BeerDetailsActivity.class);
+
+		// find the beer ID, and put it into the intent.
+		beerDetailsIntent.putExtra(SELECTED_BEER, selectedBeer);
+
+		// go to the beer details page for this beer.
+		startActivity(beerDetailsIntent);
+	}
 }
