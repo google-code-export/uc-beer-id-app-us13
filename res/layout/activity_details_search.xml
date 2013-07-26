@@ -27,6 +27,44 @@
         android:layout_marginTop="20dp">
 
         <RadioGroup
+            android:id="@+id/rdoBeerColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <RadioButton
+                android:id="@+id/rdoAnyColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/any_color" />
+
+            <RadioButton
+                android:id="@+id/rdoPale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pale" />
+
+            <RadioButton
+                android:id="@+id/rdoRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/red" />
+
+            <RadioButton
+                android:id="@+id/rdoBrown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/brown" />
+
+            <RadioButton
+                android:id="@+id/rdoDark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dark" />
+        </RadioGroup>
+        
+                <RadioGroup
             android:id="@+id/rdoBeerType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,44 +101,6 @@
                 android:layout_height="wrap_content"
                 android:checked="false"
                 android:text="@string/hybrid" />
-        </RadioGroup>
-
-        <RadioGroup
-            android:id="@+id/rdoBeerColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/rdoAnyColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/any_color" />
-
-            <RadioButton
-                android:id="@+id/rdoPale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pale" />
-
-            <RadioButton
-                android:id="@+id/rdoRed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/red" />
-
-            <RadioButton
-                android:id="@+id/rdoBrown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/brown" />
-
-            <RadioButton
-                android:id="@+id/rdoDark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dark" />
         </RadioGroup>
     </TableRow>
 
