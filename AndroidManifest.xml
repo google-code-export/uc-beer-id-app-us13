@@ -59,8 +59,8 @@
         <activity android:name="edu.uc.beeridapp.BeerResultsActivity" >
         </activity>
         <activity
-            android:name="edu.uc.beeridapp.BeerViewActivity"
-            android:label="@string/title_activity_beer_view" >
+            android:name="edu.uc.beeridapp.BeerDetailsActivity"
+            android:label="@string/title_activity_beer_details" >
         </activity>
     </application>
 

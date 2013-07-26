@@ -109,18 +109,18 @@ public final class R {
         public static final int query_button=0x7f09004b;
         public static final int query_text_view=0x7f09004a;
         public static final int quit=0x7f090004;
-        public static final int rdoAle=0x7f090015;
-        public static final int rdoAnyColor=0x7f09001a;
-        public static final int rdoAnyType=0x7f090014;
-        public static final int rdoBeerColor=0x7f090019;
-        public static final int rdoBeerType=0x7f090013;
-        public static final int rdoBrown=0x7f09001d;
-        public static final int rdoDark=0x7f09001e;
-        public static final int rdoHybrid=0x7f090018;
-        public static final int rdoLager=0x7f090016;
-        public static final int rdoLambic=0x7f090017;
-        public static final int rdoPale=0x7f09001b;
-        public static final int rdoRed=0x7f09001c;
+        public static final int rdoAle=0x7f09001b;
+        public static final int rdoAnyColor=0x7f090014;
+        public static final int rdoAnyType=0x7f09001a;
+        public static final int rdoBeerColor=0x7f090013;
+        public static final int rdoBeerType=0x7f090019;
+        public static final int rdoBrown=0x7f090017;
+        public static final int rdoDark=0x7f090018;
+        public static final int rdoHybrid=0x7f09001e;
+        public static final int rdoLager=0x7f09001c;
+        public static final int rdoLambic=0x7f09001d;
+        public static final int rdoPale=0x7f090015;
+        public static final int rdoRed=0x7f090016;
         public static final int restart_preview=0x7f090005;
         public static final int result_button_view=0x7f090041;
         public static final int result_list_view=0x7f09004c;
@@ -148,7 +148,7 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_barcode_search=0x7f030000;
-        public static final int activity_beer_view=0x7f030001;
+        public static final int activity_beer_details=0x7f030001;
         public static final int activity_details_search=0x7f030002;
         public static final int activity_login=0x7f030003;
         public static final int activity_register=0x7f030004;
@@ -166,8 +166,8 @@ public final class R {
     }
     public static final class menu {
         public static final int barcode_search=0x7f0c0000;
-        public static final int beer_results=0x7f0c0001;
-        public static final int beer_view=0x7f0c0002;
+        public static final int beer_details=0x7f0c0001;
+        public static final int beer_results=0x7f0c0002;
         public static final int capture=0x7f0c0003;
         public static final int details_search=0x7f0c0004;
         public static final int encode=0x7f0c0005;
@@ -350,8 +350,8 @@ public final class R {
         public static final int search_by_details=0x7f0a0013;
         public static final int submit=0x7f0a000f;
         public static final int title_activity_barcode_search=0x7f0a002b;
+        public static final int title_activity_beer_details=0x7f0a00ac;
         public static final int title_activity_beer_results=0x7f0a002c;
-        public static final int title_activity_beer_view=0x7f0a00ac;
         public static final int title_activity_details_search=0x7f0a0015;
         public static final int title_activity_login=0x7f0a0002;
         public static final int title_activity_register=0x7f0a0008;
