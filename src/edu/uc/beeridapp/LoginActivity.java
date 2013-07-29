@@ -20,7 +20,6 @@ import com.facebook.model.GraphUser;
 import edu.uc.beeridapp.services.UserServiceStub;
 
 /**
- * 
  * @author Brian Pumphrey Login Screen Activity
  */
 public class LoginActivity extends Activity {

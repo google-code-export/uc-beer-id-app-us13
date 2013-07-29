@@ -9,7 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/** Registration Activity for user
+ * @author Brian Pumphrey
+ */
+
 public class RegisterActivity extends Activity {
+	
+	private static final String PASSWORD_MISMATCH = "Password Fields Do Not Match!";
+	private static final String EMAIL_MISMATCH = "Email Fields Do Not Match!";
+	private static final String FIELDS_REQUIRED_NOTIFICATION = "One Or More Fields Are Empty! \r\n All Information Is Required!";
 
 	private EditText edtFirst;
 	private EditText edtLast;
@@ -61,17 +69,13 @@ public class RegisterActivity extends Activity {
 
 	class OnSubmitListener implements OnClickListener {
 
-		private static final String PASSWORD_MISMATCH = "Password Fields Do Not Match!";
-		private static final String EMAIL_MISMATCH = "Email Fields Do Not Match!";
-		private static final String FIELDS_REQUIRED_NOTIFICATION = "One Or More Fields Are Empty! \r\n All Information Is Required!";
-
 		@Override
 		public void onClick(View v) {
 			submit();
 		}
 
 		private void submit() {
-			// TODO Auto-generated method stub
+			// Get User Submitted Information
 			String firstText = edtFirst.getText().toString();
 			String lastText = edtLast.getText().toString();
 			String dobText = edtDOB.getText().toString();
@@ -80,20 +84,20 @@ public class RegisterActivity extends Activity {
 			String passwordText = edtPassword.getText().toString();
 			String confirmPasswordText = edtConfirmPassword.getText().toString();
 			
+			// Notify User One or More Fields are Empty
 			if (firstText.equals("") || lastText.equals("") || dobText.equals("")|| emailText.equals("") || confirmEmailText.equals("") || passwordText.equals("") || confirmPasswordText.equals(""))
 			{
-				// Notify User One or More Fields are Empty
 				Toast.makeText(RegisterActivity.this, FIELDS_REQUIRED_NOTIFICATION, Toast.LENGTH_LONG).show();
 				
 			}
+			// Notify User Email Fields Do Not Match
 			else if (!emailText.equals(confirmEmailText))
 			{
-				// Notify User Emails Do Not Match
 				Toast.makeText(RegisterActivity.this, EMAIL_MISMATCH, Toast.LENGTH_LONG).show();
 			}
+			//Notify User Passwords Do Not Match
 			else if (!passwordText.equals(confirmPasswordText))
 			{
-				//Notify User Passwords Do Not Match
 				Toast.makeText(RegisterActivity.this, PASSWORD_MISMATCH, Toast.LENGTH_LONG).show();
 			}
 			else
