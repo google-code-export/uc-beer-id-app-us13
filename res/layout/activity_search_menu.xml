@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/search_by_details" />
 
     <Button
@@ -22,10 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnSearchByDetails"
-        android:onClick="searchByBarcode"
         android:layout_alignRight="@+id/btnSearchByDetails"
         android:layout_below="@+id/btnSearchByDetails"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="20dp"
+        android:onClick="searchByBarcode"
         android:text="@string/search_by_barcode" />
 
     <Button
@@ -34,17 +34,17 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnSearchByBarcode"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="39dp"
+        android:layout_marginBottom="40dp"
         android:text="@string/admin_login" />
-
 
     <TextView
         android:id="@+id/scan_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/btnAdminLogin"
-        android:layout_marginRight="52dp"
-        android:freezesText="true" 
+        android:layout_below="@+id/btnSearchByBarcode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:freezesText="true"
         android:text="@string/barCodeResult" />
 
 </RelativeLayout>

@@ -72,6 +72,7 @@ public class SearchMenuActivity extends Activity {
 	
 	/**
 	 * Starts Activity to Search by Barcode Label on Beverage
+	 * @author Dyllon Dekok
 	 */
 	private void searchByBarcode(){		
 		//Sets up the Intent of the barcode scanner that was imported in the application
@@ -85,6 +86,7 @@ public class SearchMenuActivity extends Activity {
 	
 	/**
 	 * This method is called once the scanner finds valid barcode within the barcode scanner
+	 * @author Dyllon Dekok
 	 */
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) 
 	{		

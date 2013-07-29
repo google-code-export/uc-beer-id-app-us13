@@ -6,6 +6,11 @@ import android.view.Menu;
 import android.widget.TextView;
 import edu.uc.beeridapp.dto.Beer;
 
+/**
+ * This class displays information about a selected beer from the previous ListView of Results
+ * @author Brian Pumphrey
+ */
+
 public class BeerDetailsActivity extends Activity {
 
 	private TextView txtBeerName;
