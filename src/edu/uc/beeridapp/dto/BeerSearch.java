@@ -10,46 +10,39 @@ import java.io.Serializable;
 public class BeerSearch extends Beer implements Serializable
 {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2L;
-	private double lessThanABV;
-	private double greaterThanABV;
-	private int styleGUID;
 	
-
-//	public BeerSearch(int id, int guid, String name, String style, double abv) {
-//		super(id, guid, name, style, abv);
-//		// TODO Auto-generated constructor stub
-//	}
-
-	public double getLessThanABV() {
+	// BeerSearch attributes; Strings initialized to prevent NullPointerExceptions on DetailsSearch
+	private static final long serialVersionUID = 2L;
+	private String lessThanABV = "";
+	private String greaterThanABV = "";
+	private String styleGUID = "";
+	
+	public String getLessThanABV() {
 		return lessThanABV;
 	}
 
 
-	public void setLessThanABV(double lessThanABV) {
+	public void setLessThanABV(String lessThanABV) {
 		this.lessThanABV = lessThanABV;
 	}
 
 
-	public double getGreaterThanABV() {
+	public String getGreaterThanABV() {
 		return greaterThanABV;
 	}
 
 
-	public void setGreaterThanABV(double greaterThanABV) {
+	public void setGreaterThanABV(String greaterThanABV) {
 		this.greaterThanABV = greaterThanABV;
 	}
 
 
-	public int getStyleGUID() {
+	public String getStyleGUID() {
 		return styleGUID;
 	}
 
 
-	public void setStyleGUID(int styleGUID) {
+	public void setStyleGUID(String styleGUID) {
 		this.styleGUID = styleGUID;
 	}
 

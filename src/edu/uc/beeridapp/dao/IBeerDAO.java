@@ -1,23 +1,33 @@
 package edu.uc.beeridapp.dao;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
+import edu.uc.beeridapp.dto.BeerStyle;
 
 
 /**
  * BeerApp DAO Interface
  * @author Dyllon Dekok
- *
- *
  */
 public interface IBeerDAO 
 {
 	/**
-	 * fetches the list of beer objects from the Data Layer
-	 * @param beerSearch
-	 * @return
+	 * gets a list of BeerStyles from a data source
+	 * 
+	 * @return a list of BeerStyles
+	 * @throws Exception
 	 */
-	public List<Beer> fetchBeer(BeerSearch beerSearch);
+	public ArrayList<BeerStyle> fetchStyles() throws Exception;
+
+	/**
+	 * gets a list of Beers matching the search criteria
+	 * 
+	 * @param beerSearch
+	 * @return a list of Beers
+	 * @throws Exception
+	 */
+	public ArrayList<Beer> searchBeers(BeerSearch beerSearch) throws Exception;
+
 }

@@ -39,17 +39,16 @@
                 android:hint="@string/max_abv"
                 android:inputType="numberDecimal"
                 android:maxWidth="8dp" />
-
         </TableRow>
 
         <TableRow android:layout_marginTop="20dp" >
 
             <Spinner
                 android:id="@+id/spnBeerStyles"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
                 android:prompt="@string/beer_style_prompt" />
-            
         </TableRow>
 
         <Button
