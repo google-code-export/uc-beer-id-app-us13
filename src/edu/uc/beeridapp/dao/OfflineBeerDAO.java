@@ -1,21 +1,30 @@
 package edu.uc.beeridapp.dao;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.ArrayList;
 
-import edu.uc.beeridapp.dto.BeerStyle;
 import android.content.Context;
+import edu.uc.beeridapp.dto.Beer;
+import edu.uc.beeridapp.dto.BeerSearch;
+import edu.uc.beeridapp.dto.BeerStyle;
 
-public class OfflineBeerDAO implements IOfflineBeerDAO {
+public class OfflineBeerDAO implements IBeerDAO {
 
 	public OfflineBeerDAO(Context context) {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public HashMap<Integer, String> fetchStyles() {
+	public ArrayList<BeerStyle> fetchStyles() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ArrayList<Beer> searchBeers(BeerSearch beerSearch) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 }

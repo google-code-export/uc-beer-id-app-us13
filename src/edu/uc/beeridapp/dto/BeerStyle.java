@@ -2,13 +2,15 @@ package edu.uc.beeridapp.dto;
 
 import java.io.Serializable;
 
+/**
+ * BeerStyle Object to hold and manipulate beer styles
+ * @author Tim Guibord
+ *
+ */
 public class BeerStyle implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+
+	private static final long serialVersionUID = 1L;	
 	private int id;
 	private int guid;
 	private String style;
@@ -31,7 +33,4 @@ public class BeerStyle implements Serializable {
 	public void setStyle(String style) {
 		this.style = style;
 	}
-	
-	
-
 }

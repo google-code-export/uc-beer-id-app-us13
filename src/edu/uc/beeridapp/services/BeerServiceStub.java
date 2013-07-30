@@ -1,6 +1,6 @@
 package edu.uc.beeridapp.services;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.uc.beeridapp.dto.Beer;
@@ -16,19 +16,19 @@ public class BeerServiceStub implements IBeerService {
 	}
 
 	@Override
-	public List<Beer> seachBeers(BeerSearch bs) {
+	public List<Beer> fetchBeers(BeerSearch beerSearch) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public HashMap<Integer, String> fetchBeerStyles() {
+	public Beer fetchBeerByBarcode(String code) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Beer seachBarcode(String code) {
+	public ArrayList<BeerStyle> fetchBeerStyles() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

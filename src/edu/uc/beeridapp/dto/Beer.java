@@ -7,24 +7,14 @@ import java.io.Serializable;
  *
  */
 public class Beer implements Serializable{
-	/**
-	 * 
-	 */
+
+	//Beer attributes; name initialized to prevent NullPointerException on Details Search
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private int guid;
-	private String name;
+	private String name = "";
 	private String style;
-	private double abv;
-
-//	public Beer(int id, int guid, String name, String style, double abv) {
-//		super();
-//		this.id = id;
-//		this.guid = guid;
-//		this.name = name;
-//		this.style = style;
-//		this.abv = abv;
-//	}
+	private String abv;
 
 	public int getId() {
 		return id;
@@ -66,20 +56,18 @@ public class Beer implements Serializable{
 	}
 
 
-	public double getAbv() {
+	public String getAbv() {
 		return abv;
 	}
 
 
-	public void setAbv(double abv) {
+	public void setAbv(String abv) {
 		this.abv = abv;
 	}
 
 
-//	@Override
-//	public String toString() {
-//		return beerName + " - " + color + " " + type;
-//	}
-
-	
+	@Override
+	public String toString() {
+		return name;
+	}	
 }
