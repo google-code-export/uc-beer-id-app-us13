@@ -11,6 +11,12 @@ import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
+/**
+ * Beer DAO to perform data access via online data sources
+ * 
+ * @author Tim Guibord
+ *
+ */
 public class OnlineBeerDAO implements IBeerDAO {
 	
 	private static final String BEER_STYLES_URL = "http://beerid-api.herokuapp.com/beer_styles.json";
@@ -94,6 +100,8 @@ public class OnlineBeerDAO implements IBeerDAO {
 			
 			//build the search URL
 			searchURL = BEER_SEARCH_URL_BASE + "?" + params;
+		} else {
+			searchURL = BEER_SEARCH_URL_BASE;
 		}
 		
 		
