@@ -23,7 +23,7 @@
     <string name="search_by_details">Search By Details</string>
     <string name="search_by_barcode">Search By Barcode</string>
     <string name="title_activity_details_search">Search By Details</string>
-    <string name="brand_name">Brand Name</string>
+    <string name="beer_name">Beer Name</string>
     <string name="beer_type_prompt">Select a type of beer</string>
     <string name="beer_color_prompt">Select a color of beer</string>
     <string name="any_type">Any Type</string>
@@ -179,5 +179,8 @@
     <string name="beer_type_lbl">Type:</string>
     <string name="calories_lbl">Calories:</string>
     <string name="alcohol_percentage_lbl">ABV:</string>
+    <string name="min_abv">Min ABV</string>
+    <string name="max_abv">Max ABV</string>
+    <string name="beer_style_prompt">Beer Style</string>
 
 </resources>
