@@ -11,59 +11,75 @@ public class Beer implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int id;
-	String beerName;
-	public enum beerType{Any, Ale, Lager, Lambic, Hybrid};
-	public enum beerColor{Any, Pale, Red, Brown, Dark};
-	public beerType type;
-	public beerColor color;
-	double percentAlcohol;
-	double calories;
+	private int id;
+	private int guid;
+	private String name;
+	private String style;
+	private double abv;
+
+//	public Beer(int id, int guid, String name, String style, double abv) {
+//		super();
+//		this.id = id;
+//		this.guid = guid;
+//		this.name = name;
+//		this.style = style;
+//		this.abv = abv;
+//	}
+
 	public int getId() {
 		return id;
 	}
-	
-	public beerType getType() {
-		return type;
-	}
 
-	public void setType(beerType type) {
-		this.type = type;
-	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getBeerName() {
-		return beerName;
-	}
-	public void setBeer(String beerName) {
-		this.beerName = beerName;
-	}
-	public double getPercentAlcohol() {
-		return percentAlcohol;
-	}
-	public void setPercentAlcohol(double percentAlcohol) {
-		this.percentAlcohol = percentAlcohol;
-	}
-	public double getCalories() {
-		return calories;
-	}
-	public void setCalories(double calories) {
-		this.calories = calories;
-	}
-	@Override
-	public String toString() {
-		return beerName + " - " + color + " " + type;
+
+
+	public int getGuid() {
+		return guid;
 	}
 
-	public beerColor getColor() {
-		return color;
+
+	public void setGuid(int guid) {
+		this.guid = guid;
 	}
 
-	public void setColor(beerColor color) {
-		this.color = color;
+
+	public String getName() {
+		return name;
 	}
-	
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getStyle() {
+		return style;
+	}
+
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+
+	public double getAbv() {
+		return abv;
+	}
+
+
+	public void setAbv(double abv) {
+		this.abv = abv;
+	}
+
+
+//	@Override
+//	public String toString() {
+//		return beerName + " - " + color + " " + type;
+//	}
+
 	
 }

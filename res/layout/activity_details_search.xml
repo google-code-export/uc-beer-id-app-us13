@@ -1,135 +1,63 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:scrollbars="none"
+    android:layout_weight="1"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DetailsSearchActivity" 
-    android:layout_weight="1">
-    
-<TableLayout   
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:scrollbars="none"
+    tools:context=".DetailsSearchActivity" >
 
-    <AutoCompleteTextView
-        android:id="@+id/actBeerName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="8"
-        android:hint="@string/brand_name"
-        android:inputType="text" />
-
-    <TableRow
-        android:layout_marginTop="20dp">
-
-        <RadioGroup
-            android:id="@+id/rdoBeerColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/rdoAnyColor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/any_color" />
-
-            <RadioButton
-                android:id="@+id/rdoPale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pale" />
-
-            <RadioButton
-                android:id="@+id/rdoRed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/red" />
-
-            <RadioButton
-                android:id="@+id/rdoBrown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/brown" />
-
-            <RadioButton
-                android:id="@+id/rdoDark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dark" />
-        </RadioGroup>
-        
-                <RadioGroup
-            android:id="@+id/rdoBeerType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <RadioButton
-                android:id="@+id/rdoAnyType"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/any_type" />
-
-            <RadioButton
-                android:id="@+id/rdoAle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ale" />
-
-            <RadioButton
-                android:id="@+id/rdoLager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lager" />
-
-            <RadioButton
-                android:id="@+id/rdoLambic"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lambic" />
-
-            <RadioButton
-                android:id="@+id/rdoHybrid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
-                android:text="@string/hybrid" />
-        </RadioGroup>
-    </TableRow>
-
-    <TableRow
-        android:layout_marginTop="20dp">
-
-        <EditText
-            android:id="@+id/edtCalories"
-            android:layout_weight="1"
-            android:ems="8"
-            android:hint="@string/calories"
-            android:inputType="number" >
-        </EditText>
-
-        <EditText
-            android:id="@+id/edtAlcoholByVolume"
-            android:layout_weight="1"
-            android:ems="8"
-            android:hint="@string/abv"
-            android:inputType="numberDecimal" >
-        </EditText>
-    </TableRow>
-
-    <Button
-        android:id="@+id/btnDetailsSubmit"
+    <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/submit" />
+        android:layout_height="wrap_content" >
 
-</TableLayout>
+        <AutoCompleteTextView
+            android:id="@+id/actBeerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="@string/beer_name"
+            android:inputType="text" />
+
+        <TableRow android:layout_marginTop="20dp" >
+
+            <EditText
+                android:id="@+id/edtMinAlcoholByVolume"
+                android:layout_weight="1"
+                android:ems="8"
+                android:hint="@string/min_abv"
+                android:inputType="numberDecimal"
+                android:maxWidth="8dp" />
+
+            <EditText
+                android:id="@+id/edtMaxAlcoholByVolume"
+                android:layout_weight="1"
+                android:ems="8"
+                android:hint="@string/max_abv"
+                android:inputType="numberDecimal"
+                android:maxWidth="8dp" />
+
+        </TableRow>
+
+        <TableRow android:layout_marginTop="20dp" >
+
+            <Spinner
+                android:id="@+id/spnBeerStyles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:prompt="@string/beer_style_prompt" />
+            
+        </TableRow>
+
+        <Button
+            android:id="@+id/btnDetailsSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/submit" />
+    </TableLayout>
+
 </ScrollView>

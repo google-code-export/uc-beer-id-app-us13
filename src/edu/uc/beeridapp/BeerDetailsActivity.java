@@ -36,19 +36,21 @@ public class BeerDetailsActivity extends Activity {
 		
 		Beer beer = (Beer) this.getIntent().getSerializableExtra(BeerResultsActivity.SELECTED_BEER);
 		
-		String name = beer.getBeerName().toString();
-		String color = beer.getColor().toString();
-		String type = beer.getType().toString();
-		String calories = Double.toString(beer.getCalories());
-		String abv = Double.toString(beer.getPercentAlcohol());
+//		String name = beer.getBeerName().toString();
+//		String color = beer.getColor().toString();
+//		String type = beer.getType().toString();
+//		String calories = Double.toString(beer.getCalories());
+//		String abv = Double.toString(beer.getPercentAlcohol());
 		
 		//Set text values from beer object
 		
-		txtBeerName.setText(name);
-		txtBeerColor.setText(color);
-		txtBeerType.setText(type);
-		txtCalories.setText(calories);
-		txtAlcohol_Percentage.setText(abv);
+//		txtBeerName.setText(name);
+//		txtBeerColor.setText(color);
+//		txtBeerType.setText(type);
+//		txtCalories.setText(calories);
+//		txtAlcohol_Percentage.setText(abv);
+//		
+		
 		
 	}
 
