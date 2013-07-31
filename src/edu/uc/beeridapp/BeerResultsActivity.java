@@ -140,7 +140,7 @@ public class BeerResultsActivity extends ListActivity {
 		 */
 		@Override
 		protected void onPostExecute(List<Beer> result) {
-			// marry togehether the data with the screen.
+			// marry together the data with the screen.
 			ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(
 					BeerResultsActivity.this,
 					android.R.layout.simple_list_item_1, result);

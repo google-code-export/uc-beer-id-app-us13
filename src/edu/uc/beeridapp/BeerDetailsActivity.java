@@ -7,7 +7,9 @@ import android.widget.TextView;
 import edu.uc.beeridapp.dto.Beer;
 
 /**
- * This class displays information about a selected beer from the previous ListView of Results
+ * This class displays information about a selected beer from the previous
+ * ListView of Results
+ * 
  * @author Brian Pumphrey
  */
 
@@ -17,35 +19,35 @@ public class BeerDetailsActivity extends Activity {
 	private TextView txtBeerStyle;
 	private TextView txtCalories;
 	private TextView txtAlcohol_Percentage;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_beer_details);
-		
-		//Get access to UI components
-		
+
+		// Get access to UI components
+
 		txtBeerName = (TextView) findViewById(R.id.txtBeerName);
 		txtBeerStyle = (TextView) findViewById(R.id.txtBeerStyle);
 		txtCalories = (TextView) findViewById(R.id.txtCalories);
 		txtAlcohol_Percentage = (TextView) findViewById(R.id.txtAlcohol_Percentage);
-		
+
 		// Obtain beer object and its attributes
-		
-		Beer beer = (Beer) this.getIntent().getSerializableExtra(BeerResultsActivity.SELECTED_BEER);
-		
+
+		Beer beer = (Beer) this.getIntent().getSerializableExtra(
+				BeerResultsActivity.SELECTED_BEER);
+
 		String name = beer.getName().toString();
 		String style = beer.getStyle().toString();
-		String abv = beer.getAbv().toString();	
-//		String calories = Double.toString(beer.getCalories());
-		
-		//Set text values from beer object
+		String abv = beer.getAbv().toString();
+		String calories = beer.getCalories().toString();
+
+		// Set text values from beer object
 		txtBeerName.setText(name);
 		txtBeerStyle.setText(style);
-//		txtCalories.setText(calories);
+		txtCalories.setText(calories);
 		txtAlcohol_Percentage.setText(abv);
-		
-		
+
 	}
 
 	@Override

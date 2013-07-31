@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -99,22 +100,22 @@ public class DetailsSearchActivity extends Activity {
 		BeerSearch bs = new BeerSearch();
 
 		// if a name search value was entered
-		if (!beerName.isEmpty()) {
+		if (!TextUtils.isEmpty(beerName)) {
 			bs.setName(beerName);
 		}
 
 		// if a max calories search value was entered
-		if (!maxCalories.isEmpty()) {
-			bs.setGreaterThanABV(maxCalories);
+		if (!TextUtils.isEmpty(maxCalories)) {
+			bs.setLessThanCalories(maxCalories);
 		}
 
 		// if a max abv search value was entered
-		if (!maxAbv.isEmpty()) {
+		if (!TextUtils.isEmpty(maxAbv)) {
 			bs.setLessThanABV(maxAbv);
 		}
 
 		// if a beer style search value was selected
-		if (!styleGuid.isEmpty()) {
+		if (!TextUtils.isEmpty(styleGuid)) {
 			bs.setStyleGUID(styleGuid);
 		}
 
