@@ -257,6 +257,8 @@ public final class R {
         public static final int menu_settings=0x7f0a005d;
         public static final int menu_share=0x7f0a005e;
         public static final int min_abv=0x7f0a00b2;
+        public static final int min_max_error=0x7f0a00b6;
+        public static final int min_max_numeric_error=0x7f0a00b7;
         public static final int msg_bulk_mode_scanned=0x7f0a005f;
         public static final int msg_camera_framework_bug=0x7f0a0060;
         public static final int msg_default_format=0x7f0a0061;
@@ -338,6 +340,7 @@ public final class R {
         public static final int sbc_name=0x7f0a00a8;
         public static final int search_by_barcode=0x7f0a0014;
         public static final int search_by_details=0x7f0a0013;
+        public static final int select_a_beer_style=0x7f0a00b5;
         public static final int submit=0x7f0a000f;
         public static final int title_activity_barcode_search=0x7f0a002b;
         public static final int title_activity_beer_details=0x7f0a00ac;

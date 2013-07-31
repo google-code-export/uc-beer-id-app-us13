@@ -50,7 +50,7 @@ public class OnlineBeerDAO implements IBeerDAO {
 			
 			//create a BeerStyle object from the JSONObject and add it to the ArrayList
 			BeerStyle bs = new BeerStyle();
-			bs.setGuid(jo.getInt("guid"));
+			bs.setGuid(jo.getString("guid"));
 			bs.setStyle(jo.getString("style"));
 			allStyles.add(bs);
 		}
