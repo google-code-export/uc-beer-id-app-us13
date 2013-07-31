@@ -150,13 +150,12 @@
     <string name="wifi_changing_network">Requesting connection to network\u2026</string>
     <string name="wifi_ssid_label">Network Name</string>
     <string name="wifi_type_label">Type</string>
-    <string name="title_activity_beer_details">BeerViewActivity</string>
     <string name="beer_lbl">Beer:</string>
     <string name="beer_color_lbl">Color:</string>
     <string name="beer_type_lbl">Type:</string>
     <string name="calories_lbl">Calories:</string>
     <string name="alcohol_percentage_lbl">ABV:</string>
-    <string name="min_abv">Min ABV</string>
+    <string name="max_calories">Max Calories</string>
     <string name="max_abv">Max ABV</string>
     <string name="beer_style_prompt">Beer Style</string>
     <string name="select_a_beer_style">Select a Beer Style</string>

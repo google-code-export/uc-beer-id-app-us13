@@ -32,24 +32,12 @@ public class DetailsSearchActivity extends Activity {
 
 	public static final String BEER_SEARCH = "BEER_SEARCH";
 
-	// public beerType type;
-	// public beerColor color;
-	// public String calorieValue;
-	// public String abvValue;
-	// public int calories;
-	// public int abv;
-
-	// private RadioGroup rdoBeerType;
-	// private RadioGroup rdoBeerColor;
-
 	private Button btnDetailsSubmit;
 
 	private AutoCompleteTextView actBeerName;
-	private EditText edtMinABV;
+	private EditText edtMaxCalories;
 	private EditText edtMaxABV;
 	private Spinner spnBeerStyle;
-	// private EditText edtCalories;
-	// private EditText edtAlcoholByVolume;
 
 	IBeerService beerService;
 	private String toastAlert;
@@ -61,32 +49,17 @@ public class DetailsSearchActivity extends Activity {
 
 		// Get Access to UI Components
 		actBeerName = (AutoCompleteTextView) findViewById(R.id.actBeerName);
-		edtMinABV = (EditText) findViewById(R.id.edtMinAlcoholByVolume);
+		edtMaxCalories = (EditText) findViewById(R.id.edtMaxCalories);
 		edtMaxABV = (EditText) findViewById(R.id.edtMaxAlcoholByVolume);
 		spnBeerStyle = (Spinner) findViewById(R.id.spnBeerStyles);
 
-		// edtCalories = (EditText) findViewById(R.id.edtCalories);
-		// edtAlcoholByVolume = (EditText)
-		// findViewById(R.id.edtAlcoholByVolume);
-
 		btnDetailsSubmit = (Button) findViewById(R.id.btnDetailsSubmit);
-
-		// rdoBeerType = (RadioGroup) findViewById(R.id.rdoBeerType);
-		// rdoBeerColor = (RadioGroup) findViewById(R.id.rdoBeerColor);
 
 		// load the beer style spinner from data source
 		loadBeerStylesSpinner();
 
 		// Create Listeners for Buttons
 		OnClickListener btnDetailsSubmitListener = new OnDetailsSubmitListener();
-
-		// RadioGroup.OnCheckedChangeListener rdoBeerTypeListener = new
-		// BeerTypeChangedListener();
-		// RadioGroup.OnCheckedChangeListener rdoBeerColorListener = new
-		// BeerColorChangedListener();
-		//
-		// rdoBeerType.setOnCheckedChangeListener(rdoBeerTypeListener);
-		// rdoBeerColor.setOnCheckedChangeListener(rdoBeerColorListener);
 
 		btnDetailsSubmit.setOnClickListener(btnDetailsSubmitListener);
 
@@ -114,61 +87,6 @@ public class DetailsSearchActivity extends Activity {
 		return true;
 	}
 
-	// class BeerTypeChangedListener implements
-	// RadioGroup.OnCheckedChangeListener {
-	//
-	// @Override
-	// public void onCheckedChanged(RadioGroup group, int checkedID) {
-	// // TODO Auto-generated method stub
-	//
-	// // switch (checkedID){
-	// // case R.id.rdoAle:
-	// // type = beerType.Ale;
-	// // break;
-	// // case R.id.rdoLager:
-	// // type = beerType.Lager;
-	// // break;
-	// // case R.id.rdoLambic:
-	// // type = beerType.Lambic;
-	// // break;
-	// // case R.id.rdoHybrid:
-	// // type = beerType.Hybrid;
-	// // break;
-	// // default:
-	// // type = beerType.Any;
-	// // break;
-	// // }
-	// }
-	//
-	// }
-	//
-	// class BeerColorChangedListener implements
-	// RadioGroup.OnCheckedChangeListener {
-	//
-	// @Override
-	// public void onCheckedChanged(RadioGroup group, int checkedID) {
-	// // TODO Auto-generated method stub
-	//
-	// // switch (checkedID){
-	// // case R.id.rdoPale:
-	// // color = beerColor.Pale;
-	// // break;
-	// // case R.id.rdoRed:
-	// // color = beerColor.Red;
-	// // break;
-	// // case R.id.rdoBrown:
-	// // color = beerColor.Brown;
-	// // break;
-	// // case R.id.rdoDark:
-	// // color = beerColor.Dark;
-	// // break;
-	// // default:
-	// // color = beerColor.Any;
-	// // break;
-	// // }
-	// }
-	//
-	// }
 
 	class OnDetailsSubmitListener implements OnClickListener {
 
@@ -224,7 +142,7 @@ public class DetailsSearchActivity extends Activity {
 
 		// Get the text entered by user
 		String beerName = actBeerName.getText().toString();
-		String minAbv = edtMinABV.getText().toString();
+		String minAbv = edtMaxCalories.getText().toString();
 		String maxAbv = edtMaxABV.getText().toString();
 		BeerStyle beerStyle = (BeerStyle) spnBeerStyle.getSelectedItem();
 		String styleGuid = beerStyle.getGuid();
@@ -267,31 +185,6 @@ public class DetailsSearchActivity extends Activity {
 		} else {
 			Toast.makeText(this, toastAlert, Toast.LENGTH_LONG).show();
 		}
-
-		// bs.setType(type);
-		// bs.setColor(color);
-
-		// Determine amount of max calories specified by user and convert to
-		// integer
-		// try {
-		// int calories = Integer.parseInt(edtCalories.getText().toString());
-		// bs.setCalories(calories);
-		// }
-		// catch (Exception e) {
-		// int calories = 0;
-		// bs.setCalories(calories);
-		// }
-		//
-		// // Determine amount of max alcohol by volume specified by user and
-		// convert to integer
-		// try {
-		// int abv = Integer.parseInt(edtAlcoholByVolume.getText().toString());
-		// bs.setPercentAlcohol(abv);
-		// }
-		// catch (Exception e) {
-		// int abv = 0;
-		// bs.setPercentAlcohol(abv);
-		// }
 
 	}
 
