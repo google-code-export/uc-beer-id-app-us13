@@ -19,21 +19,21 @@ import edu.uc.beeridapp.services.IBeerService;
 
 /**
  * 
- * @author Brian Pumphrey
- * Activity to display search results
+ * @author Brian Pumphrey Activity to display search results
  */
 
 public class BeerResultsActivity extends ListActivity {
-	
+
 	public static final String SELECTED_BEER = "SELECTED_BEER";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// Obtain beer search object
-		BeerSearch bs = (BeerSearch) this.getIntent().getSerializableExtra(DetailsSearchActivity.BEER_SEARCH);
-		
+		BeerSearch bs = (BeerSearch) this.getIntent().getSerializableExtra(
+				DetailsSearchActivity.BEER_SEARCH);
+
 		try {
 			// invoke the AsyncTask to get our results.
 			BeerSearchTask bst = new BeerSearchTask();
@@ -44,42 +44,45 @@ public class BeerResultsActivity extends ListActivity {
 			e.printStackTrace();
 
 			// inform the user there was an error.
-			Toast.makeText(this, getString(R.string.errUnableToGetResults), Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.errUnableToGetResults),
+					Toast.LENGTH_LONG).show();
 		}
 
-//		// Find beers that match these results
-//
-//		// Get a reference to BeerDAO
-//		IBeerDAO beerDAO = new BeerDAOStub();
-//
-//		// Invoke the search
-//		List<Beer> results;
-//
-//		try {
-//
-//			results = beerDAO.fetchBeer(bs);
-//			
-//			// Merge data To screen
-//			ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(this, android.R.layout.simple_list_item_1, results);
-//
-//			// Display the data
-//			setListAdapter(listAdapter);
-//			
-//			if (results.isEmpty())
-//			{
-//				// Inform the user there are no results found
-//				Toast.makeText(this, getString(R.string.errNoResultsFound), Toast.LENGTH_LONG).show();
-//			}
-//
-//		}
-//		catch (Exception e)
-//		{
-//			// Inform the user there was an error
-//			Toast.makeText(this, getString(R.string.errUnableToGetResults), Toast.LENGTH_LONG).show();
-//		}
+		// // Find beers that match these results
+		//
+		// // Get a reference to BeerDAO
+		// IBeerDAO beerDAO = new BeerDAOStub();
+		//
+		// // Invoke the search
+		// List<Beer> results;
+		//
+		// try {
+		//
+		// results = beerDAO.fetchBeer(bs);
+		//
+		// // Merge data To screen
+		// ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(this,
+		// android.R.layout.simple_list_item_1, results);
+		//
+		// // Display the data
+		// setListAdapter(listAdapter);
+		//
+		// if (results.isEmpty())
+		// {
+		// // Inform the user there are no results found
+		// Toast.makeText(this, getString(R.string.errNoResultsFound),
+		// Toast.LENGTH_LONG).show();
+		// }
+		//
+		// }
+		// catch (Exception e)
+		// {
+		// // Inform the user there was an error
+		// Toast.makeText(this, getString(R.string.errUnableToGetResults),
+		// Toast.LENGTH_LONG).show();
+		// }
 
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -87,7 +90,7 @@ public class BeerResultsActivity extends ListActivity {
 		getMenuInflater().inflate(R.menu.beer_results, menu);
 		return true;
 	}
-	
+
 	/**
 	 * Find out which beer the user clicked, go to the details page.
 	 */
@@ -105,7 +108,7 @@ public class BeerResultsActivity extends ListActivity {
 		// go to the beer details page for this beer.
 		startActivity(beerDetailsIntent);
 	}
-	
+
 	class BeerSearchTask extends AsyncTask<BeerSearch, Integer, List<Beer>> {
 
 		/**
@@ -119,7 +122,8 @@ public class BeerResultsActivity extends ListActivity {
 			List<Beer> results = new ArrayList<Beer>();
 
 			try {
-				// this is the network operation that will run in the new thread.
+				// this is the network operation that will run in the new
+				// thread.
 				results = beerService.fetchBeers(params[0]);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -130,23 +134,25 @@ public class BeerResultsActivity extends ListActivity {
 			return results;
 		}
 
-
 		/**
-		 * This method will run when the background thread is complete.  
-		 * This method will run in the UI thread, so we can update the UI.
+		 * This method will run when the background thread is complete. This
+		 * method will run in the UI thread, so we can update the UI.
 		 */
 		@Override
 		protected void onPostExecute(List<Beer> result) {
 			// marry togehether the data with the screen.
-			ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(BeerResultsActivity.this, android.R.layout.simple_list_item_1, result);
+			ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(
+					BeerResultsActivity.this,
+					android.R.layout.simple_list_item_1, result);
 
 			// show the data.
-			setListAdapter(listAdapter);	
-			
-			if (result.isEmpty())
-			{
+			setListAdapter(listAdapter);
+
+			if (result.isEmpty()) {
 				// Inform the user there are no results found
-				Toast.makeText(BeerResultsActivity.this, getString(R.string.errNoResultsFound), Toast.LENGTH_LONG).show();
+				Toast.makeText(BeerResultsActivity.this,
+						getString(R.string.errNoResultsFound),
+						Toast.LENGTH_LONG).show();
 			}
 		}
 

@@ -182,5 +182,8 @@
     <string name="min_abv">Min ABV</string>
     <string name="max_abv">Max ABV</string>
     <string name="beer_style_prompt">Beer Style</string>
+    <string name="select_a_beer_style">Select a Beer Style</string>
+    <string name="min_max_error">Min ABV must be less than or equal to Max ABV</string>
+    <string name="min_max_numeric_error">Min ABV and Max ABV must be numeric</string>
 
 </resources>
