@@ -14,8 +14,7 @@ import edu.uc.beeridapp.dto.Beer;
 public class BeerDetailsActivity extends Activity {
 
 	private TextView txtBeerName;
-	private TextView txtBeerColor;
-	private TextView txtBeerType;
+	private TextView txtBeerStyle;
 	private TextView txtCalories;
 	private TextView txtAlcohol_Percentage;
 	
@@ -27,8 +26,7 @@ public class BeerDetailsActivity extends Activity {
 		//Get access to UI components
 		
 		txtBeerName = (TextView) findViewById(R.id.txtBeerName);
-		txtBeerColor = (TextView) findViewById(R.id.txtBeerColor);
-		txtBeerType = (TextView) findViewById(R.id.txtBeerType);
+		txtBeerStyle = (TextView) findViewById(R.id.txtBeerStyle);
 		txtCalories = (TextView) findViewById(R.id.txtCalories);
 		txtAlcohol_Percentage = (TextView) findViewById(R.id.txtAlcohol_Percentage);
 		
@@ -36,20 +34,16 @@ public class BeerDetailsActivity extends Activity {
 		
 		Beer beer = (Beer) this.getIntent().getSerializableExtra(BeerResultsActivity.SELECTED_BEER);
 		
-//		String name = beer.getBeerName().toString();
-//		String color = beer.getColor().toString();
-//		String type = beer.getType().toString();
+		String name = beer.getName().toString();
+		String style = beer.getStyle().toString();
+		String abv = beer.getAbv().toString();	
 //		String calories = Double.toString(beer.getCalories());
-//		String abv = Double.toString(beer.getPercentAlcohol());
 		
 		//Set text values from beer object
-		
-//		txtBeerName.setText(name);
-//		txtBeerColor.setText(color);
-//		txtBeerType.setText(type);
+		txtBeerName.setText(name);
+		txtBeerStyle.setText(style);
 //		txtCalories.setText(calories);
-//		txtAlcohol_Percentage.setText(abv);
-//		
+		txtAlcohol_Percentage.setText(abv);
 		
 		
 	}
