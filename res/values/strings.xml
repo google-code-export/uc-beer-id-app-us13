@@ -163,5 +163,6 @@
     <string name="min_max_numeric_error">Min ABV and Max ABV must be numeric</string>
     <string name="title_beer_id_app">Beer ID App</string>
     <string name="beer_color_style">Style:</string>
+    <string name="reset">Reset</string>
 
 </resources>
