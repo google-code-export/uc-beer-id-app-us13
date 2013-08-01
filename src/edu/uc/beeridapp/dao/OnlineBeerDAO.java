@@ -1,7 +1,11 @@
 package edu.uc.beeridapp.dao;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -36,6 +40,12 @@ public class OnlineBeerDAO implements IBeerDAO {
 		// initialize a BeerStyle ArrayList
 		ArrayList<BeerStyle> allStyles = new ArrayList<BeerStyle>();
 
+		// add a prompted for the spinner
+		BeerStyle prompt = new BeerStyle();
+		prompt.setGuid("-1");
+		prompt.setStyle("Select a Beer Style...");
+		allStyles.add(prompt);
+
 		// get JSON string from the API
 		String result = networkDAO.request(BEER_STYLES_URL);
 
@@ -67,46 +77,45 @@ public class OnlineBeerDAO implements IBeerDAO {
 		// initialize a Beers ArrayList
 		ArrayList<Beer> beers = new ArrayList<Beer>();
 
-		// ArrayList to hold search params
-		ArrayList<String> paramsArray = new ArrayList<String>();
+		// List to hold search params
+		List<NameValuePair> paramsArray = new LinkedList<NameValuePair>();
 
-		// initialize the search url container
-		String searchURL = "";
 
 		// if a name search criteria was entered, add the param to the array
 		if (!TextUtils.isEmpty(beerSearch.getName())) {
-			paramsArray.add("name=" + beerSearch.getName());
+			paramsArray
+					.add(new BasicNameValuePair("name", beerSearch.getName()));
 		}
 
 		// if a min ABV search criteria was entered, add the param to the array
 		if (!TextUtils.isEmpty(beerSearch.getLessThanABV())) {
-			paramsArray.add("abv=" + beerSearch.getLessThanABV());
+			paramsArray.add(new BasicNameValuePair("abv", beerSearch
+					.getLessThanABV()));
 		}
 
 		// if a max ABV search criteria was entered, add the param to the array
 		if (!TextUtils.isEmpty(beerSearch.getLessThanCalories())) {
-			paramsArray.add("cal=" + beerSearch.getLessThanCalories());
+			paramsArray.add(new BasicNameValuePair("cal", beerSearch
+					.getLessThanCalories()));
 		}
 
 		// if a beer style search criteria was entered, add the param to the
 		// array
 		if (!TextUtils.isEmpty(beerSearch.getStyleGUID())) {
-			paramsArray.add("type=" + beerSearch.getStyleGUID());
+			paramsArray.add(new BasicNameValuePair("type", beerSearch
+					.getStyleGUID()));
 		}
 
-		// if params exist, build the search url
+		String result = "";
+
+		// check to see if the search has params
 		if (paramsArray.size() > 0) {
-			// join the params into a valid URL query string
-			String params = TextUtils.join("&", paramsArray);
-
-			// build the search URL
-			searchURL = BEER_SEARCH_URL_BASE + "?" + params;
+			// yes, perform search with params
+			result = networkDAO.request(BEER_SEARCH_URL_BASE, paramsArray);
 		} else {
-			searchURL = BEER_SEARCH_URL_BASE;
+			// no, perform search w/o params
+			result = networkDAO.request(BEER_SEARCH_URL_BASE);
 		}
-
-		// get the JSON string from the API
-		String result = networkDAO.request(searchURL);
 
 		// pull a JSONArray from the results string
 		JSONArray beersJSON = new JSONArray(result);

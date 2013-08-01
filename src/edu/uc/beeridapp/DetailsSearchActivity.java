@@ -115,7 +115,7 @@ public class DetailsSearchActivity extends Activity {
 		}
 
 		// if a beer style search value was selected
-		if (!TextUtils.isEmpty(styleGuid)) {
+		if (!styleGuid.equals("-1")) {
 			bs.setStyleGUID(styleGuid);
 		}
 
