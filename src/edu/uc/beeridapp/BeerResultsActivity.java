@@ -140,19 +140,20 @@ public class BeerResultsActivity extends ListActivity {
 		 */
 		@Override
 		protected void onPostExecute(List<Beer> result) {
-			// marry together the data with the screen.
-			ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(
-					BeerResultsActivity.this,
-					android.R.layout.simple_list_item_1, result);
-
-			// show the data.
-			setListAdapter(listAdapter);
 
 			if (result.isEmpty()) {
 				// Inform the user there are no results found
 				Toast.makeText(BeerResultsActivity.this,
 						getString(R.string.errNoResultsFound),
 						Toast.LENGTH_LONG).show();
+			} else {
+				// marry together the data with the screen.
+				ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(
+						BeerResultsActivity.this,
+						android.R.layout.simple_list_item_1, result);
+
+				// show the data.
+				setListAdapter(listAdapter);
 			}
 		}
 
