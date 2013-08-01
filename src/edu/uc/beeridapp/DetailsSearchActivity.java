@@ -31,7 +31,7 @@ public class DetailsSearchActivity extends Activity {
 	public static final String BEER_SEARCH = "BEER_SEARCH";
 
 	private Button btnDetailsSubmit;
-
+	private Button btnDetailsReset;
 	private AutoCompleteTextView actBeerName;
 	private EditText edtMaxCalories;
 	private EditText edtMaxABV;
@@ -51,6 +51,7 @@ public class DetailsSearchActivity extends Activity {
 		spnBeerStyle = (Spinner) findViewById(R.id.spnBeerStyles);
 
 		btnDetailsSubmit = (Button) findViewById(R.id.btnDetailsSubmit);
+		btnDetailsReset = (Button) findViewById(R.id.btnDetailsReset);
 
 		// load the beer style spinner from data source
 		loadBeerStylesSpinner();
@@ -59,6 +60,10 @@ public class DetailsSearchActivity extends Activity {
 		OnClickListener btnDetailsSubmitListener = new OnDetailsSubmitListener();
 
 		btnDetailsSubmit.setOnClickListener(btnDetailsSubmitListener);
+		
+		OnClickListener btnDetailsResetListener = new OnDetailsResetListener();
+
+		btnDetailsReset.setOnClickListener(btnDetailsResetListener);
 
 		// TODO: Add Adapter for AutoCompleteTextView on Brand Name field
 	}
@@ -72,7 +77,6 @@ public class DetailsSearchActivity extends Activity {
 			GetBeerStylesTask task = new GetBeerStylesTask();
 			task.execute();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -128,12 +132,31 @@ public class DetailsSearchActivity extends Activity {
 		// invoke the results screen
 		startActivity(beerResultsIntent);
 	}
+	
+	/**
+	 * Reset form fields to defaults
+	 */
+	private void resetDetails() {
+		
+		actBeerName.setText(null);
+		edtMaxCalories.setText(null);
+		edtMaxABV.setText(null);
+		spnBeerStyle.setSelection(0);
+		
+	}
 
 	class OnDetailsSubmitListener implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
 			submitDetails();
+		}
+	}
+	class OnDetailsResetListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			resetDetails();
 		}
 	}
 
