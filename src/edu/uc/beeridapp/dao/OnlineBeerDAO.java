@@ -22,6 +22,10 @@ import edu.uc.beeridapp.dto.BeerStyle;
  */
 public class OnlineBeerDAO implements IBeerDAO {
 
+	private static final String STYLE = "style";
+	private static final String CALORIES = "calories";
+	private static final String ABV = "abv";
+	private static final String NAME = "name";
 	private static final String BEER_STYLES_URL = "http://beerid-api.herokuapp.com/beer_styles.json";
 	private static final String BEER_SEARCH_URL_BASE = "http://beerid-api.herokuapp.com/search/beer.json";
 
@@ -84,25 +88,25 @@ public class OnlineBeerDAO implements IBeerDAO {
 		// if a name search criteria was entered, add the param to the array
 		if (!TextUtils.isEmpty(beerSearch.getName())) {
 			paramsArray
-					.add(new BasicNameValuePair("name", beerSearch.getName()));
+					.add(new BasicNameValuePair(NAME, beerSearch.getName()));
 		}
 
 		// if a min ABV search criteria was entered, add the param to the array
 		if (!TextUtils.isEmpty(beerSearch.getLessThanABV())) {
-			paramsArray.add(new BasicNameValuePair("abv", beerSearch
+			paramsArray.add(new BasicNameValuePair(ABV, beerSearch
 					.getLessThanABV()));
 		}
 
 		// if a max ABV search criteria was entered, add the param to the array
 		if (!TextUtils.isEmpty(beerSearch.getLessThanCalories())) {
-			paramsArray.add(new BasicNameValuePair("cal", beerSearch
+			paramsArray.add(new BasicNameValuePair(CALORIES, beerSearch
 					.getLessThanCalories()));
 		}
 
 		// if a beer style search criteria was entered, add the param to the
 		// array
 		if (!TextUtils.isEmpty(beerSearch.getStyleGUID())) {
-			paramsArray.add(new BasicNameValuePair("type", beerSearch
+			paramsArray.add(new BasicNameValuePair(STYLE, beerSearch
 					.getStyleGUID()));
 		}
 
@@ -129,10 +133,10 @@ public class OnlineBeerDAO implements IBeerDAO {
 			// ArrayList
 			Beer b = new Beer();
 			b.setGuid(jo.getInt("guid"));
-			b.setName(jo.getString("name"));
-			b.setAbv(jo.getString("abv"));
-			b.setCalories(jo.getString("calories"));
-			b.setStyle(jo.getString("style"));
+			b.setName(jo.getString(NAME));
+			b.setAbv(jo.getString(ABV));
+			b.setCalories(jo.getString(CALORIES));
+			b.setStyle(jo.getString(STYLE));
 			beers.add(b);
 		}
 
