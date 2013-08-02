@@ -15,6 +15,11 @@ import android.widget.TextView;
  */
 public class SearchMenuActivity extends Activity {
 	
+	private static final String SCAN_RESULT_FORMAT = "SCAN_RESULT_FORMAT";
+	private static final String SCAN_RESULT = "SCAN_RESULT";
+	private static final String SCAN_MODE = "PRODUCT_MODE";
+	private static final String SCAN_MODE_CLASS = "com.google.zxing.client.android.SCAN.SCAN_MODE";
+	private static final String SCAN_CLASS = "com.google.zxing.client.android.SCAN";
 	public static final String SEARCH_BARCODE = "SEARCH_BARCODE";
 	private Button btnSearchByDetails;
 	private Button btnSearchByBarcode;
@@ -76,16 +81,12 @@ public class SearchMenuActivity extends Activity {
 	 * @author Dyllon Dekok
 	 */
 	private void searchByBarcode(){		
-//		//Sets up the Intent of the barcode scanner that was imported in the application
-//		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-//		intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
-//		
-//		//Starts the Activity to receive the barcode number from the beverage
-//		startActivityForResult(intent, 0);
+		//Sets up the Intent of the barcode scanner that was imported in the application
+		Intent intent = new Intent(SCAN_CLASS);
+		intent.putExtra(SCAN_MODE_CLASS, SCAN_MODE);
 		
-		Intent barcodeResultIntent = new Intent(this, BeerDetailsActivity.class);
-        barcodeResultIntent.putExtra(SEARCH_BARCODE, "08992475");
-        startActivity(barcodeResultIntent);
+		//Starts the Activity to receive the barcode number from the beverage
+		startActivityForResult(intent, 0);
 	}
 	
 	
@@ -104,11 +105,12 @@ public class SearchMenuActivity extends Activity {
 	        if (resultCode == RESULT_OK)
 	        {
 	        	//put the results in the string values
-	            String contents = intent.getStringExtra("SCAN_RESULT");
-	            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+	            String contents = intent.getStringExtra(SCAN_RESULT);
+	            String format = intent.getStringExtra(SCAN_RESULT_FORMAT);
 	            
 	            Intent barcodeResultIntent = new Intent(this, BeerDetailsActivity.class);
 	            barcodeResultIntent.putExtra(SEARCH_BARCODE, contents);
+	            startActivity(barcodeResultIntent);
 	            
 //	            contentTxt.setText(contents);
 	            //logs the successful scan in the debugger
