@@ -93,7 +93,9 @@ public class BeerService implements IBeerService {
 		try {
 			// get the Beer from an online source
 			BarcodeSearchResult bsr = onlineBeerDAO.searchBeerByBarcode(code);
-			cacheBeerAndBarcode(bsr);
+			
+			//cache the results for offline use
+			cacheBeerAndBarcode((BarcodeSearchResult) bsr.clone());
 			return bsr;
 
 		} catch (Exception e) {
