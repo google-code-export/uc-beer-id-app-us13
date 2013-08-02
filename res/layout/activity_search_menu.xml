@@ -30,12 +30,12 @@
     <!-- android:onClick="searchByBarcode"  -->
 
     <Button
-        android:id="@+id/btnAdminLogin"
+        android:id="@+id/btnFacebookLoginLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/btnSearchByBarcode"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
-        android:text="@string/admin_login" />
+        android:text="@string/facebook_login" />
 
 </RelativeLayout>

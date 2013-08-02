@@ -164,5 +164,7 @@
     <string name="title_beer_id_app">Beer ID App</string>
     <string name="beer_color_style">Style:</string>
     <string name="reset">Reset</string>
+    <string name="faceook_login">Log into Facebook</string>
+    <string name="facebook_logout">Logout of Facebook</string>
 
 </resources>
