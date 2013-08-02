@@ -62,8 +62,17 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase arg0) {
-		// TODO Auto-generated method stub
+	public void onCreate(SQLiteDatabase db) {
+
+		String createSQL = "CREATE TABLE " + BEER_TABLE + " ( id INTEGER PRIMARY KEY AUTOINCREMENT, "
+										   + GUID       + " INTEGER, "
+										   + NAME       + " TEXT, "
+										   + STYLE      + " TEXT, "
+										   + CALORIES   + " REAL, "
+										   + ABV		+ " REAL, "
+										   + ");";
+		
+		db.execSQL(createSQL);
 		
 	}
 
