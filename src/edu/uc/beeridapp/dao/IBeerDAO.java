@@ -2,17 +2,17 @@ package edu.uc.beeridapp.dao;
 
 import java.util.ArrayList;
 
+import edu.uc.beeridapp.dto.BarcodeSearchResult;
 import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
-
 /**
  * BeerApp DAO Interface
+ * 
  * @author Dyllon Dekok
  */
-public interface IBeerDAO 
-{
+public interface IBeerDAO {
 	/**
 	 * gets a list of BeerStyles from a data source
 	 * 
@@ -29,5 +29,16 @@ public interface IBeerDAO
 	 * @throws Exception
 	 */
 	public ArrayList<Beer> searchBeers(BeerSearch beerSearch) throws Exception;
+
+	/**
+	 * gets a beer from the barcode provided
+	 * 
+	 * @param code
+	 *            scanned barcode
+	 * @return BarcodeSearchResult
+	 * @throws Exception
+	 */
+	public BarcodeSearchResult searchBeerByBarcode(String code)
+			throws Exception;
 
 }
