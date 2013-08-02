@@ -21,7 +21,8 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 	private static final String CALORIES = "calories";
 	private static final String ABV = "abv";
 	private static final String NAME = "name";
-	private static final String BEER_TABLE = null;
+	private static final String BEER_TABLE = "beers";
+	private static final String BARCODE_TABLE = "barcodes";
 
 	public OfflineBeerDAO(Context context) {
 		super(context, "beeridapp", null, 1);
@@ -64,7 +65,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 
-		String createSQL = "CREATE TABLE " + BEER_TABLE + " ( id INTEGER PRIMARY KEY AUTOINCREMENT, "
+		String createBeerTableSQL = "CREATE TABLE " + BEER_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
 										   + GUID       + " INTEGER, "
 										   + NAME       + " TEXT, "
 										   + STYLE      + " TEXT, "
@@ -72,7 +73,14 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 										   + ABV		+ " REAL, "
 										   + ");";
 		
-		db.execSQL(createSQL);
+		String createBarCodeTableSQL = "CREATE TABLE " + BARCODE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
+										   + GUID		   + " INTEGER, "
+										   + BARCODE_GUID  + " INTEGER, "
+										   + BARCODE       + " TEXT, "
+										   + ");";
+		
+		db.execSQL(createBeerTableSQL);
+		db.execSQL(createBarCodeTableSQL);
 		
 	}
 
