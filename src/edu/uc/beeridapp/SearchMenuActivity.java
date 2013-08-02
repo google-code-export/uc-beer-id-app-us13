@@ -15,6 +15,7 @@ import android.widget.TextView;
  */
 public class SearchMenuActivity extends Activity {
 	
+	public static final String SEARCH_BARCODE = "SEARCH_BARCODE";
 	private Button btnSearchByDetails;
 	private Button btnSearchByBarcode;
 	private Button btnAdminLogin;
@@ -75,13 +76,19 @@ public class SearchMenuActivity extends Activity {
 	 * @author Dyllon Dekok
 	 */
 	private void searchByBarcode(){		
-		//Sets up the Intent of the barcode scanner that was imported in the application
-		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
-		intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
+//		//Sets up the Intent of the barcode scanner that was imported in the application
+//		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+//		intent.putExtra("com.google.zxing.client.android.SCAN.SCAN_MODE", "QR_CODE_MODE");
+//		
+//		//Starts the Activity to receive the barcode number from the beverage
+//		startActivityForResult(intent, 0);
 		
-		//Starts the Activity to receive the barcode number from the beverage
-		startActivityForResult(intent, 0);
+		Intent barcodeResultIntent = new Intent(this, BeerDetailsActivity.class);
+        barcodeResultIntent.putExtra(SEARCH_BARCODE, "08992475");
+        startActivity(barcodeResultIntent);
 	}
+	
+	
 	
 	
 	/**
@@ -100,7 +107,10 @@ public class SearchMenuActivity extends Activity {
 	            String contents = intent.getStringExtra("SCAN_RESULT");
 	            String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 	            
-	            contentTxt.setText(contents);
+	            Intent barcodeResultIntent = new Intent(this, BeerDetailsActivity.class);
+	            barcodeResultIntent.putExtra(SEARCH_BARCODE, contents);
+	            
+//	            contentTxt.setText(contents);
 	            //logs the successful scan in the debugger
 	            Log.i("xZing", "contents: "+contents+" format: "+format);
 	            // Handle successful scan

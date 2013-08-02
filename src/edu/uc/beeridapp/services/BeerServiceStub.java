@@ -3,6 +3,7 @@ package edu.uc.beeridapp.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.uc.beeridapp.dto.BarcodeSearchResult;
 import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
@@ -22,7 +23,7 @@ public class BeerServiceStub implements IBeerService {
 	}
 
 	@Override
-	public Beer fetchBeerByBarcode(String code) {
+	public BarcodeSearchResult fetchBeerByBarcode(String code) {
 		// TODO Auto-generated method stub
 		return null;
 	}

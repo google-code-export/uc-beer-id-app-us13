@@ -1,10 +1,14 @@
 package edu.uc.beeridapp;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.uc.beeridapp.dto.Beer;
+import edu.uc.beeridapp.services.BeerService;
+import edu.uc.beeridapp.services.IBeerService;
 
 /**
  * This class displays information about a selected beer from the previous
@@ -19,6 +23,7 @@ public class BeerDetailsActivity extends Activity {
 	private TextView txtBeerStyle;
 	private TextView txtCalories;
 	private TextView txtAlcohol_Percentage;
+	private Beer beer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +37,20 @@ public class BeerDetailsActivity extends Activity {
 		txtCalories = (TextView) findViewById(R.id.txtCalories);
 		txtAlcohol_Percentage = (TextView) findViewById(R.id.txtAlcohol_Percentage);
 
-		// Obtain beer object and its attributes
+		if (this.getIntent().hasExtra(SearchMenuActivity.SEARCH_BARCODE)) {
+			String searchCode = (String) this.getIntent().getSerializableExtra(
+					SearchMenuActivity.SEARCH_BARCODE);
+			BarcodeSearchTask bcst = new BarcodeSearchTask();
+			bcst.execute(searchCode);
+		} else {
+			// Obtain beer object and its attributes
+			beer = (Beer) this.getIntent().getSerializableExtra(
+					BeerResultsActivity.SELECTED_BEER);
+			loadBeerDetails();
+		}
+	}
 
-		Beer beer = (Beer) this.getIntent().getSerializableExtra(
-				BeerResultsActivity.SELECTED_BEER);
-
+	private void loadBeerDetails() {
 		String name = beer.getName().toString();
 		String style = beer.getStyle().toString();
 		String abv = beer.getAbv().toString();
@@ -47,7 +61,6 @@ public class BeerDetailsActivity extends Activity {
 		txtBeerStyle.setText(style);
 		txtCalories.setText(calories);
 		txtAlcohol_Percentage.setText(abv);
-
 	}
 
 	@Override
@@ -55,6 +68,40 @@ public class BeerDetailsActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.beer_details, menu);
 		return true;
+	}
+
+	private class BarcodeSearchTask extends AsyncTask<String, Integer, Beer> {
+
+		@Override
+		protected Beer doInBackground(String... params) {
+
+			IBeerService bs = new BeerService(BeerDetailsActivity.this);
+			Beer result = new Beer();
+
+			try {
+				result = bs.fetchBeerByBarcode(params[0]);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			// TODO Auto-generated method stub
+			return result;
+		}
+
+		@Override
+		protected void onPostExecute(Beer result) {
+			if (result.equals(null)) {
+
+				// Inform the user there are no results found
+				Toast.makeText(BeerDetailsActivity.this,
+						getString(R.string.errNoResultsFound),
+						Toast.LENGTH_LONG).show();
+			} else {
+				// marry together the data with the screen.
+				beer = result;
+				loadBeerDetails();
+			}
+		}
+
 	}
 
 }

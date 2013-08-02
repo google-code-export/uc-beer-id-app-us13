@@ -7,6 +7,7 @@ import android.content.Context;
 import edu.uc.beeridapp.dao.IBeerDAO;
 import edu.uc.beeridapp.dao.OfflineBeerDAO;
 import edu.uc.beeridapp.dao.OnlineBeerDAO;
+import edu.uc.beeridapp.dto.BarcodeSearchResult;
 import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
@@ -82,9 +83,30 @@ public class BeerService implements IBeerService {
 	}
 
 	/**
+	 * {@inheritDoc}
+	 * 
+	 * @throws Exception
+	 */
+	@Override
+	public BarcodeSearchResult fetchBeerByBarcode(String code) throws Exception {
+
+		try {
+			// get the Beer from an online source
+			BarcodeSearchResult bsr = onlineBeerDAO.searchBeerByBarcode(code);
+			cacheBeerAndBarcode(bsr);
+			return bsr;
+
+		} catch (Exception e) {
+			// device is offline, get the beer from the local cache
+			return offlineBeerDAO.searchBeerByBarcode(code);
+		}
+	}
+
+	/**
 	 * caches the beers in the local SQLite DB
 	 * 
 	 * @param beerList
+	 *            list of beers from search
 	 */
 	private void cacheBeers(ArrayList<Beer> beerList) {
 		// TODO Auto-generated method stub
@@ -92,12 +114,14 @@ public class BeerService implements IBeerService {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * caches the beer and itself barcode in the local SQLite DB
+	 * 
+	 * @param bsr
+	 *            beer result from barcode search
 	 */
-	@Override
-	public Beer fetchBeerByBarcode(String code) {
+	private void cacheBeerAndBarcode(BarcodeSearchResult bsr) {
 		// TODO Auto-generated method stub
-		return null;
+
 	}
 
 }
