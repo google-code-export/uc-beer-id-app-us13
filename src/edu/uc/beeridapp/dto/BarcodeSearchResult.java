@@ -6,7 +6,7 @@ package edu.uc.beeridapp.dto;
  * @author Tim Guibord
  * 
  */
-public class BarcodeSearchResult extends Beer {
+public class BarcodeSearchResult extends Beer implements Cloneable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,5 +27,19 @@ public class BarcodeSearchResult extends Beer {
 
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
+	}
+	
+	/**
+	 * make the object thread safe for local caching after return from online API
+	 */
+	@Override
+	public BarcodeSearchResult clone() {
+		try {
+			return (BarcodeSearchResult) super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
