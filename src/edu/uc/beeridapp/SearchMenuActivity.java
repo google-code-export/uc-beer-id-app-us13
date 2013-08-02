@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 
 /**
  * @author Brian Pumphrey Search Menu Activity
@@ -24,7 +23,6 @@ public class SearchMenuActivity extends Activity {
 	private Button btnSearchByDetails;
 	private Button btnSearchByBarcode;
 	private Button btnAdminLogin;
-	private TextView contentTxt;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +33,6 @@ public class SearchMenuActivity extends Activity {
 		btnSearchByDetails = (Button) findViewById(R.id.btnSearchByDetails);
 		btnSearchByBarcode = (Button) findViewById(R.id.btnSearchByBarcode);
 		btnAdminLogin = (Button) findViewById(R.id.btnAdminLogin);
-		contentTxt = (TextView)findViewById(R.id.scan_content);
 		
 		// Create Listeners for Buttons
 		OnClickListener searchByDetailsListener = new OnSearchByDetailsListener();
@@ -108,14 +105,14 @@ public class SearchMenuActivity extends Activity {
 	            String contents = intent.getStringExtra(SCAN_RESULT);
 	            String format = intent.getStringExtra(SCAN_RESULT_FORMAT);
 	            
+	            //initialize new result intent, pass the scanned value and start the activity
 	            Intent barcodeResultIntent = new Intent(this, BeerDetailsActivity.class);
 	            barcodeResultIntent.putExtra(SEARCH_BARCODE, contents);
 	            startActivity(barcodeResultIntent);
-	            
-//	            contentTxt.setText(contents);
+
 	            //logs the successful scan in the debugger
 	            Log.i("xZing", "contents: "+contents+" format: "+format);
-	            // Handle successful scan
+
 	        } 
 	        //did not activity therefore the result was cancelled
 	        else if (resultCode == RESULT_CANCELED)
