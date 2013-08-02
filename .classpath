@@ -6,5 +6,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="lib" path="libs/commons-lang3-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/tguibord/mobile_dev/uc-beer-id-app-us13/libs/facebook-sdk.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CaptureActivity"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

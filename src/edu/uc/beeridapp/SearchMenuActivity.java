@@ -39,6 +39,7 @@ public class SearchMenuActivity extends Activity {
 		OnClickListener searchByBarcodeListener = new OnSearchByBarcodeListener();
 		OnClickListener adminLoginListener = new OnAdminLoginListener();
 		
+		//add listeners to the buttons
 		btnSearchByDetails.setOnClickListener(searchByDetailsListener);
 		btnSearchByBarcode.setOnClickListener(searchByBarcodeListener);
 		btnAdminLogin.setOnClickListener(adminLoginListener);
