@@ -2,16 +2,29 @@ package edu.uc.beeridapp.dao;
 
 import java.util.ArrayList;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import edu.uc.beeridapp.dto.BarcodeSearchResult;
 import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
-public class OfflineBeerDAO implements IBeerDAO {
+
+public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
+
+	private static final String BARCODE_GUID = "barcode_guid";
+	private static final String BARCODE = "barcode";
+	private static final String GUID = "guid";
+	private static final String STYLE = "style";
+	private static final String CALORIES = "calories";
+	private static final String ABV = "abv";
+	private static final String NAME = "name";
+	private static final String BEER_TABLE = null;
 
 	public OfflineBeerDAO(Context context) {
-		// TODO Auto-generated constructor stub
+		super(context, "beeridapp", null, 1);
 	}
 
 	@Override
@@ -32,6 +45,33 @@ public class OfflineBeerDAO implements IBeerDAO {
 		return null;
 	}
 
+	public void insert(Beer beer) {
+		
+		ContentValues values = new ContentValues();
+		values.put(GUID, beer.getGuid());
+		values.put(STYLE, beer.getStyle());
+		values.put(CALORIES, beer.getCalories());
+		values.put(ABV,  beer.getAbv());
+		values.put(NAME, beer.getName());
+		
+		long id = getWritableDatabase().insert(BEER_TABLE, NAME, values);
+		
+		beer.setId((int)id);
+		
+		
+	}
+
+	@Override
+	public void onCreate(SQLiteDatabase arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

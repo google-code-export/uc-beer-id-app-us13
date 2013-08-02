@@ -65,6 +65,7 @@ public class BeerService implements IBeerService {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Beer> fetchBeers(BeerSearch beerSearch) throws Exception {
 		try {
@@ -111,10 +112,54 @@ public class BeerService implements IBeerService {
 	 *            list of beers from search
 	 */
 	private void cacheBeers(ArrayList<Beer> beerList) {
-		// TODO Auto-generated method stub
+		// instantiate an object of the inner class CacheBeers.  This is a separate object, because it implements Runnable.
+        CacheBeers cp = new CacheBeers(beerList);
+        // pass the object to a new thread.
+        Thread cpThread = new Thread (cp);
+        // invoke the start method on that thread which will start a new thread, and run the CacheBeers object in that new thread.
+        cpThread.start();
+
 
 	}
 
+	class CacheBeers implements Runnable {
+
+        // The collection of beers that we wish to cache.
+        List<Beer> beerList;
+
+        /**
+         * Parameterized constructor ensures that we have populated beerList if we have an object of this class.
+         * @param beerList the collection of beers we want to cache.
+         */
+        public CacheBeers(List<Beer> beerList) {
+                this.beerList = beerList;
+        }
+
+
+        /**
+         * The run method will execute in a new thread when the start() method is executed on that thread.
+         */
+        @Override
+        public void run() {
+                // TODO Auto-generated method stub
+                // iterate over the collection of beers.
+                for (Beer beer : beerList) {
+
+                        try {
+                                if (offlineBeerDAO.searchBeers((BeerSearch) beer) == null) {
+                                        ((OfflineBeerDAO) offlineBeerDAO).insert(beer);
+                                }
+                        } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                        }
+
+                }               
+                
+        }
+	
+	}
+	
 	/**
 	 * caches the beer and itself barcode in the local SQLite DB
 	 * 
