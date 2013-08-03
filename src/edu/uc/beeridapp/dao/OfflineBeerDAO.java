@@ -58,8 +58,19 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 		
 		long id = getWritableDatabase().insert(BEER_TABLE, NAME, values);
 		
-		beer.setId((int)id);
+		beer.setId((int)id);		
 		
+	}
+	
+public void insert(BeerStyle bs) {
+		
+		ContentValues values = new ContentValues();
+		values.put(GUID, bs.getGuid());
+		values.put(STYLE, bs.getStyle());
+		
+		long id = getWritableDatabase().insert(STYLE_TABLE, STYLE, values);
+		
+		bs.setId((int)id);		
 		
 	}
 
