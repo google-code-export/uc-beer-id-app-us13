@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import edu.uc.beeridapp.dto.BarcodeSearchResult;
@@ -24,6 +25,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 	private static final String BEER_TABLE = "beers";
 	private static final String BARCODE_TABLE = "barcodes";
 	private static final String STYLE_TABLE = "styles";
+	
 
 	public OfflineBeerDAO(Context context) {
 		super(context, "beeridapp", null, 1);
@@ -31,8 +33,37 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 
 	@Override
 	public ArrayList<BeerStyle> fetchStyles() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Unverified
+		final int ID_COLUMN_INDEX = 0;
+		final int GUID_COLUMN_INDEX = 1;
+		final int STYLE_COLUMN_INDEX = 2;
+		
+		ArrayList<BeerStyle> allStyles = new ArrayList<BeerStyle>();
+		BeerStyle thisBS;
+		
+		String selectStylesSQL = "SELECT DISTINCT " + STYLE + " FROM " + STYLE_TABLE;
+		
+		Cursor cursor = getReadableDatabase().rawQuery(selectStylesSQL, null);
+		
+		if(cursor.getCount() > 0) {
+			
+			cursor.moveToFirst();
+			
+			thisBS = new BeerStyle();
+			
+			while (!cursor.isAfterLast()) {
+				thisBS.setId(cursor.getInt(ID_COLUMN_INDEX));
+				thisBS.setGuid(Integer.toString(cursor.getInt(GUID_COLUMN_INDEX)));
+				thisBS.setStyle(cursor.getString(STYLE_COLUMN_INDEX));
+				allStyles.add(thisBS);
+				
+				cursor.moveToNext();
+			}
+		}
+		
+		cursor.close();
+		
+		return allStyles;
 	}
 
 	@Override
