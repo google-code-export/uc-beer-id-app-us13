@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import edu.uc.beeridapp.dao.IBeerDAO;
+import edu.uc.beeridapp.dao.IOfflineBeerDAO;
 import edu.uc.beeridapp.dao.OfflineBeerDAO;
 import edu.uc.beeridapp.dao.OnlineBeerDAO;
 import edu.uc.beeridapp.dto.BarcodeSearchResult;
@@ -15,7 +16,7 @@ import edu.uc.beeridapp.dto.BeerStyle;
 public class BeerService implements IBeerService {
 
 	private IBeerDAO onlineBeerDAO;
-	private IBeerDAO offlineBeerDAO;
+	private IOfflineBeerDAO offlineBeerDAO;
 
 	// initializes the DAO objects
 	public BeerService(Context context) {
@@ -53,16 +54,62 @@ public class BeerService implements IBeerService {
 	}
 
 	/**
-	 * caches the beer styles in the local SQLite DB
+	 * Caches the beer styles in the local SQLite DB.
+	 * Sets up and starts in a new Thread
 	 * 
 	 * @param allStyles
 	 */
 	private void cacheStyles(ArrayList<BeerStyle> allStyles) {
-		// TODO Auto-generated method stub
 		
+		CacheStyles cs = new CacheStyles(allStyles);
+		
+		Thread csThread = new Thread(cs);
+		
+		csThread.start();
 
 	}
 
+	/**
+	 * An inner class containing logic for caching the beer styles
+	 * Implements Runnable for threading
+	 * 
+	 * @author metzgecl
+	 *
+	 */
+	class CacheStyles implements Runnable {
+		
+		ArrayList<BeerStyle> allStyles;
+		
+		/**
+		 * Sets the allStyles ArrayList to the one that is to be cached.
+		 * 
+		 * @param allStyles
+		 */
+		public CacheStyles(ArrayList<BeerStyle> allStyles) {
+		
+			this.allStyles = allStyles;
+		
+		}
+
+		@Override
+		public void run() {
+			
+			for(BeerStyle beerStyle : allStyles) {
+				try {
+					
+					if (offlineBeerDAO.searchBeerByGuid(beerStyle.getGuid()) == null) {
+						offlineBeerDAO.insert(beerStyle);
+					}
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		
+		
+	}
 	/**
 	 * {@inheritDoc}
 	 */

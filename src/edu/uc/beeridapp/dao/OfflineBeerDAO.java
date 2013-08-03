@@ -13,7 +13,7 @@ import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
 
-public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
+public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO {
 
 	private static final String BARCODE_GUID = "barcode_guid";
 	private static final String BARCODE = "barcode";
@@ -93,7 +93,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 		
 	}
 	
-public void insert(BeerStyle bs) {
+	public void insert(BeerStyle bs) {
 		
 		ContentValues values = new ContentValues();
 		values.put(GUID, bs.getGuid());
@@ -138,6 +138,18 @@ public void insert(BeerStyle bs) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Beer searchBeerByGuid(String guid2) {
+		// TODO DO WE NEED THIS????
+		return null;
+	}
+
+	@Override
+	public BeerStyle searchBeerStyleByGuid(String guid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }
