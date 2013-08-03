@@ -59,6 +59,7 @@ public class BeerService implements IBeerService {
 	 */
 	private void cacheStyles(ArrayList<BeerStyle> allStyles) {
 		// TODO Auto-generated method stub
+		
 
 	}
 
