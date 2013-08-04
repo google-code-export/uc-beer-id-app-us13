@@ -1,9 +1,8 @@
 package edu.uc.beeridapp;
 
-import android.app.Activity;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Menu;
 import android.widget.TextView;
 import android.widget.Toast;
 import edu.uc.beeridapp.dto.Beer;
@@ -17,7 +16,7 @@ import edu.uc.beeridapp.services.IBeerService;
  * @author Brian Pumphrey
  */
 
-public class BeerDetailsActivity extends Activity {
+public class BeerDetailsActivity extends BeerIDActivity {
 
 	private TextView txtBeerName;
 	private TextView txtBeerStyle;
@@ -37,9 +36,9 @@ public class BeerDetailsActivity extends Activity {
 		txtCalories = (TextView) findViewById(R.id.txtCalories);
 		txtAlcohol_Percentage = (TextView) findViewById(R.id.txtAlcohol_Percentage);
 
-		if (this.getIntent().hasExtra(SearchMenuActivity.SEARCH_BARCODE)) {
+		if (this.getIntent().hasExtra(BeerIDActivity.SEARCH_BARCODE)) {
 			String searchCode = (String) this.getIntent().getSerializableExtra(
-					SearchMenuActivity.SEARCH_BARCODE);
+					BeerIDActivity.SEARCH_BARCODE);
 			BarcodeSearchTask bcst = new BarcodeSearchTask();
 			bcst.execute(searchCode);
 		} else {
@@ -61,13 +60,6 @@ public class BeerDetailsActivity extends Activity {
 		txtBeerStyle.setText(style);
 		txtCalories.setText(calories);
 		txtAlcohol_Percentage.setText(abv);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.beer_details, menu);
-		return true;
 	}
 
 	private class BarcodeSearchTask extends AsyncTask<String, Integer, Beer> {
