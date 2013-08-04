@@ -1,8 +1,6 @@
 package edu.uc.beeridapp;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,8 +11,8 @@ import android.widget.Toast;
  * @author Brian Pumphrey
  */
 
-public class RegisterActivity extends Activity {
-	
+public class RegisterActivity extends BeerIDActivity {
+
 	private static final String PASSWORD_MISMATCH = "Password Fields Do Not Match!";
 	private static final String EMAIL_MISMATCH = "Email Fields Do Not Match!";
 	private static final String FIELDS_REQUIRED_NOTIFICATION = "One Or More Fields Are Empty! \r\n All Information Is Required!";
@@ -27,12 +25,12 @@ public class RegisterActivity extends Activity {
 	private EditText edtPassword;
 	private EditText edtConfirmPassword;
 	private Button btnSubmit;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		
+
 		// Get access to the UI components
 		edtFirst = (EditText) findViewById(R.id.edtFirst);
 		edtLast = (EditText) findViewById(R.id.edtLast);
@@ -46,22 +44,15 @@ public class RegisterActivity extends Activity {
 
 		// Create Listeners for Buttons
 		OnClickListener submitListener = new OnSubmitListener();
-		
+
 		btnSubmit.setOnClickListener(submitListener);
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.register, menu);
-		return true;
-	}
-	
-	@Override
 	protected void onPause() {
 		super.onPause();
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -83,12 +74,12 @@ public class RegisterActivity extends Activity {
 			String confirmEmailText = edtConfirmEmail.getText().toString();
 			String passwordText = edtPassword.getText().toString();
 			String confirmPasswordText = edtConfirmPassword.getText().toString();
-			
+
 			// Notify User One or More Fields are Empty
 			if (firstText.equals("") || lastText.equals("") || dobText.equals("")|| emailText.equals("") || confirmEmailText.equals("") || passwordText.equals("") || confirmPasswordText.equals(""))
 			{
 				Toast.makeText(RegisterActivity.this, FIELDS_REQUIRED_NOTIFICATION, Toast.LENGTH_LONG).show();
-				
+
 			}
 			// Notify User Email Fields Do Not Match
 			else if (!emailText.equals(confirmEmailText))
@@ -105,7 +96,7 @@ public class RegisterActivity extends Activity {
 				//TODO Attempt to Save Information
 			}
 
-			
+
 		}
 	}
 }

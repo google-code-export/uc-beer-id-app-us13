@@ -2,12 +2,10 @@ package edu.uc.beeridapp;
 
 import java.util.ArrayList;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -26,7 +24,7 @@ import edu.uc.beeridapp.services.IBeerService;
  *         determined by user
  */
 
-public class DetailsSearchActivity extends Activity {
+public class DetailsSearchActivity extends BeerIDActivity {
 
 	public static final String BEER_SEARCH = "BEER_SEARCH";
 
@@ -79,13 +77,6 @@ public class DetailsSearchActivity extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.details_search, menu);
-		return true;
 	}
 
 	/**

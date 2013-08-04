@@ -1,9 +1,8 @@
 package edu.uc.beeridapp;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,14 +15,8 @@ import com.facebook.Settings;
 /**
  * @author Brian Pumphrey Search Menu Activity
  */
-public class SearchMenuActivity extends Activity {
+public class SearchMenuActivity extends BeerIDActivity {
 
-	private static final String SCAN_RESULT_FORMAT = "SCAN_RESULT_FORMAT";
-	private static final String SCAN_RESULT = "SCAN_RESULT";
-	private static final String SCAN_MODE = "PRODUCT_MODE";
-	private static final String SCAN_MODE_CLASS = "com.google.zxing.client.android.SCAN.SCAN_MODE";
-	private static final String SCAN_CLASS = "com.google.zxing.client.android.SCAN";
-	public static final String SEARCH_BARCODE = "SEARCH_BARCODE";
 	private Button btnSearchByDetails;
 	private Button btnSearchByBarcode;
 	private Button btnFacebookLoginLogout;
@@ -50,13 +43,13 @@ public class SearchMenuActivity extends Activity {
 			}
 			if (session == null) {
 				session = new Session(this);
-			}
+			} 
 			Session.setActiveSession(session);
 			if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
 				session.openForRead(new Session.OpenRequest(this)
-						.setCallback(statusCallback));
+				.setCallback(statusCallback));
 			}
-		}
+		} 
 
 		// Create Listeners for Buttons
 		OnClickListener searchByDetailsListener = new OnSearchByDetailsListener();
@@ -68,14 +61,7 @@ public class SearchMenuActivity extends Activity {
 
 		updateView();
 
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.search_menu, menu);
-		return true;
-	}
+	} 
 
 	@Override
 	protected void onPause() {
@@ -97,33 +83,6 @@ public class SearchMenuActivity extends Activity {
 	public void onStop() {
 		super.onStop();
 		Session.getActiveSession().removeCallback(statusCallback);
-	}
-
-	/**
-	 * Starts Activity to Search By Details of Beverage
-	 */
-	private void searchByDetails() {
-		// Call an activity to direct to the menu screen
-		Intent searchByDetailsIntent = new Intent(this,
-				DetailsSearchActivity.class);
-
-		// Invoke the register screen
-		startActivity(searchByDetailsIntent);
-	}
-
-	/**
-	 * Starts Activity to Search by Barcode Label on Beverage
-	 * 
-	 * @author Dyllon Dekok
-	 */
-	private void searchByBarcode() {
-		// Sets up the Intent of the barcode scanner that was imported in the
-		// application
-		Intent intent = new Intent(SCAN_CLASS);
-		intent.putExtra(SCAN_MODE_CLASS, SCAN_MODE);
-
-		// Starts the Activity to receive the barcode number from the beverage
-		startActivityForResult(intent, 0);
 	}
 
 	/**
@@ -155,7 +114,7 @@ public class SearchMenuActivity extends Activity {
 			}
 			// did not activity therefore the result was cancelled
 			else if (resultCode == 1) {
-				
+
 			}
 		} else {
 			Session.getActiveSession().onActivityResult(this, requestCode,
@@ -193,7 +152,7 @@ public class SearchMenuActivity extends Activity {
 		Session session = Session.getActiveSession();
 		if (!session.isOpened() && !session.isClosed()) {
 			session.openForRead(new Session.OpenRequest(this)
-					.setCallback(statusCallback));
+			.setCallback(statusCallback));
 		} else {
 			Session.openActiveSession(this, true, statusCallback);
 		}
