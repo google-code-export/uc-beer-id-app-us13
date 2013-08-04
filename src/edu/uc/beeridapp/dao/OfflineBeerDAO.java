@@ -101,6 +101,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		long id = getWritableDatabase().insert(STYLE_TABLE, STYLE, values);
 		
+		
 		bs.setId((int)id);		
 		
 	}
@@ -130,6 +131,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		db.execSQL(createBeerTableSQL);
 		db.execSQL(createBarCodeTableSQL);
 		db.execSQL(createStyleTableSQL);
+		db.close();
 		
 	}
 
