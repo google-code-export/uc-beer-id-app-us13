@@ -166,5 +166,9 @@
     <string name="reset">Reset</string>
     <string name="faceook_login">Log into Facebook</string>
     <string name="facebook_logout">Logout of Facebook</string>
+    <string name="title_activity_beer_id">BeerIDActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_details_search">Search By Detail</string>
+    <string name="menu_barcode_search">Search By Barcode</string>
 
 </resources>
