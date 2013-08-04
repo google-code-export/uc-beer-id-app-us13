@@ -192,9 +192,21 @@ public class BeerService implements IBeerService {
                 // TODO Auto-generated method stub
                 // iterate over the collection of beers.
                 for (Beer beer : beerList) {
+                	
+                	/*
+                	 * Cannot cast Beer object as a BeerSearch object, so creating a new BeerSearch with the 
+                	 * Beer info
+                	 */
+                	BeerSearch bs = new BeerSearch();
+                	bs.setId(beer.getId());
+                	bs.setGuid(beer.getGuid());
+                	bs.setName(beer.getName());
+                	bs.setStyle(beer.getStyle());
+                	bs.setAbv(beer.getAbv());
+                	bs.setCalories(beer.getCalories());
 
                         try {
-                                if (offlineBeerDAO.searchBeers((BeerSearch) beer) == null) {
+                                if (offlineBeerDAO.searchBeers(bs) == null) {
                                         ((OfflineBeerDAO) offlineBeerDAO).insert(beer);
                                 }
                         } catch (Exception e) {
