@@ -113,13 +113,13 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 										   + NAME       + " TEXT, "
 										   + STYLE      + " TEXT, "
 										   + CALORIES   + " REAL, "
-										   + ABV		+ " REAL, "
+										   + ABV		+ " REAL"
 										   + ");";
 		
 		String createBarCodeTableSQL = "CREATE TABLE " + BARCODE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
 										   + GUID		   + " INTEGER, "
 										   + BARCODE_GUID  + " INTEGER, "
-										   + BARCODE       + " TEXT, "
+										   + BARCODE       + " TEXT"
 										   + ");";
 		
 		String createStyleTableSQL = "CREATE TABLE " + STYLE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
