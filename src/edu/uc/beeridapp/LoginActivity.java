@@ -1,10 +1,8 @@
 package edu.uc.beeridapp;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,7 +20,7 @@ import edu.uc.beeridapp.services.UserServiceStub;
 /**
  * @author Brian Pumphrey Login Screen Activity
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends BeerIDActivity {
 
 	private static final String WELCOME = "Welcome ";
 	private static final String CLOSE = "Close";
@@ -68,12 +66,6 @@ public class LoginActivity extends Activity {
 		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.login, menu);
-		return true;
-	}
 
 	@Override
 	protected void onPause() {
