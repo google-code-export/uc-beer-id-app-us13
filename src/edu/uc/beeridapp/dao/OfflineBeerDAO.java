@@ -28,7 +28,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 	
 
 	public OfflineBeerDAO(Context context) {
-		super(context, "beeridapp", null, 1);
+		super(context, "beeridapp.db", null, 1);
 	}
 
 	@Override
