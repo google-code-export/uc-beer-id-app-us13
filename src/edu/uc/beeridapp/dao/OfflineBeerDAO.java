@@ -13,7 +13,7 @@ import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
 
-public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
+public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO {
 
 	private static final String BARCODE_GUID = "barcode_guid";
 	private static final String BARCODE = "barcode";
@@ -28,7 +28,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 	
 
 	public OfflineBeerDAO(Context context) {
-		super(context, "beeridapp", null, 1);
+		super(context, "beeridapp.db", null, 1);
 	}
 
 	@Override
@@ -93,13 +93,14 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IBeerDAO {
 		
 	}
 	
-public void insert(BeerStyle bs) {
+	public void insert(BeerStyle bs) {
 		
 		ContentValues values = new ContentValues();
 		values.put(GUID, bs.getGuid());
 		values.put(STYLE, bs.getStyle());
 		
 		long id = getWritableDatabase().insert(STYLE_TABLE, STYLE, values);
+		
 		
 		bs.setId((int)id);		
 		
@@ -113,13 +114,13 @@ public void insert(BeerStyle bs) {
 										   + NAME       + " TEXT, "
 										   + STYLE      + " TEXT, "
 										   + CALORIES   + " REAL, "
-										   + ABV		+ " REAL, "
+										   + ABV		+ " REAL"
 										   + ");";
 		
 		String createBarCodeTableSQL = "CREATE TABLE " + BARCODE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
 										   + GUID		   + " INTEGER, "
 										   + BARCODE_GUID  + " INTEGER, "
-										   + BARCODE       + " TEXT, "
+										   + BARCODE       + " TEXT"
 										   + ");";
 		
 		String createStyleTableSQL = "CREATE TABLE " + STYLE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -130,6 +131,7 @@ public void insert(BeerStyle bs) {
 		db.execSQL(createBeerTableSQL);
 		db.execSQL(createBarCodeTableSQL);
 		db.execSQL(createStyleTableSQL);
+		db.close();
 		
 	}
 
@@ -138,6 +140,18 @@ public void insert(BeerStyle bs) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public Beer searchBeerByGuid(String guid2) {
+		// TODO DO WE NEED THIS????
+		return null;
+	}
+
+	@Override
+	public BeerStyle searchBeerStyleByGuid(String guid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }
