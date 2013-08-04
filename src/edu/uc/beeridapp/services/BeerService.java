@@ -97,7 +97,7 @@ public class BeerService implements IBeerService {
 			for(BeerStyle beerStyle : allStyles) {
 				try {
 					
-					if (offlineBeerDAO.searchBeerByGuid(beerStyle.getGuid()) == null) {
+					if (offlineBeerDAO.searchBeerStyleByGuid(beerStyle.getGuid()) == null) {
 						offlineBeerDAO.insert(beerStyle);
 					}
 				}
