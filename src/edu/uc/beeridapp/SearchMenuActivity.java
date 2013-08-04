@@ -19,7 +19,8 @@ public class SearchMenuActivity extends BeerIDActivity {
 
 	private Button btnSearchByDetails;
 	private Button btnSearchByBarcode;
-	private Button btnFacebookLoginLogout;
+	private Button btnFacebookLogout;
+	private Button btnFacebookLogin;
 
 	private Session.StatusCallback statusCallback = new SessionStatusCallback();
 
@@ -31,7 +32,8 @@ public class SearchMenuActivity extends BeerIDActivity {
 		// Get Access to UI Components
 		btnSearchByDetails = (Button) findViewById(R.id.btnSearchByDetails);
 		btnSearchByBarcode = (Button) findViewById(R.id.btnSearchByBarcode);
-		btnFacebookLoginLogout = (Button) findViewById(R.id.btnFacebookLoginLogout);
+		btnFacebookLogin = (Button) findViewById(R.id.btnFacebookLogin);
+		btnFacebookLogout = (Button) findViewById(R.id.btnFacebookLogout);
 
 		Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
 
@@ -49,18 +51,24 @@ public class SearchMenuActivity extends BeerIDActivity {
 				session.openForRead(new Session.OpenRequest(this)
 				.setCallback(statusCallback));
 			}
+			
 		} 
 
 		// Create Listeners for Buttons
 		OnClickListener searchByDetailsListener = new OnSearchByDetailsListener();
 		OnClickListener searchByBarcodeListener = new OnSearchByBarcodeListener();
-
+		OnClickListener onLoginClickListener = new OnLoginClickListener();
+		OnClickListener onLogoutClickListener = new OnLogoutClickListener();
+		
 		btnSearchByDetails.setOnClickListener(searchByDetailsListener);
 		btnSearchByBarcode.setOnClickListener(searchByBarcodeListener);
-		// btnFacebookLoginLogout.setOnClickListener(adminLoginListener);
+		btnFacebookLogin.setOnClickListener(onLoginClickListener);
+		btnFacebookLogout.setOnClickListener(onLogoutClickListener);
 
+		btnFacebookLogin.setVisibility(View.GONE);
+		btnFacebookLogout.setVisibility(View.GONE);
+		
 		updateView();
-
 	} 
 
 	@Override
@@ -132,19 +140,23 @@ public class SearchMenuActivity extends BeerIDActivity {
 	private void updateView() {
 		Session session = Session.getActiveSession();
 		if (session.isOpened()) {
-			btnFacebookLoginLogout.setText(R.string.facebook_logout);
-			btnFacebookLoginLogout.setOnClickListener(new OnClickListener() {
-				public void onClick(View view) {
-					onClickLogout();
-				}
-			});
+		//	btnFacebookLogin.setVisibility(View.GONE);
+			btnFacebookLogout.setVisibility(View.VISIBLE);
+		//  btnFacebookLoginLogout.setText(R.string.facebook_logout);
+		//	btnFacebookLogout.setOnClickListener(new OnClickListener() {
+		//		public void onClick(View view) {
+		//			onClickLogout();
+		//		}
+		//	});
 		} else {
-			btnFacebookLoginLogout.setText(R.string.facebook_login);
-			btnFacebookLoginLogout.setOnClickListener(new OnClickListener() {
-				public void onClick(View view) {
-					onClickLogin();
-				}
-			});
+			btnFacebookLogin.setVisibility(View.VISIBLE);
+		//	btnFacebookLogout.setVisibility(View.GONE);	
+		//  btnFacebookLoginLogout.setText(R.string.facebook_login);
+		//	btnFacebookLogin.setOnClickListener(new OnClickListener() {
+		//		public void onClick(View view) {
+		//			onClickLogin();
+		//		}
+		//	});
 		}
 	}
 
@@ -186,6 +198,23 @@ public class SearchMenuActivity extends BeerIDActivity {
 		@Override
 		public void onClick(View v) {
 			searchByBarcode();
+		}
+		
+	}
+	
+	class OnLoginClickListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			onClickLogin();
+		}
+	}
+	
+	class OnLogoutClickListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			onClickLogout();
 		}
 	}
 }
