@@ -41,4 +41,5 @@ public interface IBeerDAO {
 	public BarcodeSearchResult searchBeerByBarcode(String code)
 			throws Exception;
 
+
 }
