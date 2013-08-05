@@ -141,9 +141,10 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 	}
 
+	// This is used when caching to keep duplicates from being inserted
 	public Beer searchBeerByGuid(String guid2) {
-		// This is used when caching to keep duplicates from being inserted
-		String selectBeerByGuidSQL = "SELECT DISTINCT FROM " + BEER_TABLE + " WHERE " + GUID + "=' + guid2 + ';";
+		
+		String selectBeerByGuidSQL = "SELECT * FROM " + BEER_TABLE + " WHERE " + GUID + "=" + guid2 + " LIMIT 1;";
 		
 		final int ID_COLUMN_INDEX = 0;
 		final int GUID_COLUMN_INDEX = 1;
@@ -162,17 +163,13 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 			thisBeer = new Beer();
 
-			while (!cursor.isAfterLast()) {
-				
-				thisBeer.setId(cursor.getInt(ID_COLUMN_INDEX));
-				thisBeer.setGuid(cursor.getInt(GUID_COLUMN_INDEX));
-				thisBeer.setName(cursor.getString(NAME_COLUMN_INDEX));
-				thisBeer.setStyle(cursor.getString(STYLE_COLUMN_INDEX));
-				thisBeer.setCalories(Double.toString(cursor.getDouble(CALORIES_COLUMN_INDEX)));
-				thisBeer.setAbv(Double.toString(cursor.getDouble(ABV_COLUMN_INDEX)));				
+			thisBeer.setId(cursor.getInt(ID_COLUMN_INDEX));
+			thisBeer.setGuid(cursor.getInt(GUID_COLUMN_INDEX));
+			thisBeer.setName(cursor.getString(NAME_COLUMN_INDEX));
+			thisBeer.setStyle(cursor.getString(STYLE_COLUMN_INDEX));
+			thisBeer.setCalories(Double.toString(cursor.getDouble(CALORIES_COLUMN_INDEX)));
+			thisBeer.setAbv(Double.toString(cursor.getDouble(ABV_COLUMN_INDEX)));				
 
-				cursor.moveToNext();
-			}
 		}
 		
 		cursor.close();
