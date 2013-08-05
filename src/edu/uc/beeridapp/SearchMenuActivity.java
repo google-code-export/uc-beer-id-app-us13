@@ -1,12 +1,16 @@
 package edu.uc.beeridapp;
 
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.facebook.LoggingBehavior;
 import com.facebook.Session;
@@ -25,9 +29,11 @@ public class SearchMenuActivity extends BeerIDActivity {
 	private Button btnSearchByBarcode;
 	private Button btnFacebookLogout;
 	private Button btnFacebookLogin;
-
 	private Session.StatusCallback statusCallback = new SessionStatusCallback();
-
+	private LocationManager locationManager;
+    private LocationListener locationListener;
+	private TextView txtLong;
+    private TextView txtLat;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +49,8 @@ public class SearchMenuActivity extends BeerIDActivity {
 		btnSearchByBarcode = (Button) findViewById(R.id.btnSearchByBarcode);
 		btnFacebookLogin = (Button) findViewById(R.id.btnFacebookLogin);
 		btnFacebookLogout = (Button) findViewById(R.id.btnFacebookLogout);
+		txtLong = (TextView)findViewById(R.id.tvLong);
+		txtLat = (TextView)findViewById(R.id.tvLat);
 
 		Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
 
@@ -63,6 +71,41 @@ public class SearchMenuActivity extends BeerIDActivity {
 
 		}
 
+		// get a location manager from the operating system.
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        
+        locationListener = new LocationListener() {
+
+                @Override
+                public void onLocationChanged(Location loc) {
+                        // update our lat and lng values.
+                        txtLat.setText(Double.toString(loc.getLatitude()));
+                        txtLong.setText(Double.toString(loc.getLongitude()));
+                        
+                }
+
+                @Override
+                public void onProviderDisabled(String arg0) {
+                        // TODO Auto-generated method stub
+                        
+                }
+
+                @Override
+                public void onProviderEnabled(String arg0) {
+                        // TODO Auto-generated method stub
+                        
+                }
+
+                @Override
+                public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+                        // TODO Auto-generated method stub
+                        
+                }
+                
+        };
+        
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60 *1000, 0, locationListener);
+        
 		// Create Listeners for Buttons
 		OnClickListener searchByDetailsListener = new OnSearchByDetailsListener();
 		OnClickListener searchByBarcodeListener = new OnSearchByBarcodeListener();

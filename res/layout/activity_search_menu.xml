@@ -47,4 +47,40 @@
         android:layout_marginBottom="40dp"
         android:text="@string/facebook_logout" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearchByBarcode"
+        android:layout_below="@+id/btnSearchByBarcode"
+        android:layout_marginTop="31dp"
+        android:text="Long" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_centerVertical="true"
+        android:text="Lat" />
+
+    <TextView
+        android:id="@+id/tvLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/btnFacebookLogin"
+        android:layout_alignRight="@+id/btnSearchByBarcode"
+        android:text="0.0" />
+
+    <TextView
+        android:id="@+id/tvLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/tvLong"
+        android:layout_alignRight="@+id/tvLong"
+        android:text="0.0" />
+
 </RelativeLayout>
