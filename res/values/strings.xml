@@ -170,5 +170,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_details_search">Search By Detail</string>
     <string name="menu_barcode_search">Search By Barcode</string>
-
+    <string name="facebook_share">Share to Facebook</string>
+    <string name="search_again">Search Again</string>
 </resources>

@@ -75,5 +75,18 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </TableRow>
+    
+    <TableRow android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnFacebookShare"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal|fill_horizontal"
+            android:onClick="facebookShare"
+            android:text="@string/facebook_share" />
+        
+    </TableRow>
 
 </TableLayout>
