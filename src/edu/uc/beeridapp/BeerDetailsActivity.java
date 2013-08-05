@@ -1,8 +1,8 @@
 package edu.uc.beeridapp;
 
-
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -54,27 +54,18 @@ public class BeerDetailsActivity extends BeerIDActivity {
 		txtAlcohol_Percentage = (TextView) findViewById(R.id.txtAlcohol_Percentage);
 		btnFacebookShare = (Button) findViewById(R.id.btnFacebookShare);
 
+		// help to debug FB session issues
 		Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
 
+		// get the current FB session status and show the share button if one is
+		// opened
 		Session session = Session.getActiveSession();
-		if (session != null) {
-			Session.setActiveSession(session);
-			if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
-				session.openForRead(new Session.OpenRequest(this)
-						.setCallback(statusCallback));
-			}
-		} else if (savedInstanceState != null) {
-			session = Session.restoreSession(this, null, statusCallback,
-					savedInstanceState);
-			Session.setActiveSession(session);
-			if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
-				session.openForRead(new Session.OpenRequest(this)
-						.setCallback(statusCallback));
-			}
-		} else {
+		if (!session.isOpened()) {
 			btnFacebookShare.setVisibility(View.GONE);
 		}
 
+		// if this activity was reached from a barcode scan, get the beer from a
+		// AsyncTask
 		if (this.getIntent().hasExtra(BeerIDActivity.SEARCH_BARCODE)) {
 			String searchCode = (String) this.getIntent().getSerializableExtra(
 					BeerIDActivity.SEARCH_BARCODE);
@@ -88,15 +79,9 @@ public class BeerDetailsActivity extends BeerIDActivity {
 		}
 	}
 
-	private void checkFacebookStatus() {
-		Session session = Session.getActiveSession();
-		if (!session.isOpened()) {
-			btnFacebookShare.setVisibility(View.GONE);
-		} else {
-
-		}
-	}
-
+	/**
+	 * loads the beer details into the UI
+	 */
 	private void loadBeerDetails() {
 		String name = beer.getName().toString();
 		String style = beer.getStyle().toString();
@@ -110,7 +95,14 @@ public class BeerDetailsActivity extends BeerIDActivity {
 		txtAlcohol_Percentage.setText(abv);
 	}
 
+	/**
+	 * Initializes and shows a FB share dialog
+	 * 
+	 * @param view
+	 *            reference to the button that started the event
+	 */
 	public void facebookShare(View view) {
+		// package the feed dialog parameters
 		Bundle params = new Bundle();
 		params.putString("name", beer.getName());
 		params.putString("caption", "A refreshing " + beer.getStyle()
@@ -121,10 +113,14 @@ public class BeerDetailsActivity extends BeerIDActivity {
 		params.putString("link", BEERAPI_BASE_URL + beer.getGuid());
 		params.putString("picture", LOGO_LINK);
 
+		// create the dialog and populate it with the bundled params
 		WebDialog feedDialog = (new WebDialog.FeedDialogBuilder(
 				BeerDetailsActivity.this, Session.getActiveSession(), params))
 				.setOnCompleteListener(new OnCompleteListener() {
 
+					/**
+					 * gives toast message based on post success or failure
+					 */
 					@Override
 					public void onComplete(Bundle values,
 							FacebookException error) {
@@ -134,7 +130,7 @@ public class BeerDetailsActivity extends BeerIDActivity {
 							final String postId = values.getString("post_id");
 							if (postId != null) {
 								Toast.makeText(BeerDetailsActivity.this,
-										"Posted story, id: " + postId,
+										"Beer Published to Facebook Feed",
 										Toast.LENGTH_SHORT).show();
 							} else {
 								// User clicked the Cancel button
@@ -162,6 +158,8 @@ public class BeerDetailsActivity extends BeerIDActivity {
 					}
 
 				}).build();
+
+		// show the dialog
 		feedDialog.show();
 
 	}
@@ -195,6 +193,12 @@ public class BeerDetailsActivity extends BeerIDActivity {
 		Session.saveSession(session, outState);
 	}
 
+	/**
+	 * Manages callback from new FB session openning
+	 * 
+	 * @author Tim Guibord
+	 * 
+	 */
 	private class SessionStatusCallback implements Session.StatusCallback {
 		@Override
 		public void call(Session session, SessionState state,
@@ -202,18 +206,27 @@ public class BeerDetailsActivity extends BeerIDActivity {
 			checkFacebookStatus();
 		}
 	}
+
+	/**
+	 * AsyncTask to search online data source or local DB for beer by the
+	 * barcode
+	 * 
+	 * @author Tim Guibord
+	 * 
+	 */
 	private class BarcodeSearchTask extends AsyncTask<String, Integer, Beer> {
 
 		@Override
 		protected Beer doInBackground(String... params) {
 
+			// open a beer service and fetch the beer from the specified barcode
 			IBeerService bs = new BeerService(BeerDetailsActivity.this);
 			Beer result = new Beer();
 
 			try {
 				result = bs.fetchBeerByBarcode(params[0]);
 			} catch (Exception e) {
-				// TODO: handle exception
+				Log.i("BarcodeSearchTask.doInBackground", e.toString());
 			}
 			// TODO Auto-generated method stub
 			return result;
@@ -234,6 +247,16 @@ public class BeerDetailsActivity extends BeerIDActivity {
 			}
 		}
 
+	}
+
+	/**
+	 * checks FB session status and shows share button accordingly
+	 */
+	public void checkFacebookStatus() {
+		Session session = Session.getActiveSession();
+		if (!session.isOpened()) {
+			btnFacebookShare.setVisibility(View.GONE);
+		}
 	}
 
 }

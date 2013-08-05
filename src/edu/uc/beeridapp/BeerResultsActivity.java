@@ -7,6 +7,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -17,8 +18,9 @@ import edu.uc.beeridapp.services.BeerService;
 import edu.uc.beeridapp.services.IBeerService;
 
 /**
+ * Activity to display search results
  * 
- * @author Brian Pumphrey Activity to display search results
+ * @author Brian Pumphrey 
  */
 
 public class BeerResultsActivity extends ListActivity {
@@ -40,47 +42,12 @@ public class BeerResultsActivity extends ListActivity {
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Log.i("BeerResultsActivity.onCreate", e.toString());
 
 			// inform the user there was an error.
 			Toast.makeText(this, getString(R.string.errUnableToGetResults),
 					Toast.LENGTH_LONG).show();
 		}
-
-		// // Find beers that match these results
-		//
-		// // Get a reference to BeerDAO
-		// IBeerDAO beerDAO = new BeerDAOStub();
-		//
-		// // Invoke the search
-		// List<Beer> results;
-		//
-		// try {
-		//
-		// results = beerDAO.fetchBeer(bs);
-		//
-		// // Merge data To screen
-		// ArrayAdapter<Beer> listAdapter = new ArrayAdapter<Beer>(this,
-		// android.R.layout.simple_list_item_1, results);
-		//
-		// // Display the data
-		// setListAdapter(listAdapter);
-		//
-		// if (results.isEmpty())
-		// {
-		// // Inform the user there are no results found
-		// Toast.makeText(this, getString(R.string.errNoResultsFound),
-		// Toast.LENGTH_LONG).show();
-		// }
-		//
-		// }
-		// catch (Exception e)
-		// {
-		// // Inform the user there was an error
-		// Toast.makeText(this, getString(R.string.errUnableToGetResults),
-		// Toast.LENGTH_LONG).show();
-		// }
-
 	}
 
 	/**
@@ -119,7 +86,7 @@ public class BeerResultsActivity extends ListActivity {
 				results = beerService.fetchBeers(params[0]);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Log.i("BeerSearchTask.doInBackground", e.toString());
 			}
 
 			// return the plants that we got from the network.

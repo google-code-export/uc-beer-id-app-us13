@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -83,7 +84,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 			registerForContextMenu(actBeerName);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.i("DetailsSearchActivity.onCreate", e.toString());
 		}
 	}
 
@@ -96,7 +97,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 			GetBeerStylesTask task = new GetBeerStylesTask();
 			task.execute();
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.i("DetailsSearchActivity.loadBeerStylesSpinner", e.toString());
 		}
 	}
 
@@ -196,7 +197,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 				allStyles = beerService.fetchBeerStyles();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Log.i("GetBeerStylesTask.doInBackground", e.toString());
 			}
 
 			return allStyles;
