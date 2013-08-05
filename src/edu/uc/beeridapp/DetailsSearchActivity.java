@@ -72,8 +72,8 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		try{
 			//get the list of distinct beer names
 			List<String> fetchBeerNames = beerService.fetchBeerNames();
-			// create an array Adapter.
-			ArrayAdapter beerNameAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, fetchBeerNames);
+			// create an array Adapter. Note: using select_dialog_item will display black auto complete text entries
+			ArrayAdapter beerNameAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, fetchBeerNames);
 			
 			// associate the array adapter with the Auto Complete.
 			actBeerName.setAdapter(beerNameAdapter);
