@@ -85,6 +85,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		}
 	}
 
+
 	/**
 	 * Gets list of beer styles via AsyncTask and loads the spinner list
 	 */

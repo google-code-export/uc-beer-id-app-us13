@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -11,51 +11,57 @@
     android:scrollbars="none"
     tools:context=".DetailsSearchActivity" >
 
-    <AutoCompleteTextView
-        android:id="@+id/actBeerName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="8"
-        android:hint="@string/beer_name"
-        android:inputType="text" />
+        android:layout_height="wrap_content" 
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edtMaxCalories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="8"
-        android:hint="@string/max_calories"
-        android:inputType="numberDecimal" />
+        <AutoCompleteTextView
+            android:id="@+id/actBeerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="@string/beer_name"
+            android:inputType="text" />
 
-    <EditText
-        android:id="@+id/edtMaxAlcoholByVolume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="8"
-        android:hint="@string/max_abv"
-        android:inputType="numberDecimal" />
+        <EditText
+            android:id="@+id/edtMaxCalories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="8"
+            android:hint="@string/max_calories"
+            android:inputType="numberDecimal" />
 
-    <Spinner
-        android:id="@+id/spnBeerStyles"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:prompt="@string/beer_style_prompt" />
+        <EditText
+            android:id="@+id/edtMaxAlcoholByVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="8"
+            android:hint="@string/max_abv"
+            android:inputType="numberDecimal" />
 
-    <Button
-        android:id="@+id/btnDetailsSubmit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/submit" />
+        <Spinner
+            android:id="@+id/spnBeerStyles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:prompt="@string/beer_style_prompt" />
 
-    <Button
-        android:id="@+id/btnDetailsReset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/reset" />
+        <Button
+            android:id="@+id/btnDetailsSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/submit" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnDetailsReset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/reset" />
+    </LinearLayout>
+
+</ScrollView>
