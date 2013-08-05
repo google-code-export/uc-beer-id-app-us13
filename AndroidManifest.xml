@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name="edu.uc.beeridapp.BeerIDActivity"
-            android:label="@string/title_activity_beer_id" >
+            android:label="@string/title_beer_id_app" >
         </activity>
     </application>
 
