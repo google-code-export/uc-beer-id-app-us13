@@ -5,3 +5,5 @@ syntax: regexp
 ^bin$
 syntax: regexp
 ^gen$
+syntax: regexp
+^support/facebook/bin$
