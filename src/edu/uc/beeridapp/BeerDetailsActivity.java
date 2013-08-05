@@ -195,14 +195,13 @@ public class BeerDetailsActivity extends BeerIDActivity {
 		Session.saveSession(session, outState);
 	}
 
-	}
-
 	private class SessionStatusCallback implements Session.StatusCallback {
 		@Override
 		public void call(Session session, SessionState state,
 				Exception exception) {
 			checkFacebookStatus();
 		}
+	}
 	private class BarcodeSearchTask extends AsyncTask<String, Integer, Beer> {
 
 		@Override
