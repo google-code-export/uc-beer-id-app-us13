@@ -178,8 +178,31 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 	@Override
 	public BeerStyle searchBeerStyleByGuid(String guid) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String selectBeerStyleByGuidSQL = "SELECT * FROM " + STYLE_TABLE + " WHERE " + GUID + "=" + guid + " LIMIT 1;";
+
+		final int ID_COLUMN_INDEX = 0;
+		final int GUID_COLUMN_INDEX = 1;
+		final int STYLE_COLUMN_INDEX = 2;
+		
+		BeerStyle thisBS = null;
+
+		Cursor cursor = getReadableDatabase().rawQuery(selectBeerStyleByGuidSQL, null);
+
+		if(cursor.getCount() > 0) {
+
+			cursor.moveToFirst();
+
+			thisBS = new BeerStyle();
+
+			thisBS.setId(cursor.getInt(ID_COLUMN_INDEX));
+			thisBS.setGuid(Integer.toString(cursor.getInt(GUID_COLUMN_INDEX)));
+			thisBS.setStyle(cursor.getString(STYLE_COLUMN_INDEX));
+			
+		}
+
+		cursor.close();
+		return thisBS;
 	}
 
 	@Override
