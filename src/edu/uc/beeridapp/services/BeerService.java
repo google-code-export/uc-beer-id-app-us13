@@ -196,33 +196,20 @@ public class BeerService implements IBeerService {
 		 */
 		@Override
 		public void run() {
-        	// TODO Auto-generated method stub
-        	// iterate over the collection of beers.
-        	for (Beer beer : beerList) {
+			// TODO Auto-generated method stub
+			// iterate over the collection of beers.
+			for (Beer beer : beerList) {
 
-        		/*
-        		 * Cannot cast Beer object as a BeerSearch object, so creating a new BeerSearch with the 
-        		 * Beer info
-        		 */
-        		//BeerSearch bs = new BeerSearch();
-        		//bs.setId(beer.getId());
-        		//bs.setGuid(beer.getGuid());
-        		//bs.setName(beer.getName());
-        		//bs.setStyle(beer.getStyle());
-        		//bs.setAbv(beer.getAbv());
-        		//bs.setCalories(beer.getCalories());
+				try {
+					if(offlineBeerDAO.searchBeerByGuid(Integer.toString(beer.getGuid())) == null) {
+						((OfflineBeerDAO) offlineBeerDAO).insert(beer);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
-        		try {
-        			//if (offlineBeerDAO.searchBeers(bs) == null) {
-        			if(offlineBeerDAO.searchBeerByGuid(Integer.toString(beer.getGuid())) == null) {
-        				((OfflineBeerDAO) offlineBeerDAO).insert(beer);
-        			}
-        		} catch (Exception e) {
-        			// TODO Auto-generated catch block
-        			e.printStackTrace();
-        		}
-
-        	}               
+			}               
 
 		}
 
@@ -235,9 +222,71 @@ public class BeerService implements IBeerService {
 	 *            beer result from barcode search
 	 */
 	private void cacheBeerAndBarcode(BarcodeSearchResult bsr) {
-		// TODO Auto-generated method stub
+		// instantiate an object of the inner class CacheBeerAndBarcode. This is a
+		// separate object, because it implements Runnable.
+		CacheBeerAndBarcode cp = new CacheBeerAndBarcode(bsr);
+		// pass the object to a new thread.
+		Thread cpThread = new Thread(cp);
+		// invoke the start method on that thread which will start a new thread,
+		// and run the CacheBeers object in that new thread.
+		cpThread.start();
 
 	}
+
+	class CacheBeerAndBarcode implements Runnable {
+
+		// The BarcoderSearchObject that we wish to cache.
+		BarcodeSearchResult bsr;
+
+		/**
+		 * Parameterized constructor ensures that we have a BSR
+		 * 
+		 * @param bsr the BarcodeSearchResult we want to cache.
+		 */
+		public CacheBeerAndBarcode(BarcodeSearchResult bsr){
+			this.bsr = bsr;
+		}
+
+		/**
+		 * The run method will execute in a new thread when the start() method
+		 * is executed on that thread.
+		 */
+		@Override
+		public void run() {
+
+			Beer justBeer = new Beer();
+			justBeer.setId(bsr.getId());
+			justBeer.setGuid(bsr.getGuid());
+			justBeer.setName(bsr.getName());
+			justBeer.setStyle(bsr.getStyle());
+			justBeer.setAbv(bsr.getAbv());
+			justBeer.setCalories(bsr.getCalories());
+
+			try {
+
+				/*
+				 * Check for entry in the Beer Table. If it doesn't exist, add it.
+				 */
+				if(offlineBeerDAO.searchBeerByGuid(Integer.toString(justBeer.getGuid())) == null) {
+					((OfflineBeerDAO) offlineBeerDAO).insert(justBeer);
+				}
+
+				/*
+				 * Check for entry in the Barcode Table. If it doesn't exist, add it.
+				 */
+				if(offlineBeerDAO.searchBeerByBarcode(bsr.getBarcode()) == null) {
+					((OfflineBeerDAO) offlineBeerDAO).insert(bsr);
+				}					
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}               
+
+	}
+
 
 	@Override
 	public List<String> fetchBeerNames() throws Exception {
