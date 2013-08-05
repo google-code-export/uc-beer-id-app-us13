@@ -65,9 +65,7 @@ public class BeerService implements IBeerService {
 	private void cacheStyles(ArrayList<BeerStyle> allStyles) {
 
 		CacheStyles cs = new CacheStyles(allStyles);
-
 		Thread csThread = new Thread(cs);
-
 		csThread.start();
 
 	}
@@ -99,7 +97,8 @@ public class BeerService implements IBeerService {
 
 			for (BeerStyle beerStyle : allStyles) {
 				try {
-					//just in case it grabs the spinner prompt, don't try to cache it.
+					// just in case it grabs the spinner prompt, don't try to
+					// cache it.
 					if (!beerStyle.getGuid().equals("-1")) {
 						if (offlineBeerDAO.searchBeerStyleByGuid(beerStyle
 								.getGuid()) == null) {
@@ -107,7 +106,7 @@ public class BeerService implements IBeerService {
 						}
 					}
 				} catch (Exception e) {
-					e.printStackTrace();
+					Log.i("CacheStyles.run", e.toString());
 				}
 			}
 		}
@@ -196,20 +195,19 @@ public class BeerService implements IBeerService {
 		 */
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
 			// iterate over the collection of beers.
 			for (Beer beer : beerList) {
 
 				try {
-					if(offlineBeerDAO.searchBeerByGuid(Integer.toString(beer.getGuid())) == null) {
+					if (offlineBeerDAO.searchBeerByGuid(Integer.toString(beer
+							.getGuid())) == null) {
 						((OfflineBeerDAO) offlineBeerDAO).insert(beer);
 					}
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Log.i("CacheBeers.run", e.toString());
 				}
 
-			}               
+			}
 
 		}
 
@@ -222,7 +220,8 @@ public class BeerService implements IBeerService {
 	 *            beer result from barcode search
 	 */
 	private void cacheBeerAndBarcode(BarcodeSearchResult bsr) {
-		// instantiate an object of the inner class CacheBeerAndBarcode. This is a
+		// instantiate an object of the inner class CacheBeerAndBarcode. This is
+		// a
 		// separate object, because it implements Runnable.
 		CacheBeerAndBarcode cp = new CacheBeerAndBarcode(bsr);
 		// pass the object to a new thread.
@@ -241,9 +240,10 @@ public class BeerService implements IBeerService {
 		/**
 		 * Parameterized constructor ensures that we have a BSR
 		 * 
-		 * @param bsr the BarcodeSearchResult we want to cache.
+		 * @param bsr
+		 *            the BarcodeSearchResult we want to cache.
 		 */
-		public CacheBeerAndBarcode(BarcodeSearchResult bsr){
+		public CacheBeerAndBarcode(BarcodeSearchResult bsr) {
 			this.bsr = bsr;
 		}
 
@@ -265,28 +265,29 @@ public class BeerService implements IBeerService {
 			try {
 
 				/*
-				 * Check for entry in the Beer Table. If it doesn't exist, add it.
+				 * Check for entry in the Beer Table. If it doesn't exist, add
+				 * it.
 				 */
-				if(offlineBeerDAO.searchBeerByGuid(Integer.toString(justBeer.getGuid())) == null) {
+				if (offlineBeerDAO.searchBeerByGuid(Integer.toString(justBeer
+						.getGuid())) == null) {
 					((OfflineBeerDAO) offlineBeerDAO).insert(justBeer);
 				}
 
 				/*
-				 * Check for entry in the Barcode Table. If it doesn't exist, add it.
+				 * Check for entry in the Barcode Table. If it doesn't exist,
+				 * add it.
 				 */
-				if(offlineBeerDAO.searchBeerByBarcode(bsr.getBarcode()) == null) {
+				if (offlineBeerDAO.searchBeerByBarcode(bsr.getBarcode()) == null) {
 					((OfflineBeerDAO) offlineBeerDAO).insert(bsr);
-				}					
+				}
 
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Log.i("CacheBeerAndBarcode.run", e.toString());
 			}
 
-		}               
+		}
 
 	}
-
 
 	@Override
 	public List<String> fetchBeerNames() throws Exception {
@@ -304,11 +305,7 @@ public class BeerService implements IBeerService {
 			ArrayList<BeerStyle> allStyles = onlineBeerDAO.fetchStyles();
 			cacheStyles(allStyles);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Log.i("Device Connectivy",
-					"Device not online; cannot cache beer styles");
+			Log.i("BeerService.getBeerStylesForCache", e.toString());
 		}
-
 	}
-
 }
