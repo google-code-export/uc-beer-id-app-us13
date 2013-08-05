@@ -30,7 +30,7 @@ import edu.uc.beeridapp.services.IBeerService;
 
 public class BeerDetailsActivity extends BeerIDActivity {
 
-	private static final String BEERAPI_BASE_URL = "http://beerid-api.herokuapp.com/beer/";
+	private static final String BEERAPI_BASE_URL = "http://beerid-api.herokuapp.com/beers/";
 	private static final String LOGO_LINK = "https://dl.dropboxusercontent.com/u/7833722/beerid-logo.png";
 	private TextView txtBeerName;
 	private TextView txtBeerStyle;

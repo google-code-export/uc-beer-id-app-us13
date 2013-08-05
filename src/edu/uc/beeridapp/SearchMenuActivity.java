@@ -127,6 +127,7 @@ public class SearchMenuActivity extends BeerIDActivity {
 		} else {
 			Session.getActiveSession().onActivityResult(this, requestCode,
 					resultCode, intent);
+			updateView();
 		}
 	}
 
@@ -140,7 +141,7 @@ public class SearchMenuActivity extends BeerIDActivity {
 	private void updateView() {
 		Session session = Session.getActiveSession();
 		if (session.isOpened()) {
-		//	btnFacebookLogin.setVisibility(View.GONE);
+			btnFacebookLogin.setVisibility(View.GONE);
 			btnFacebookLogout.setVisibility(View.VISIBLE);
 		//  btnFacebookLoginLogout.setText(R.string.facebook_logout);
 		//	btnFacebookLogout.setOnClickListener(new OnClickListener() {
@@ -150,7 +151,7 @@ public class SearchMenuActivity extends BeerIDActivity {
 		//	});
 		} else {
 			btnFacebookLogin.setVisibility(View.VISIBLE);
-		//	btnFacebookLogout.setVisibility(View.GONE);	
+			btnFacebookLogout.setVisibility(View.GONE);	
 		//  btnFacebookLoginLogout.setText(R.string.facebook_login);
 		//	btnFacebookLogin.setOnClickListener(new OnClickListener() {
 		//		public void onClick(View view) {
