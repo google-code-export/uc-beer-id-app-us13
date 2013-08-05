@@ -131,7 +131,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		db.execSQL(createBeerTableSQL);
 		db.execSQL(createBarCodeTableSQL);
 		db.execSQL(createStyleTableSQL);
-		db.close();
+		//db.close();
 		
 	}
 
@@ -142,8 +142,41 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 	}
 
 	public Beer searchBeerByGuid(String guid2) {
-		// TODO DO WE NEED THIS????
-		return null;
+		// This is used when caching to keep duplicates from being inserted
+		String selectBeerByGuidSQL = "SELECT DISTINCT FROM " + BEER_TABLE + " WHERE " + GUID + "=' + guid2 + ';";
+		
+		final int ID_COLUMN_INDEX = 0;
+		final int GUID_COLUMN_INDEX = 1;
+		final int NAME_COLUMN_INDEX = 2;
+		final int STYLE_COLUMN_INDEX = 3;
+		final int CALORIES_COLUMN_INDEX = 4;
+		final int ABV_COLUMN_INDEX = 5;
+		
+		Beer thisBeer = null;
+		
+		Cursor cursor = getReadableDatabase().rawQuery(selectBeerByGuidSQL, null);
+		
+		if(cursor.getCount() > 0) {
+
+			cursor.moveToFirst();
+
+			thisBeer = new Beer();
+
+			while (!cursor.isAfterLast()) {
+				
+				thisBeer.setId(cursor.getInt(ID_COLUMN_INDEX));
+				thisBeer.setGuid(cursor.getInt(GUID_COLUMN_INDEX));
+				thisBeer.setName(cursor.getString(NAME_COLUMN_INDEX));
+				thisBeer.setStyle(cursor.getString(STYLE_COLUMN_INDEX));
+				thisBeer.setCalories(Double.toString(cursor.getDouble(CALORIES_COLUMN_INDEX)));
+				thisBeer.setAbv(Double.toString(cursor.getDouble(ABV_COLUMN_INDEX)));				
+
+				cursor.moveToNext();
+			}
+		}
+		
+		cursor.close();
+		return thisBeer;
 	}
 
 	@Override
@@ -152,6 +185,35 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		return null;
 	}
 
-
+	@Override
+	public ArrayList<String> fetchBeerNames() {
+		// declare our return value.
+		ArrayList<String> allNames = new ArrayList<String>();
+		
+		// the SQL query to select all unique beers.
+		String selectName = "SELECT DISTINCT " + NAME + " FROM " + BEER_TABLE;
+		
+		// run the query.
+		Cursor cursor = getReadableDatabase().rawQuery(selectName, null);
+		
+		// do we have at least one result?
+		if (cursor.getCount() > 0) {
+			// go to the first result.
+			cursor.moveToFirst();
+			
+			// iterate over the result.
+			while (!cursor.isAfterLast()) {
+				// add the result to the collection.
+				 allNames.add(cursor.getString(0));
+				 
+				 // move to the next row.
+				 cursor.moveToNext();
+			}
+			// close cursor to free up memory
+			cursor.close();
+		}
+		return allNames;
+	}
+	
 
 }

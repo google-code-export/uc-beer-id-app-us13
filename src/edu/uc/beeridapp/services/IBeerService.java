@@ -43,4 +43,12 @@ public interface IBeerService {
 	 * @throws Exception
 	 */
 	public List<Beer> fetchBeers(BeerSearch beerSearch) throws Exception;
+
+	/**
+	 * returns a list of distinct Beer Names
+	 * 
+	 * @return List of Beer Names
+	 * @throws Exception
+	 */
+	List<String> fetchBeerNames() throws Exception;
 }

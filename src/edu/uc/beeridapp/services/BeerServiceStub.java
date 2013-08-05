@@ -34,4 +34,10 @@ public class BeerServiceStub implements IBeerService {
 		return null;
 	}
 
+	@Override
+	public List<String> fetchBeerNames() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

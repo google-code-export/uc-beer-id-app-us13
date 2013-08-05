@@ -1,6 +1,7 @@
 package edu.uc.beeridapp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -42,6 +43,9 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_details_search);
 
+		// Create new BeerService
+		beerService = new BeerService(this);
+		
 		// Get Access to UI Components
 		actBeerName = (AutoCompleteTextView) findViewById(R.id.actBeerName);
 		edtMaxCalories = (EditText) findViewById(R.id.edtMaxCalories);
@@ -64,7 +68,23 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		btnDetailsReset.setOnClickListener(btnDetailsResetListener);
 
 		// TODO: Add Adapter for AutoCompleteTextView on Brand Name field
+		
+		try{
+			//get the list of distinct beer names
+			List<String> fetchBeerNames = beerService.fetchBeerNames();
+			// create an array Adapter. Note: using select_dialog_item will display black auto complete text entries
+			ArrayAdapter beerNameAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, fetchBeerNames);
+			
+			// associate the array adapter with the Auto Complete.
+			actBeerName.setAdapter(beerNameAdapter);
+			
+			registerForContextMenu(actBeerName);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
 
 	/**
 	 * Gets list of beer styles via AsyncTask and loads the spinner list

@@ -230,5 +230,10 @@ public class BeerService implements IBeerService {
 		// TODO Auto-generated method stub
 
 	}
+	
+	@Override
+	public List<String> fetchBeerNames() throws Exception {
+		return offlineBeerDAO.fetchBeerNames();
+	}
 
 }
