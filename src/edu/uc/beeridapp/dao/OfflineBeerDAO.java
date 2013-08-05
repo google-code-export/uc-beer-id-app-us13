@@ -47,11 +47,11 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		if(cursor.getCount() > 0) {
 			
-			cursor.moveToFirst();
-			
-			thisBS = new BeerStyle();
+			cursor.moveToFirst();			
 			
 			while (!cursor.isAfterLast()) {
+				
+				thisBS = new BeerStyle();
 				thisBS.setId(cursor.getInt(ID_COLUMN_INDEX));
 				thisBS.setGuid(Integer.toString(cursor.getInt(GUID_COLUMN_INDEX)));
 				thisBS.setStyle(cursor.getString(STYLE_COLUMN_INDEX));
