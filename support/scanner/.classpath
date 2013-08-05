@@ -5,8 +5,5 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="lib" path="C:/Users/tguibord/mobile_dev/uc-beer-id-app-us13/support/scanner/libs/core-2.3-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="C:/Users/tguibord/mobile_dev/uc-beer-id-app-us13/support/scanner/libs/core-2.3-SNAPSHOT-javadoc.jar"/>
-	<classpathentry kind="lib" path="C:/Users/tguibord/mobile_dev/uc-beer-id-app-us13/support/scanner/libs/core-2.3-SNAPSHOT-sources.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
