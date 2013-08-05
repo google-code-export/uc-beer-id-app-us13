@@ -93,6 +93,20 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 	}
 	
+	public void insert(BarcodeSearchResult bsr) {
+
+		ContentValues barcodeValues = new ContentValues();
+		
+		barcodeValues.put(GUID, bsr.getGuid());
+		barcodeValues.put(BARCODE_GUID, bsr.getBarcodeGuid());
+		barcodeValues.put(BARCODE, bsr.getBarcode());
+		
+		long id = getWritableDatabase().insert(BARCODE_TABLE, BARCODE, barcodeValues);
+
+		bsr.setBarcodeID((int)id);		
+
+	}
+	
 	public void insert(BeerStyle bs) {
 		
 		ContentValues values = new ContentValues();
