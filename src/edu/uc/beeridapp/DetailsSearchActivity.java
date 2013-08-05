@@ -45,7 +45,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 
 		// Create new BeerService
 		beerService = new BeerService(this);
-		
+
 		// Get Access to UI Components
 		actBeerName = (AutoCompleteTextView) findViewById(R.id.actBeerName);
 		edtMaxCalories = (EditText) findViewById(R.id.edtMaxCalories);
@@ -62,29 +62,30 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		OnClickListener btnDetailsSubmitListener = new OnDetailsSubmitListener();
 
 		btnDetailsSubmit.setOnClickListener(btnDetailsSubmitListener);
-		
+
 		OnClickListener btnDetailsResetListener = new OnDetailsResetListener();
 
 		btnDetailsReset.setOnClickListener(btnDetailsResetListener);
 
 		// TODO: Add Adapter for AutoCompleteTextView on Brand Name field
-		
-		try{
-			//get the list of distinct beer names
+
+		try {
+			// get the list of distinct beer names
 			List<String> fetchBeerNames = beerService.fetchBeerNames();
-			// create an array Adapter. Note: using select_dialog_item will display black auto complete text entries
-			ArrayAdapter beerNameAdapter = new ArrayAdapter(this, android.R.layout.select_dialog_item, fetchBeerNames);
-			
+			// create an array Adapter. Note: using select_dialog_item will
+			// display black auto complete text entries
+			ArrayAdapter beerNameAdapter = new ArrayAdapter(this,
+					android.R.layout.select_dialog_item, fetchBeerNames);
+
 			// associate the array adapter with the Auto Complete.
 			actBeerName.setAdapter(beerNameAdapter);
-			
+
 			registerForContextMenu(actBeerName);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
 
 	/**
 	 * Gets list of beer styles via AsyncTask and loads the spinner list
@@ -143,17 +144,17 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		// invoke the results screen
 		startActivity(beerResultsIntent);
 	}
-	
+
 	/**
 	 * Reset form fields to defaults
 	 */
 	private void resetDetails() {
-		
+
 		actBeerName.setText(null);
 		edtMaxCalories.setText(null);
 		edtMaxABV.setText(null);
 		spnBeerStyle.setSelection(0);
-		
+
 	}
 
 	class OnDetailsSubmitListener implements OnClickListener {
@@ -163,6 +164,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 			submitDetails();
 		}
 	}
+
 	class OnDetailsResetListener implements OnClickListener {
 
 		@Override
@@ -172,7 +174,7 @@ public class DetailsSearchActivity extends BeerIDActivity {
 	}
 
 	/**
-	 * AsyncTask class to fetch beer styles from datasource and load spinner
+	 * AsyncTask class to fetch beer styles from data source and load spinner
 	 * 
 	 * @author Tim Guibord
 	 * 

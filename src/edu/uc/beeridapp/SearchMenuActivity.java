@@ -1,8 +1,9 @@
 package edu.uc.beeridapp;
 
-
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -11,6 +12,9 @@ import com.facebook.LoggingBehavior;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.Settings;
+
+import edu.uc.beeridapp.services.BeerService;
+import edu.uc.beeridapp.services.IBeerService;
 
 /**
  * @author Brian Pumphrey Search Menu Activity
@@ -27,6 +31,11 @@ public class SearchMenuActivity extends BeerIDActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// lets start by updating the beer style cache for the details search
+		// spinner
+		updateBeerStyleCache();
+
 		setContentView(R.layout.activity_search_menu);
 
 		// Get Access to UI Components
@@ -45,21 +54,21 @@ public class SearchMenuActivity extends BeerIDActivity {
 			}
 			if (session == null) {
 				session = new Session(this);
-			} 
+			}
 			Session.setActiveSession(session);
 			if (session.getState().equals(SessionState.CREATED_TOKEN_LOADED)) {
 				session.openForRead(new Session.OpenRequest(this)
-				.setCallback(statusCallback));
+						.setCallback(statusCallback));
 			}
-			
-		} 
+
+		}
 
 		// Create Listeners for Buttons
 		OnClickListener searchByDetailsListener = new OnSearchByDetailsListener();
 		OnClickListener searchByBarcodeListener = new OnSearchByBarcodeListener();
 		OnClickListener onLoginClickListener = new OnLoginClickListener();
 		OnClickListener onLogoutClickListener = new OnLogoutClickListener();
-		
+
 		btnSearchByDetails.setOnClickListener(searchByDetailsListener);
 		btnSearchByBarcode.setOnClickListener(searchByBarcodeListener);
 		btnFacebookLogin.setOnClickListener(onLoginClickListener);
@@ -67,9 +76,20 @@ public class SearchMenuActivity extends BeerIDActivity {
 
 		btnFacebookLogin.setVisibility(View.GONE);
 		btnFacebookLogout.setVisibility(View.GONE);
-		
+
 		updateView();
-	} 
+	}
+
+	private void updateBeerStyleCache() {
+
+		try {
+			CacheBeerStylesTask task = new CacheBeerStylesTask();
+			task.execute();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
 
 	@Override
 	protected void onPause() {
@@ -110,7 +130,6 @@ public class SearchMenuActivity extends BeerIDActivity {
 			if (resultCode == RESULT_OK) {
 				// put the results in the string values
 				String contents = intent.getStringExtra(SCAN_RESULT);
-				String format = intent.getStringExtra(SCAN_RESULT_FORMAT);
 
 				// initialize new result intent, pass the scanned value and
 				// start the activity
@@ -143,21 +162,9 @@ public class SearchMenuActivity extends BeerIDActivity {
 		if (session.isOpened()) {
 			btnFacebookLogin.setVisibility(View.GONE);
 			btnFacebookLogout.setVisibility(View.VISIBLE);
-		//  btnFacebookLoginLogout.setText(R.string.facebook_logout);
-		//	btnFacebookLogout.setOnClickListener(new OnClickListener() {
-		//		public void onClick(View view) {
-		//			onClickLogout();
-		//		}
-		//	});
 		} else {
 			btnFacebookLogin.setVisibility(View.VISIBLE);
-			btnFacebookLogout.setVisibility(View.GONE);	
-		//  btnFacebookLoginLogout.setText(R.string.facebook_login);
-		//	btnFacebookLogin.setOnClickListener(new OnClickListener() {
-		//		public void onClick(View view) {
-		//			onClickLogin();
-		//		}
-		//	});
+			btnFacebookLogout.setVisibility(View.GONE);
 		}
 	}
 
@@ -165,7 +172,7 @@ public class SearchMenuActivity extends BeerIDActivity {
 		Session session = Session.getActiveSession();
 		if (!session.isOpened() && !session.isClosed()) {
 			session.openForRead(new Session.OpenRequest(this)
-			.setCallback(statusCallback));
+					.setCallback(statusCallback));
 		} else {
 			Session.openActiveSession(this, true, statusCallback);
 		}
@@ -200,9 +207,9 @@ public class SearchMenuActivity extends BeerIDActivity {
 		public void onClick(View v) {
 			searchByBarcode();
 		}
-		
+
 	}
-	
+
 	class OnLoginClickListener implements OnClickListener {
 
 		@Override
@@ -210,7 +217,7 @@ public class SearchMenuActivity extends BeerIDActivity {
 			onClickLogin();
 		}
 	}
-	
+
 	class OnLogoutClickListener implements OnClickListener {
 
 		@Override
@@ -218,4 +225,21 @@ public class SearchMenuActivity extends BeerIDActivity {
 			onClickLogout();
 		}
 	}
+
+	public class CacheBeerStylesTask extends AsyncTask<Void, Integer, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			IBeerService bs = new BeerService(SearchMenuActivity.this);
+
+			try {
+				bs.getBeerStylesForCache();
+			} catch (Exception e) {
+				Log.i("CacheBeerStylesTask",
+						"could not cache beer styles locally");
+			}
+			return null;
+		}
+	}
+
 }
