@@ -74,8 +74,51 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 	@Override
 	public BarcodeSearchResult searchBeerByBarcode(String code) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String selectBeerByBarcodeSQL = "SELECT * FROM " + BARCODE_TABLE + " WHERE " + BARCODE + "=" + code + " LIMIT 1;";
+
+		final int ID_COLUMN_INDEX = 0;
+		final int GUID_COLUMN_INDEX = 1;
+		final int BARCODE_GUID_COLUMN_INDEX = 2;
+		final int BARCODE_COLUMN_INDEX = 3;
+		
+		BarcodeSearchResult thisBSR = null;
+		
+		/*
+		 * Retrieve the data from the Barcode table
+		 */
+		
+		Cursor barcodeCursor = getReadableDatabase().rawQuery(selectBeerByBarcodeSQL, null);
+
+		if(barcodeCursor.getCount() > 0) {
+
+			barcodeCursor.moveToFirst();
+
+			thisBSR = new BarcodeSearchResult();
+
+			thisBSR.setBarcodeID(barcodeCursor.getInt(ID_COLUMN_INDEX));
+			thisBSR.setGuid(barcodeCursor.getInt(GUID_COLUMN_INDEX));
+			thisBSR.setBarcodeGuid(barcodeCursor.getInt(BARCODE_GUID_COLUMN_INDEX));
+			thisBSR.setBarcode(barcodeCursor.getString(BARCODE_COLUMN_INDEX));
+			
+		}
+
+		barcodeCursor.close();
+		
+		/*
+		 *  Retrieve the data from the Beer table
+		 */
+		
+		Beer thisBeer = searchBeerByGuid(Integer.toString(thisBSR.getGuid()));
+		
+		thisBSR.setId(thisBeer.getId());
+		thisBSR.setName(thisBeer.getName());
+		thisBSR.setStyle(thisBeer.getStyle());
+		thisBSR.setCalories(thisBeer.getCalories());
+		thisBSR.setAbv(thisBeer.getAbv());
+		
+		return thisBSR;
+	
 	}
 
 	public void insert(Beer beer) {
