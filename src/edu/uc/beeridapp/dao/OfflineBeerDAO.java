@@ -41,7 +41,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		ArrayList<BeerStyle> allStyles = new ArrayList<BeerStyle>();
 		BeerStyle thisBS;
 		
-		String selectStylesSQL = "SELECT DISTINCT " + STYLE + " FROM " + STYLE_TABLE;
+		String selectStylesSQL = "SELECT * FROM " + STYLE_TABLE;
 		
 		Cursor cursor = getReadableDatabase().rawQuery(selectStylesSQL, null);
 		
