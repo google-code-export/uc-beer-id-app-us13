@@ -131,7 +131,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		db.execSQL(createBeerTableSQL);
 		db.execSQL(createBarCodeTableSQL);
 		db.execSQL(createStyleTableSQL);
-		db.close();
+		//db.close();
 		
 	}
 
@@ -152,6 +152,35 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		return null;
 	}
 
-
+	@Override
+	public ArrayList<String> fetchBeerNames() {
+		// declare our return value.
+		ArrayList<String> allNames = new ArrayList<String>();
+		
+		// the SQL query to select all unique beers.
+		String selectName = "SELECT DISTINCT " + NAME + " FROM " + BEER_TABLE;
+		
+		// run the query.
+		Cursor cursor = getReadableDatabase().rawQuery(selectName, null);
+		
+		// do we have at least one result?
+		if (cursor.getCount() > 0) {
+			// go to the first result.
+			cursor.moveToFirst();
+			
+			// iterate over the result.
+			while (!cursor.isAfterLast()) {
+				// add the result to the collection.
+				 allNames.add(cursor.getString(0));
+				 
+				 // move to the next row.
+				 cursor.moveToNext();
+			}
+			// close cursor to free up memory
+			cursor.close();
+		}
+		return allNames;
+	}
+	
 
 }

@@ -1,6 +1,7 @@
 package edu.uc.beeridapp;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -42,6 +43,9 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_details_search);
 
+		// Create new BeerService
+		beerService = new BeerService(this);
+		
 		// Get Access to UI Components
 		actBeerName = (AutoCompleteTextView) findViewById(R.id.actBeerName);
 		edtMaxCalories = (EditText) findViewById(R.id.edtMaxCalories);
@@ -64,6 +68,21 @@ public class DetailsSearchActivity extends BeerIDActivity {
 		btnDetailsReset.setOnClickListener(btnDetailsResetListener);
 
 		// TODO: Add Adapter for AutoCompleteTextView on Brand Name field
+		
+		try{
+			//get the list of distinct beer names
+			List<String> fetchBeerNames = beerService.fetchBeerNames();
+			// create an array Adapter.
+			ArrayAdapter beerNameAdapter = new ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, fetchBeerNames);
+			
+			// associate the array adapter with the Auto Complete.
+			actBeerName.setAdapter(beerNameAdapter);
+			
+			registerForContextMenu(actBeerName);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
