@@ -40,4 +40,10 @@ public class BeerServiceStub implements IBeerService {
 		return null;
 	}
 
+	@Override
+	public void getBeerStylesForCache() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

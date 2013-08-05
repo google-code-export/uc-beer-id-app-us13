@@ -50,5 +50,13 @@ public interface IBeerService {
 	 * @return List of Beer Names
 	 * @throws Exception
 	 */
-	List<String> fetchBeerNames() throws Exception;
+	public List<String> fetchBeerNames() throws Exception;
+	
+	/**
+	 * returns a list of beer styles for local caching
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public void getBeerStylesForCache() throws Exception;
 }
