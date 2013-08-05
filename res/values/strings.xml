@@ -166,5 +166,7 @@
     <string name="reset">Reset</string>
     <string name="faceook_login">Log into Facebook</string>
     <string name="facebook_logout">Logout of Facebook</string>
+    <string name="facebook_share">Share to Facebook</string>
+    <string name="search_again">Search Again</string>
 
 </resources>
