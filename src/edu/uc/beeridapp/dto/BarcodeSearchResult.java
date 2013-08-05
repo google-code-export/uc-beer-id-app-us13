@@ -10,8 +10,17 @@ public class BarcodeSearchResult extends Beer implements Cloneable {
 
 	private static final long serialVersionUID = 1L;
 
+	private int barcodeID;
 	private int barcodeGuid;
 	private String barcode;
+
+	public int getBarcodeID() {
+		return barcodeID;
+	}
+
+	public void setBarcodeID(int barcodeID) {
+		this.barcodeID = barcodeID;
+	}
 
 	public int getBarcodeGuid() {
 		return barcodeGuid;
