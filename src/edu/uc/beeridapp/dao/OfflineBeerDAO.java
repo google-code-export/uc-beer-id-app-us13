@@ -33,7 +33,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 	@Override
 	public ArrayList<BeerStyle> fetchStyles() throws Exception {
-		// TODO Unverified
+		
 		final int ID_COLUMN_INDEX = 0;
 		final int GUID_COLUMN_INDEX = 1;
 		final int STYLE_COLUMN_INDEX = 2;
@@ -74,7 +74,7 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 	@Override
 	public ArrayList<Beer> searchBeers(BeerSearch beerSearch) throws Exception {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
@@ -197,17 +197,15 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		db.execSQL(createBeerTableSQL);
 		db.execSQL(createBarCodeTableSQL);
 		db.execSQL(createStyleTableSQL);
-		//db.close();
 		
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	// This is used when caching to keep duplicates from being inserted
+	
 	public Beer searchBeerByGuid(String guid2) {
 		
 		String selectBeerByGuidSQL = "SELECT * FROM " + BEER_TABLE + " WHERE " + GUID + "=" + guid2 + " LIMIT 1;";
@@ -273,32 +271,29 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 	@Override
 	public ArrayList<String> fetchBeerNames() {
-		// declare our return value.
+		
 		ArrayList<String> allNames = new ArrayList<String>();
 		
-		// the SQL query to select all unique beers.
 		String selectName = "SELECT DISTINCT " + NAME + " FROM " + BEER_TABLE;
 		
-		// run the query.
 		Cursor cursor = getReadableDatabase().rawQuery(selectName, null);
 		
-		// do we have at least one result?
 		if (cursor.getCount() > 0) {
-			// go to the first result.
+			
 			cursor.moveToFirst();
 			
-			// iterate over the result.
 			while (!cursor.isAfterLast()) {
-				// add the result to the collection.
+				
 				 allNames.add(cursor.getString(0));
 				 
-				 // move to the next row.
 				 cursor.moveToNext();
 			}
-			// close cursor to free up memory
+			
 			cursor.close();
 		}
+		
 		return allNames;
+		
 	}
 	
 

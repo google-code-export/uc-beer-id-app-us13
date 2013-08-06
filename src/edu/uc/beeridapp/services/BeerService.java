@@ -62,8 +62,8 @@ public class BeerService implements IBeerService {
 	}
 
 	/**
-	 * An inner class containing logic for caching the beer styles Implements
-	 * Runnable for threading
+	 * An inner class containing logic for caching the beer styles 
+	 * Implements Runnable for threading
 	 * 
 	 * @author metzgecl
 	 * 
@@ -91,8 +91,7 @@ public class BeerService implements IBeerService {
 					// just in case it grabs the spinner prompt, don't try to
 					// cache it.
 					if (!beerStyle.getGuid().equals("-1")) {
-						if (offlineBeerDAO.searchBeerStyleByGuid(beerStyle
-								.getGuid()) == null) {
+						if (offlineBeerDAO.searchBeerStyleByGuid(beerStyle.getGuid()) == null) {
 							offlineBeerDAO.insert(beerStyle);
 						}
 					}
@@ -147,7 +146,7 @@ public class BeerService implements IBeerService {
 	}
 
 	/**
-	 * caches the beers in the local SQLite DB
+	 * Caches the beers in the local SQLite DB
 	 * 
 	 * @param beerList
 	 *            list of beers from search
@@ -205,7 +204,7 @@ public class BeerService implements IBeerService {
 	}
 
 	/**
-	 * caches the beer and itself barcode in the local SQLite DB
+	 * Caches the beer and its barcode in the local SQLite DB
 	 * 
 	 * @param bsr
 	 *            beer result from barcode search
