@@ -55,10 +55,13 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		prompt.setStyle("Select a Beer Style...");
 		allStyles.add(prompt);
 		
+		//SQL to get all columns/records from style table
 		String selectStylesSQL = "SELECT * FROM " + STYLE_TABLE;
 		
 		Cursor cursor = getReadableDatabase().rawQuery(selectStylesSQL, null);
 		
+		//If any records are found, each record's data is added to a BeerStlye object and the 
+		//  object is added to the ArrayList
 		if(cursor.getCount() > 0) {
 			
 			cursor.moveToFirst();			
@@ -95,6 +98,8 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 	@Override
 	public BarcodeSearchResult searchBeerByBarcode(String code) {
 		
+		//SQL to get all columns from the record in the barcode table that matches the passed barcode
+		//'Limit 1' added in case of duplicated data, but should not be necessary
 		String selectBeerByBarcodeSQL = "SELECT * FROM " + BARCODE_TABLE + " WHERE " + BARCODE + "=" + code + " LIMIT 1;";
 
 		final int ID_COLUMN_INDEX = 0;
@@ -105,7 +110,8 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		BarcodeSearchResult thisBSR = null;
 		
 		/*
-		 * Retrieve the data from the Barcode table
+		 *  Execute the SQL.  If record found, set BarcodeSearchResult object's 
+		 *   attributes to match the record.
 		 */
 		
 		Cursor barcodeCursor = getReadableDatabase().rawQuery(selectBeerByBarcodeSQL, null);
@@ -126,9 +132,9 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		barcodeCursor.close();
 		
 		/*
-		 *  Retrieve the data from the Beer table
-		 *  If for some reason there exists data in the Barcode table, but not the Beer table for this search,
-		 *    it is useless.  If/else statement checks for Beer table data and throws null if there is none.
+		 *  Retrieve the data for the matching GUID from the Beer table, only
+		 *  if a barcode record was found for it.
+		 *  
 		 */
 		
 		if (thisBSR != null){
@@ -251,6 +257,8 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 	 */
 	public Beer searchBeerByGuid(String guid2) {
 		
+		//SQL to get all columns from the record in the beer table that matches the passed GUID
+		//'Limit 1' added in case of duplicated data, but should not be necessary
 		String selectBeerByGuidSQL = "SELECT * FROM " + BEER_TABLE + " WHERE " + GUID + "=" + guid2 + " LIMIT 1;";
 		
 		final int ID_COLUMN_INDEX = 0;
@@ -262,6 +270,10 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		Beer thisBeer = null;
 		
+		/*
+		 *  Execute the SQL.  If record found, set Beer object's 
+		 *   attributes to match the record.
+		 */
 		Cursor cursor = getReadableDatabase().rawQuery(selectBeerByGuidSQL, null);
 		
 		if(cursor.getCount() > 0) {
@@ -293,6 +305,8 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 	@Override
 	public BeerStyle searchBeerStyleByGuid(String guid) {
 		
+		//SQL to get all columns from the record in the style table that matches the passed GUID
+		//  Limit 1' added in case of duplicated data, but should not be necessary
 		String selectBeerStyleByGuidSQL = "SELECT * FROM " + STYLE_TABLE + " WHERE " + GUID + "=" + guid + " LIMIT 1;";
 
 		final int ID_COLUMN_INDEX = 0;
@@ -301,6 +315,10 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		BeerStyle thisBS = null;
 
+		/*
+		 *  Execute the SQL.  If record found, set BeerStyle object's 
+		 *   attributes to match the record.
+		 */
 		Cursor cursor = getReadableDatabase().rawQuery(selectBeerStyleByGuidSQL, null);
 
 		if(cursor.getCount() > 0) {
@@ -328,10 +346,12 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		ArrayList<String> allNames = new ArrayList<String>();
 		
+		//SQL to return all the Beer Names without duplication
 		String selectName = "SELECT DISTINCT " + NAME + " FROM " + BEER_TABLE;
 		
 		Cursor cursor = getReadableDatabase().rawQuery(selectName, null);
 		
+		//For each record found, add the names the ArrayList
 		if (cursor.getCount() > 0) {
 			
 			cursor.moveToFirst();
