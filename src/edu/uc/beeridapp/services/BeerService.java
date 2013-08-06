@@ -29,15 +29,6 @@ public class BeerService implements IBeerService {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Beer fetchBeer(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
 	public ArrayList<BeerStyle> fetchBeerStyles() throws Exception {
 
 		// gets the beer styles from an online data source

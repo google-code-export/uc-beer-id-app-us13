@@ -9,13 +9,6 @@ import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
 public interface IBeerService {
-	/**
-	 * returns a Beer Object via id
-	 * 
-	 * @param id
-	 * @return Beer
-	 */
-	public Beer fetchBeer(int id);
 
 	/**
 	 * gets all beer styles

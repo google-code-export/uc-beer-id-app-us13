@@ -1,11 +1,19 @@
 package edu.uc.beeridapp;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,6 +46,9 @@ public class SearchMenuActivity extends BeerIDActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		// helper method for dev to get the correct key hash for FB
+		getKeyHashForFacebookConnection();
 
 		// lets start by updating the beer style cache for the details search
 		// spinner
@@ -129,6 +140,30 @@ public class SearchMenuActivity extends BeerIDActivity {
 		// show or hide the FB login/logout button based on the current session
 		// status
 		updateView();
+	}
+
+	/**
+	 * This method is for dev purposes only. In order to use the FB connect in
+	 * dev mode, you need to register you key hash with FB. Unfortunately, the
+	 * windows version of openssl is borked and will give an inaccurate key
+	 * hash. This method will print the correct key hash to the log.
+	 */
+	private void getKeyHashForFacebookConnection() {
+		try {
+			PackageInfo info = getPackageManager().getPackageInfo(
+					"edu.uc.beeridapp", PackageManager.GET_SIGNATURES);
+			for (Signature signature : info.signatures) {
+				MessageDigest md = MessageDigest.getInstance("SHA");
+				md.update(signature.toByteArray());
+				Log.d("YOURHASH KEY:",
+						Base64.encodeToString(md.digest(), Base64.DEFAULT));
+			}
+		} catch (NameNotFoundException e) {
+
+		} catch (NoSuchAlgorithmException e) {
+
+		}
+
 	}
 
 	/**

@@ -11,12 +11,6 @@ import edu.uc.beeridapp.dto.BeerStyle;
 public class BeerServiceStub implements IBeerService {
 
 	@Override
-	public Beer fetchBeer(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<Beer> fetchBeers(BeerSearch beerSearch) {
 		// TODO Auto-generated method stub
 		return null;
@@ -45,5 +39,4 @@ public class BeerServiceStub implements IBeerService {
 		// TODO Auto-generated method stub
 		
 	}
-
 }
