@@ -160,4 +160,8 @@
     <string name="menu_barcode_search">Search By Barcode</string>
     <string name="facebook_share">Share to Facebook</string>
     <string name="search_again">Search Again</string>
+    <string name="longitude">Long:</string>
+    <string name="latitude">Lat:</string>
+    <string name="zero_long">0.0</string>
+    <string name="zero_lat">0.0</string>
 </resources>

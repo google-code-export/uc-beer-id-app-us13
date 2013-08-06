@@ -1,7 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,75 +13,71 @@
         android:id="@+id/btnSearchByDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="@string/search_by_details" />
 
     <Button
         android:id="@+id/btnSearchByBarcode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnSearchByDetails"
-        android:layout_alignRight="@+id/btnSearchByDetails"
-        android:layout_below="@+id/btnSearchByDetails"
-        android:layout_marginTop="20dp"
-        android:text="@string/search_by_barcode" />
-
-    <!-- android:onClick="searchByBarcode" -->
-
-    <com.facebook.widget.LoginButton
-        android:id="@+id/btnFacebookLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="40dp" />
-
-    <Button
-        android:id="@+id/btnFacebookLogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnSearchByBarcode"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        android:text="@string/facebook_logout" />
+        android:layout_marginTop="10dp"
+        android:text="@string/search_by_barcode" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnSearchByBarcode"
-        android:layout_below="@+id/btnSearchByBarcode"
-        android:layout_marginTop="31dp"
-        android:text="Long" />
+        android:layout_marginTop="10dp" >
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btnFacebookLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/facebook_logout" />
+
+        <com.facebook.widget.LoginButton
+            android:id="@+id/btnFacebookLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="@+id/btnFacebookLogout"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_centerVertical="true"
-        android:text="Lat" />
+        android:layout_marginTop="10dp" >
 
-    <TextView
-        android:id="@+id/tvLong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/btnFacebookLogin"
-        android:layout_alignRight="@+id/btnSearchByBarcode"
-        android:text="0.0" />
+        <TableRow>
 
-    <TextView
-        android:id="@+id/tvLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView2"
-        android:layout_alignLeft="@+id/tvLong"
-        android:layout_alignRight="@+id/tvLong"
-        android:text="0.0" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/longitude"
+                android:width="50dp" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/txtLong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/zero_long" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/latitude"
+                android:width="50dp" />
+
+            <TextView
+                android:id="@+id/txtLat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/zero_lat" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
