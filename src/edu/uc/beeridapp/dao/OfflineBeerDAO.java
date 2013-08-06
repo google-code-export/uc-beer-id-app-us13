@@ -40,6 +40,12 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		ArrayList<BeerStyle> allStyles = new ArrayList<BeerStyle>();
 		BeerStyle thisBS;
+
+		// add a prompted for the spinner
+		BeerStyle prompt = new BeerStyle();
+		prompt.setGuid("-1");
+		prompt.setStyle("Select a Beer Style...");
+		allStyles.add(prompt);
 		
 		String selectStylesSQL = "SELECT * FROM " + STYLE_TABLE;
 		
