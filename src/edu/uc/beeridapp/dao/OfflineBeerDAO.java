@@ -117,24 +117,16 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		 *    it is useless.  If/else statement checks for Beer table data and throws null if there is none.
 		 */
 		
-		if (searchBeerByGuid(Integer.toString(thisBSR.getGuid()))!= null){
-			
-
+		if (thisBSR != null){
 			Beer thisBeer = searchBeerByGuid(Integer.toString(thisBSR.getGuid()));
-
 			thisBSR.setId(thisBeer.getId());
 			thisBSR.setName(thisBeer.getName());
 			thisBSR.setStyle(thisBeer.getStyle());
 			thisBSR.setCalories(thisBeer.getCalories());
 			thisBSR.setAbv(thisBeer.getAbv());
-
-			return thisBSR;
 		}
-		else {
-			
-			return null;
 		
-		}
+		return thisBSR;
 	
 	}
 
