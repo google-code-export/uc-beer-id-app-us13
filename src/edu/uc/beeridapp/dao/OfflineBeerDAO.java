@@ -12,7 +12,12 @@ import edu.uc.beeridapp.dto.Beer;
 import edu.uc.beeridapp.dto.BeerSearch;
 import edu.uc.beeridapp.dto.BeerStyle;
 
-
+/**
+ * Beer DAO for accessing offline data 
+ * 
+ * @author metzgecl
+ *
+ */
 public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO {
 
 	private static final String BARCODE_GUID = "barcode_guid";
@@ -31,6 +36,9 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		super(context, "beeridapp.db", null, 1);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<BeerStyle> fetchStyles() throws Exception {
 		
@@ -72,12 +80,18 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		return allStyles;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Beer> searchBeers(BeerSearch beerSearch) throws Exception {
 		
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public BarcodeSearchResult searchBeerByBarcode(String code) {
 		
@@ -130,6 +144,11 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 	
 	}
 
+	/**
+	 * Inserts a Beer record into the offline database
+	 * 
+	 * @param beer
+	 */
 	public void insert(Beer beer) {
 		
 		ContentValues values = new ContentValues();
@@ -145,6 +164,11 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 	}
 	
+	/**
+	 * Inserts a BarcodeSearchResult record into the offline database
+	 * 
+	 * @param bsr
+	 */
 	public void insert(BarcodeSearchResult bsr) {
 
 		ContentValues barcodeValues = new ContentValues();
@@ -159,6 +183,11 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 
 	}
 	
+	/**
+	 * Inserts a BeerStyle record into the offline database
+	 * 
+	 * @param beerStyle
+	 */
 	public void insert(BeerStyle bs) {
 		
 		ContentValues values = new ContentValues();
@@ -172,9 +201,14 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 	}
 
+	/**
+	 * Creation of the offline database tables
+	 * 
+	 */
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 
+		// Table to store the beer information
 		String createBeerTableSQL = "CREATE TABLE " + BEER_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
 										   + GUID       + " INTEGER, "
 										   + NAME       + " TEXT, "
@@ -183,12 +217,15 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 										   + ABV		+ " REAL"
 										   + ");";
 		
+		//Table to store the barcode information
+		//GUID in the table pairs to the GUID of the beer record it belongs to
 		String createBarCodeTableSQL = "CREATE TABLE " + BARCODE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
 										   + GUID		   + " INTEGER, "
 										   + BARCODE_GUID  + " INTEGER, "
 										   + BARCODE       + " TEXT"
 										   + ");";
 		
+		//Table to store the Beer Style info for the DetailsSearchActivity Spinner
 		String createStyleTableSQL = "CREATE TABLE " + STYLE_TABLE + " (id INTEGER PRIMARY KEY AUTOINCREMENT, "
 										   + GUID		   + " INTEGER, "
 										   + STYLE         + " TEXT"
@@ -205,7 +242,13 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 	}
 
-	
+	/**
+	 * Searches the Beer Table in the Offline database for a record 
+	 * with the specified GUID and returns the data contained in a Beer object
+	 * 
+	 * @param guid
+	 * @return Beer
+	 */
 	public Beer searchBeerByGuid(String guid2) {
 		
 		String selectBeerByGuidSQL = "SELECT * FROM " + BEER_TABLE + " WHERE " + GUID + "=" + guid2 + " LIMIT 1;";
@@ -240,6 +283,13 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		return thisBeer;
 	}
 
+	/**
+	 * Searches the Styles Table in the Offline database for a record 
+	 * with the specified GUID and returns the data in a BeerStyle object
+	 * 
+	 * @param guid
+	 * @return BeerStyle
+	 */
 	@Override
 	public BeerStyle searchBeerStyleByGuid(String guid) {
 		
@@ -269,6 +319,10 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		return thisBS;
 	}
 
+	/**
+	 * Returns an ArrayList of all Beer names in the Offline Database
+	 * @return ArrayList
+	 */
 	@Override
 	public ArrayList<String> fetchBeerNames() {
 		
