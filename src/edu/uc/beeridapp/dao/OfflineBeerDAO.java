@@ -40,6 +40,12 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		ArrayList<BeerStyle> allStyles = new ArrayList<BeerStyle>();
 		BeerStyle thisBS;
+
+		// add a prompted for the spinner
+		BeerStyle prompt = new BeerStyle();
+		prompt.setGuid("-1");
+		prompt.setStyle("Select a Beer Style...");
+		allStyles.add(prompt);
 		
 		String selectStylesSQL = "SELECT * FROM " + STYLE_TABLE;
 		
@@ -107,17 +113,28 @@ public class OfflineBeerDAO extends SQLiteOpenHelper implements IOfflineBeerDAO 
 		
 		/*
 		 *  Retrieve the data from the Beer table
+		 *  If for some reason there exists data in the Barcode table, but not the Beer table for this search,
+		 *    it is useless.  If/else statement checks for Beer table data and throws null if there is none.
 		 */
 		
-		Beer thisBeer = searchBeerByGuid(Integer.toString(thisBSR.getGuid()));
+		if (searchBeerByGuid(Integer.toString(thisBSR.getGuid()))!= null){
+			
+
+			Beer thisBeer = searchBeerByGuid(Integer.toString(thisBSR.getGuid()));
+
+			thisBSR.setId(thisBeer.getId());
+			thisBSR.setName(thisBeer.getName());
+			thisBSR.setStyle(thisBeer.getStyle());
+			thisBSR.setCalories(thisBeer.getCalories());
+			thisBSR.setAbv(thisBeer.getAbv());
+
+			return thisBSR;
+		}
+		else {
+			
+			return null;
 		
-		thisBSR.setId(thisBeer.getId());
-		thisBSR.setName(thisBeer.getName());
-		thisBSR.setStyle(thisBeer.getStyle());
-		thisBSR.setCalories(thisBeer.getCalories());
-		thisBSR.setAbv(thisBeer.getAbv());
-		
-		return thisBSR;
+		}
 	
 	}
 
