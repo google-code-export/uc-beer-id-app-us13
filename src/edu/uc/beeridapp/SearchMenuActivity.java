@@ -61,8 +61,8 @@ public class SearchMenuActivity extends BeerIDActivity {
 		btnSearchByBarcode = (Button) findViewById(R.id.btnSearchByBarcode);
 		btnFacebookLogin = (Button) findViewById(R.id.btnFacebookLogin);
 		btnFacebookLogout = (Button) findViewById(R.id.btnFacebookLogout);
-		txtLong = (TextView) findViewById(R.id.tvLong);
-		txtLat = (TextView) findViewById(R.id.tvLat);
+		txtLong = (TextView) findViewById(R.id.txtLong);
+		txtLat = (TextView) findViewById(R.id.txtLat);
 
 		Settings.addLoggingBehavior(LoggingBehavior.INCLUDE_ACCESS_TOKENS);
 
